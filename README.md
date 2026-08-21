@@ -1,1 +1,2 @@
 # TerraWiki
+An iOS Terraria Wiki App, With all information but not limited to: All Items/Recipies from 1.4.5.7, Every NPC from 1.4.5.7, Every Mechanic from 1.4.5.7, Every Boss (Pre and Post Hard Mode) In 1.4.5.7, This will include Every aspect of Terraria's latest Update, Will be Written in Swft for an iOS Application 
