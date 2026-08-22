@@ -43,6 +43,8 @@ struct Item: Codable, Identifiable, Hashable {
     let description: String
     let notes: String?
     let tags: [String]
+    /// Exact wiki image file name (e.g. "Iron Pickaxe.png"); nil falls back to a name-derived URL.
+    let image: String?
 
     var maxStack: Int {
         switch kind {

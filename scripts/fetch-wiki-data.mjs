@@ -8,7 +8,7 @@
  *   bun scripts/fetch-wiki-data.mjs
  */
 
-import { writeFileSync, mkdirSync } from "node:fs";
+import { writeFileSync, readFileSync, mkdirSync } from "node:fs";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -30,12 +30,12 @@ async function fetchIteminfo() {
   console.log(`iteminfo.json: ${Object.keys(data).length} items`);
 }
 
-// 2) Items cargo table (wiki type classification per item page)
+// 2) Items cargo table (wiki type classification + exact image file per item page)
 async function fetchItemsTypes() {
   const all = [];
   let offset = 0;
   for (;;) {
-    const url = `${API}?action=cargoquery&tables=Items&fields=_pageName,type&limit=500&offset=${offset}&format=json&formatversion=2`;
+    const url = `${API}?action=cargoquery&tables=Items&fields=_pageName,type,image&limit=500&offset=${offset}&format=json&formatversion=2`;
     const j = await (await fetch(url)).json();
     const rows = (j.cargoquery || []).map((x) => x.title);
     all.push(...rows);
@@ -44,7 +44,28 @@ async function fetchItemsTypes() {
     if (offset > 30000) throw new Error("Items pagination exceeded 30000 rows");
   }
   writeFileSync(join(dataDir, "items-types.json"), JSON.stringify(all));
-  console.log(`items-types.json: ${all.length} item rows`);
+  console.log(`items-types.json: ${all.length} item rows (with image names)`);
+}
+
+// 3) Verify which guessed File:<Item Name>.png files exist on the wiki (batched)
+async function verifyItemImages() {
+  const iteminfo = JSON.parse(readFileSync(join(dataDir, "iteminfo.json"), "utf8"));
+  const names = [...new Set(Object.values(iteminfo).map((it) => it.name).filter(Boolean))];
+  const exists = {};
+  for (let i = 0; i < names.length; i += 50) {
+    const titles = names.slice(i, i + 50).map((n) => `File:${n.replace(/ /g, "_")}.png`);
+    const url = `${API}?action=query&titles=${encodeURIComponent(titles.join("|"))}&format=json&formatversion=2`;
+    const j = await (await fetch(url)).json();
+    for (const page of j.query?.pages || []) {
+      const file = page.title.replace(/^File:/, "");
+      exists[file.replace(/_/g, " ").replace(/\.png$/i, "")] = !page.missing;
+    }
+    await new Promise((r) => setTimeout(r, 60));
+  }
+  writeFileSync(join(dataDir, "image-exists.json"), JSON.stringify(exists));
+  const missing = names.filter((n) => !exists[n]);
+  console.log(`image-exists.json: ${names.length - missing.length}/${names.length} guessed files verified`);
+  if (missing.length) console.log(`  guessed missing (overridden by generator): ${missing.join(", ")}`);
 }
 
 // 3) Recipes cargo table (current platforms only)
@@ -67,5 +88,6 @@ async function fetchRecipes() {
 
 await fetchIteminfo();
 await fetchItemsTypes();
+await verifyItemImages();
 await fetchRecipes();
 console.log("Done. Run: bun scripts/generate-items.mjs");

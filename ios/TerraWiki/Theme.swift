@@ -119,6 +119,18 @@ func wikiFileURL(for name: String) -> URL? {
     return components.url
 }
 
+func wikiFileURL(for item: Item) -> URL? {
+    // Prefer the exact verified image file from the database; fall back to a name-derived guess.
+    let fileName = (item.image ?? (item.name.replacingOccurrences(of: " ", with: "_") + ".png"))
+        .replacingOccurrences(of: " ", with: "_")
+    var components = URLComponents()
+    components.scheme = "https"
+    components.host = "terraria.wiki.gg"
+    components.path = "/wiki/Special:FilePath/\(fileName)"
+    components.queryItems = [URLQueryItem(name: "width", value: "192")]
+    return components.url
+}
+
 // MARK: - Icon helpers
 
 func itemSymbol(_ item: Item) -> String {
@@ -179,10 +191,13 @@ struct WikiRow: View {
     var symbolColor: Color = .wikiGreen
     var isSelected: Bool = false
     var showsChevron: Bool = true
+    var thumbnailURL: URL? = nil
 
     var body: some View {
         HStack(spacing: 12) {
-            if let symbol {
+            if let thumbnailURL {
+                WikiArtwork(url: thumbnailURL, fallbackSymbol: symbol ?? "photo", fallbackColor: symbolColor, size: 30)
+            } else if let symbol {
                 PixelIcon(symbol: symbol, color: symbolColor)
             }
             VStack(alignment: .leading, spacing: 2) {

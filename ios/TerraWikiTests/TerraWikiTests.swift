@@ -70,6 +70,21 @@ final class TerraWikiTests: XCTestCase {
         XCTAssertFalse(meowmere.tags.isEmpty)
     }
 
+    func testEveryItemHasImageReference() {
+        let store = testStore
+        XCTAssertFalse(store.items.isEmpty)
+        for item in store.items {
+            XCTAssertNotNil(item.image, "Item '\(item.name)' should carry an image file reference")
+        }
+    }
+
+    func testItemImageURLsAreBuildable() {
+        let store = testStore
+        for item in store.items.prefix(200) {
+            XCTAssertNotNil(wikiFileURL(for: item), "Item '\(item.name)' should produce a valid image URL")
+        }
+    }
+
     func testUsedInLinksAreResolvable() {
         let store = testStore
         guard let terraBlade = store.item(named: "Terra Blade"), let usedIn = terraBlade.usedIn else {

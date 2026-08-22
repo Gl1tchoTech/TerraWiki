@@ -183,7 +183,8 @@ struct ItemListScreen: View {
                                     title: item.name,
                                     subtitle: itemSubtitle(item),
                                     symbol: itemSymbol(item),
-                                    symbolColor: itemColor(item)
+                                    symbolColor: itemColor(item),
+                                    thumbnailURL: wikiFileURL(for: item)
                                 )
                             }
                             HairlineDivider()
@@ -236,7 +237,7 @@ struct ItemDetailView: View {
                             NavigationLink {
                                 ItemDetailView(item: target)
                             } label: {
-                                WikiRow(title: target.name, subtitle: itemSubtitle(target), symbol: itemSymbol(target), symbolColor: itemColor(target))
+                                WikiRow(title: target.name, subtitle: itemSubtitle(target), symbol: itemSymbol(target), symbolColor: itemColor(target), thumbnailURL: wikiFileURL(for: target))
                             }
                             HairlineDivider()
                         } else {
@@ -257,7 +258,7 @@ struct ItemDetailView: View {
     private var header: some View {
         HStack(spacing: 14) {
             WikiArtwork(
-                url: wikiFileURL(for: item.name),
+                url: wikiFileURL(for: item),
                 fallbackSymbol: itemSymbol(item),
                 fallbackColor: itemColor(item),
                 size: 52

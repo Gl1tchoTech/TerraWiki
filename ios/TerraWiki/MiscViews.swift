@@ -173,9 +173,9 @@ struct FavoritesView: View {
                         if !itemFavs.isEmpty {
                             SectionHeader(text: "Items")
                             ForEach(itemFavs) { item in
-                                NavigationLink { ItemDetailView(item: item) } label: {
-                                    WikiRow(title: item.name, subtitle: itemSubtitle(item), symbol: itemSymbol(item), symbolColor: itemColor(item))
-                                }
+                            NavigationLink { ItemDetailView(item: item) } label: {
+                                WikiRow(title: item.name, subtitle: itemSubtitle(item), symbol: itemSymbol(item), symbolColor: itemColor(item), thumbnailURL: wikiFileURL(for: item))
+                            }
                                 HairlineDivider()
                             }
                         }

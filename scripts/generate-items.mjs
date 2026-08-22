@@ -30,13 +30,55 @@ try {
   console.warn("items-types.json not found; falling back to flag-based classification");
 }
 
-// wiki type by item name (first non-empty type wins; skip aggregate "set" rows)
+// wiki type and exact image file by item name (first non-empty row wins; skip aggregate "set" rows)
 const wikiTypeByName = new Map();
+const wikiImageByName = new Map();
 for (const row of itemsTypes) {
   const name = row._pageName;
   const t = (row.type || "").split("^")[0].trim().toLowerCase();
-  if (!t || t === "set") continue;
-  if (!wikiTypeByName.has(name)) wikiTypeByName.set(name, t);
+  if (t === "set") continue;
+  const imageMatch = (row.image || "").match(/File:([^|\]]+)/);
+  const image = imageMatch ? decodeEntities(imageMatch[1].trim()) : null;
+  if (t && !wikiTypeByName.has(name)) wikiTypeByName.set(name, t);
+  if (image && !wikiImageByName.has(name)) wikiImageByName.set(name, image);
+}
+
+// Wiki file names whose <Name>.png guess does not match the real file
+const IMAGE_OVERRIDES = {
+  "1/2 Second Timer": "1 2 Second Timer.png",
+  "1/4 Second Timer": "1 4 Second Timer.png",
+  "r/Terraria": "R Terraria.png",
+  "r/Terraria 2023": "R Terraria 2023.png",
+  "Remix": "Remix (item).png",
+  "Format:C": "Format C.png",
+  "Advanced Combat Techniques: Volume Two": "Advanced Combat Techniques_Volume Two.png",
+};
+
+// Verified guesses: File:<Item Name>.png exists on the wiki
+let imageExists = {};
+try {
+  imageExists = JSON.parse(readFileSync(join(dataDir, "image-exists.json"), "utf8"));
+} catch {
+  console.warn("image-exists.json not found; image verification skipped");
+}
+
+function decodeEntities(s) {
+  return s
+    .replace(/&#039;/g, "'")
+    .replace(/&amp;/g, "&")
+    .replace(/&quot;/g, "\"")
+    .replace(/&lt;/g, "<")
+    .replace(/&gt;/g, ">");
+}
+
+function imageFor(name) {
+  const exact = wikiImageByName.get(name);
+  if (exact) return exact;
+  const override = IMAGE_OVERRIDES[name];
+  if (override) return override;
+  const guess = name.replace(/ /g, "_") + ".png";
+  if (imageExists[name]) return guess;
+  return null;
 }
 
 // ---- recipe index ---------------------------------------------------------
@@ -282,6 +324,7 @@ for (const id of Object.keys(iteminfo)) {
       : `Crafted at a ${recipe.station}.`
     : "Found or dropped during gameplay — see the Official Terraria Wiki for exact sources.";
 
+  const image = imageFor(it.name);
   items.push({
     id: kebab(it.internalName || it.name),
     name: it.name,
@@ -291,6 +334,7 @@ for (const id of Object.keys(iteminfo)) {
     obtain,
     ...(recipe ? { recipe } : {}),
     ...(usedInList && usedInList.length ? { usedIn: usedInList } : {}),
+    ...(image ? { image } : {}),
     sell: coins(it.value),
     description: describe(it, kind, cls),
     tags: tags(it, kind, cls, Boolean(recipe)),
