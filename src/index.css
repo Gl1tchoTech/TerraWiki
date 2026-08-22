@@ -1,0 +1,72 @@
+@import url("https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: dark;
+    --background: 11 15 10;
+    --foreground: 233 225 206;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-ink text-bark-50 antialiased;
+    font-family: "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
+    background-color: #0b0f0a;
+  }
+
+  ::selection {
+    background: rgba(245, 192, 75, 0.3);
+    color: #ffe08a;
+  }
+
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: #4f9330 #141a12;
+  }
+
+  *::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+
+  *::-webkit-scrollbar-track {
+    background: #141a12;
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background: #3a7226;
+    border-radius: 8px;
+    border: 2px solid #141a12;
+  }
+}
+
+@layer components {
+  .pixel-card {
+    @apply rounded-xl border border-bark-700/70 bg-bark-900/60 shadow-card;
+  }
+
+  .pixel-border {
+    box-shadow:
+      0 0 0 1px rgba(191, 167, 107, 0.15),
+      0 0 0 4px rgba(20, 26, 18, 0.9);
+  }
+
+  .btn-pixel {
+    @apply inline-flex items-center justify-center gap-2 rounded-md border border-bark-600 bg-bark-800 px-4 py-2 font-display text-sm font-semibold uppercase tracking-wide text-bark-50 shadow-pixel transition-all duration-150 hover:-translate-y-0.5 hover:bg-bark-700 hover:text-white active:translate-y-0 active:shadow-none;
+  }
+
+  .btn-gold {
+    @apply inline-flex items-center justify-center gap-2 rounded-md border border-gold-600 bg-gold-500 px-5 py-2.5 font-display text-sm font-bold uppercase tracking-wide text-ink shadow-pixel-lg transition-all duration-150 hover:-translate-y-0.5 hover:bg-gold-400 active:translate-y-0 active:shadow-none;
+  }
+
+  .chip {
+    @apply inline-flex items-center gap-1.5 rounded-full border border-bark-700 bg-bark-900/80 px-2.5 py-1 font-mono text-[11px] font-medium uppercase tracking-wider text-bark-200;
+  }
+}

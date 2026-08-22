@@ -1,0 +1,18 @@
+# Xcode
+DerivedData/
+build/
+*.xcuserstate
+xcuserdata/
+*.xccheckout
+*.moved-aside
+*.hmap
+*.ipa
+*.dSYM.zip
+*.dSYM
+
+# XcodeGen (project is generated on demand)
+TerraWiki.xcodeproj/
+TerraWiki/Info.plist
+
+# CocoaPods
+Pods/

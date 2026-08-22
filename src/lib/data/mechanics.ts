@@ -1,0 +1,233 @@
+import type { Mechanic } from "../types";
+
+export const mechanics: Mechanic[] = [
+  {
+    id: "crafting",
+    name: "Crafting",
+    group: "Systems",
+    summary:
+      "Turn gathered materials into equipment, tools, and furniture at the right crafting station.",
+    howItWorks:
+      "Stand near a crafting station and open the crafting menu. The Guide can tell you every recipe that uses any material you show him. Different recipes require different stations — a Work Bench, Furnace, Anvil, Loom, Sawmill, and more.",
+    tips: [
+      "Check the Guide constantly — he is the in-game recipe browser.",
+      "Keep all crafting stations in one room for convenience.",
+    ],
+    tags: ["systems", "crafting", "guide"],
+  },
+  {
+    id: "hardmode-activation",
+    name: "Hardmode Activation",
+    group: "Progression",
+    summary:
+      "Defeating the Wall of Flesh transforms the world into Hardmode, unlocking new ores, enemies, and bosses.",
+    howItWorks:
+      "Throw a Guide Voodoo Doll into Underworld lava. When the Wall of Flesh dies, the world is blessed/cursed: the Hallow and the existing evil biome spread, new ores appear, and Hardmode enemies and bosses become available. Hardmode cannot be undone.",
+    tips: [
+      "Prepare arenas, housing, and a solid weapon loadout first.",
+      "The Hallow and evil spread in a V shape — plan your base accordingly.",
+    ],
+    related: ["Wall of Flesh", "Plantera"],
+    tags: ["progression", "hardmode", "wall-of-flesh"],
+  },
+  {
+    id: "npc-happiness",
+    name: "NPC Happiness & Pylons",
+    group: "Systems",
+    summary:
+      "Town NPCs have biome and neighbor preferences that affect shop prices and unlock Pylons.",
+    howItWorks:
+      "NPCs are happier in biomes they love and when they live near NPCs they like. Happy NPCs sell for less. A Pylon can be bought from a happy NPC, letting you teleport between Pylon networks across the map.",
+    tips: [
+      "Build small towns of 2-3 NPCs in their preferred biomes.",
+      "Place a Pylon in each town for instant fast travel.",
+    ],
+    tags: ["systems", "town", "pylons", "happiness"],
+  },
+  {
+    id: "evil-spread",
+    name: "World Evil Spread",
+    group: "World",
+    summary:
+      "The Corruption, Crimson, and Hallow spread across the world and convert surrounding blocks.",
+    howItWorks:
+      "Evil biomes convert adjacent grass, stone, sand, and ice. Spread is slow before Hardmode but accelerates drastically after the Wall of Flesh dies. The Dryad reports the exact percentage of each biome, and the Steampunker's Clentaminator can cleanse or spread it.",
+    tips: [
+      "Dig 3-block-wide tunnels to quarantine your base.",
+      "Use Green Solution with the Clentaminator to cleanse corruption.",
+    ],
+    related: ["Dryad", "Steampunker"],
+    tags: ["world", "evil", "corruption", "crimson", "hallow"],
+  },
+  {
+    id: "fishing",
+    name: "Fishing",
+    group: "Systems",
+    summary:
+      "Cast a line into any body of water to catch fish, crates, and loot.",
+    howItWorks:
+      "Use a Fishing Pole with bait at any liquid. Different biomes, times, and moon phases yield different catches. The Angler gives daily quests that reward fishing gear. Crates can be opened for ores and rare items.",
+    tips: [
+      "Bigger lakes = less fishing power penalty.",
+      "Complete Angler quests to unlock better rods and accessories.",
+    ],
+    related: ["Angler"],
+    tags: ["systems", "fishing", "angler", "crates"],
+  },
+  {
+    id: "classes",
+    name: "Combat Classes",
+    group: "Combat",
+    summary:
+      "Four damage classes — Melee, Ranged, Magic, and Summoner — define your playstyle.",
+    howItWorks:
+      "Each class has dedicated weapons, armor, and accessories. Melee is tanky up-close, Ranged is safe at distance, Magic trades mana for burst, and Summoner commands minions. Hybrid builds are viable, but specializing amplifies your damage bonuses.",
+    tips: [
+      "Match your armor set bonuses to your weapon type.",
+      "Summoner is the hardest early game but scales into a powerhouse.",
+    ],
+    tags: ["combat", "classes", "melee", "ranged", "magic", "summoner"],
+  },
+  {
+    id: "boss-summoning",
+    name: "Boss Summoning",
+    group: "Combat",
+    summary:
+      "Bosses are triggered by summon items, breaking objects, or meeting world conditions.",
+    howItWorks:
+      "Each boss has a summon method — using an item at a specific time or biome, breaking Shadow Orbs or Crimson Hearts, or defeating a prerequisite. Summon items are usually crafted at a Demon or Crimson Altar.",
+    tips: [
+      "Bosses can only be fought in their required biome/time.",
+      "Most summon items are consumed on use.",
+    ],
+    tags: ["combat", "bosses", "summoning"],
+  },
+  {
+    id: "events",
+    name: "Events & Invasions",
+    group: "Events",
+    summary:
+      "Special world events send waves of enemies in exchange for unique loot.",
+    howItWorks:
+      "Events include the Blood Moon, Goblin Army, Pirate Invasion, Old One's Army, Solar Eclipse, Frost Legion, Pumpkin Moon, and Frost Moon. Some happen naturally, others are triggered by items. Each offers exclusive drops and, often, new NPCs.",
+    tips: [
+      "Build arena defenses before triggering invasions.",
+      "The Pumpkin Moon and Frost Moon scale in difficulty as you progress through waves.",
+    ],
+    tags: ["events", "invasions", "blood-moon", "pumpkin-moon"],
+  },
+  {
+    id: "potions-and-buffs",
+    name: "Potions & Buffs",
+    group: "Systems",
+    summary:
+      "Brew potions at a Placed Bottle or Alchemy Table to gain temporary combat and utility buffs.",
+    howItWorks:
+      "Combine Bottled Water with herbs and other ingredients. Buffs last several minutes and stack with each other. The Alchemy Table (found in the Dungeon) has a chance to not consume ingredients.",
+    tips: [
+      "Keep a herb farm for Daybloom, Blinkroot, Moonglow, and more.",
+      "Always drink Ironskin and Regeneration before boss fights.",
+    ],
+    tags: ["systems", "potions", "buffs", "alchemy"],
+  },
+  {
+    id: "wiring",
+    name: "Wiring & Mechanisms",
+    group: "Building",
+    summary:
+      "Connect wires, switches, and actuators to automate traps, doors, and farms.",
+    howItWorks:
+      "Buy Wire, Switches, and Pressure Plates from the Mechanic. Wire transmits signals between triggers and mechanisms like doors, traps, pumps, and actuators. Complex circuits can automate almost anything.",
+    tips: [
+      "Use actuators to create hidden doors.",
+      "Statues wired to timers spawn mobs for farms.",
+    ],
+    related: ["Mechanic"],
+    tags: ["building", "wiring", "automation", "traps"],
+  },
+  {
+    id: "moon-phases",
+    name: "Moon Phases",
+    group: "World",
+    summary:
+      "The moon cycles through eight phases that affect enemy spawns and fishing.",
+    howItWorks:
+      "Each night has a different moon phase, affecting NPC shops, enemy spawn rates, and fishing results. The Blood Moon is a special event night with greatly increased danger.",
+    tags: ["world", "moon", "fishing"],
+  },
+  {
+    id: "critters-and-bait",
+    name: "Critters & Bait",
+    group: "Systems",
+    summary:
+      "Catch small creatures with a Bug Net to use as bait or display.",
+    howItWorks:
+      "Buy a Bug Net from the Merchant, then catch worms, butterflies, and other critters. Many act as fishing bait with varying power, while others are sellable or keepable as pets.",
+    tags: ["systems", "critters", "fishing", "bait"],
+  },
+  {
+    id: "chests-and-storage",
+    name: "Chests & Storage",
+    group: "Building",
+    summary:
+      "Store items in chests, barrels, and specialized containers across your world.",
+    howItWorks:
+      "Craft chests from wood and bars, or find them while exploring. The Piggy Bank, Safe, and Defender's Forge are personal storage that follows you between them. Organize with signs and item frames.",
+    tags: ["building", "storage", "chests"],
+  },
+  {
+    id: "npcs-rescue",
+    name: "Rescuing NPCs",
+    group: "Progression",
+    summary:
+      "Several NPCs must be found and freed before they'll move into your town.",
+    howItWorks:
+      "The Mechanic is trapped in the Dungeon, the Goblin Tinkerer is bound underground, the Stylist is cocooned in a Spider Cave, and others appear under specific conditions. Rescued NPCs require valid housing to move in.",
+    tags: ["progression", "npcs", "rescue"],
+  },
+  {
+    id: "housing",
+    name: "Housing",
+    group: "Building",
+    summary:
+      "Build valid rooms so NPCs can move in and set your spawn point.",
+    howItWorks:
+      "A valid house needs enclosed walls, a background wall, a door, a table, a chair, and a light source. The Housing menu (inventory right side) shows whether a room is suitable and lets you assign NPCs.",
+    tips: [
+      "Beds in valid housing set your respawn point.",
+      "Keep an eye on the 'Housing' checkmark when building rooms.",
+    ],
+    tags: ["building", "housing", "npcs"],
+  },
+  {
+    id: "bestiary",
+    name: "Bestiary",
+    group: "Systems",
+    summary:
+      "A log of every enemy you've defeated, with drop rates and lore.",
+    howItWorks:
+      "Open the Bestiary to browse defeated enemies. Fill it to earn rewards from the Zoologist and unlock detailed enemy stats. Some NPCs and events only appear after certain Bestiary progress.",
+    related: ["Zoologist"],
+    tags: ["systems", "bestiary", "enemies"],
+  },
+  {
+    id: "secret-seeds",
+    name: "Secret World Seeds",
+    group: "World",
+    summary:
+      "Special world seeds create wildly different world generation rules and challenges.",
+    howItWorks:
+      "Enter a secret seed when creating a world to trigger alternate generation — like the drunk world, the 'get fixed boi' challenge seed, or skyblock-style constraints. Each has its own rules and surprises.",
+    tags: ["world", "seeds", "challenge"],
+  },
+  {
+    id: "journey-mode",
+    name: "Journey Mode",
+    group: "Systems",
+    summary:
+      "A creative-leaning mode with item duplication, difficulty sliders, and weather control.",
+    howItWorks:
+      "Journey characters can research items to duplicate them, adjust enemy spawn rates and difficulty, control time and weather, and toggle godmode. Unlocked by default in Journey worlds.",
+    tags: ["systems", "journey", "difficulty"],
+  },
+];

@@ -1,0 +1,88 @@
+name: iOS CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: Build & Test
+    runs-on: macos-15
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Show toolchain
+        run: xcodebuild -version
+
+      - name: Install XcodeGen
+        run: brew install xcodegen
+
+      - name: Generate Xcode project
+        run: xcodegen generate
+        working-directory: ios
+
+      - name: Build (simulator)
+        run: |
+          xcodebuild -project TerraWiki.xcodeproj \
+            -scheme TerraWiki \
+            -configuration Release \
+            -sdk iphonesimulator \
+            -destination 'generic/platform=iOS Simulator' \
+            CODE_SIGNING_ALLOWED=NO \
+            build
+        working-directory: ios
+
+      - name: Run tests
+        run: |
+          xcodebuild -project TerraWiki.xcodeproj \
+            -scheme TerraWiki \
+            -destination 'platform=iOS Simulator,name=iPhone 16' \
+            CODE_SIGNING_ALLOWED=NO \
+            test
+        working-directory: ios
+
+  ipa:
+    name: Build unsigned IPA
+    if: github.event_name == 'workflow_dispatch'
+    runs-on: macos-15
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install XcodeGen
+        run: brew install xcodegen
+
+      - name: Generate Xcode project
+        run: xcodegen generate
+        working-directory: ios
+
+      - name: Build unsigned app
+        run: |
+          xcodebuild -project TerraWiki.xcodeproj \
+            -scheme TerraWiki \
+            -sdk iphoneos \
+            -configuration Release \
+            -derivedDataPath build \
+            CODE_SIGNING_ALLOWED=NO \
+            CODE_SIGNING_REQUIRED=NO \
+            CODE_SIGN_IDENTITY="" \
+            build
+        working-directory: ios
+
+      - name: Package unsigned IPA
+        run: |
+          APP="build/Build/Products/Release-iphoneos/TerraWiki.app"
+          mkdir -p Payload
+          cp -R "$APP" Payload/
+          zip -qry TerraWiki.ipa Payload
+        working-directory: ios
+
+      - name: Upload IPA
+        uses: actions/upload-artifact@v4
+        with:
+          name: TerraWiki-unsigned.ipa
+          path: ios/TerraWiki.ipa
+          if-no-files-found: error
