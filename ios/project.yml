@@ -49,6 +49,8 @@ targets:
       - TerraWikiTests
     dependencies:
       - target: TerraWiki
+    resources:
+      - path: TerraWiki/Resources
     settings:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: com.terraria.wiki.tests

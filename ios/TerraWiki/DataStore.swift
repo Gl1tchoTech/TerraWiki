@@ -10,11 +10,11 @@ final class DataStore {
     let bosses: [Boss]
     let mechanics: [Mechanic]
 
-    private init() {
-        items = Self.load("items.json", default: [])
-        npcs = Self.load("npcs.json", default: [])
-        bosses = Self.load("bosses.json", default: [])
-        mechanics = Self.load("mechanics.json", default: [])
+    init(bundle: Bundle = .main) {
+        items = Self.load("items.json", from: bundle, default: [])
+        npcs = Self.load("npcs.json", from: bundle, default: [])
+        bosses = Self.load("bosses.json", from: bundle, default: [])
+        mechanics = Self.load("mechanics.json", from: bundle, default: [])
     }
 
     // MARK: Lookups
@@ -108,9 +108,9 @@ final class DataStore {
 
     // MARK: Loading
 
-    private static func load<T: Decodable>(_ name: String, default defaultValue: T) -> T {
+    private static func load<T: Decodable>(_ name: String, from bundle: Bundle, default defaultValue: T) -> T {
         guard
-            let url = Bundle.main.url(forResource: (name as NSString).deletingPathExtension, withExtension: "json"),
+            let url = bundle.url(forResource: (name as NSString).deletingPathExtension, withExtension: "json"),
             let data = try? Data(contentsOf: url),
             let decoded = try? JSONDecoder().decode(T.self, from: data)
         else {
