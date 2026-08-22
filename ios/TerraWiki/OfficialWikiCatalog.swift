@@ -168,9 +168,9 @@ final class OfficialCatalogStore: ObservableObject {
 
         while let category = pending.popLast() {
             guard visitedCategories.insert(category).inserted else { continue }
-            let response = try await fetchCategory(named: category)
-            allMembers.append(contentsOf: response.members.filter { $0.namespace == 0 })
-            pending.append(contentsOf: response.members
+            let members = (try await fetchCategory(named: category)).query?.categoryMembers ?? []
+            allMembers.append(contentsOf: members.filter { $0.namespace == 0 })
+            pending.append(contentsOf: members
                 .filter { $0.namespace == 14 && !$0.title.contains("/") }
                 .map { $0.title.replacingOccurrences(of: "Category:", with: "") })
         }

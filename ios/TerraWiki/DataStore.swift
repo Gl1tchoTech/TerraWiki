@@ -110,7 +110,7 @@ final class DataStore {
 
     private static func load<T: Decodable>(_ name: String, from bundle: Bundle, default defaultValue: T) -> T {
         let resourceName = (name as NSString).deletingPathExtension
-        var bundles = [bundle, Bundle(for: DataStore.self)] + Bundle.allBundles + Bundle.allFrameworks
+        let bundles = [bundle, Bundle(for: DataStore.self)] + Bundle.allBundles + Bundle.allFrameworks
         var visitedBundles = Set<ObjectIdentifier>()
 
         for candidate in bundles {
