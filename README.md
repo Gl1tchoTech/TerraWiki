@@ -42,6 +42,10 @@ open TerraWiki.xcodeproj
 
 Select the `TerraWiki` scheme and run on a simulator or device.
 
+## Content roadmap
+
+Terraria is too large to add safely in one batch. The incremental content roadmap is in [`CONTENT_CHECKLIST.md`](CONTENT_CHECKLIST.md); each numbered batch can be completed, tested, and pushed independently across multiple messages.
+
 ## Data
 
 The app ships with a fast offline starter database as JSON in `ios/TerraWiki/Resources/`:

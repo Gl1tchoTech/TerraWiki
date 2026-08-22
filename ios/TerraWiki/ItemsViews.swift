@@ -63,6 +63,20 @@ struct ItemsView: View {
                     } label: {
                         WikiRow(title: "Ammo", symbol: "arrow.up.circle.fill", symbolColor: .teal)
                     }
+                    HairlineDivider()
+
+                    NavigationLink {
+                        ItemListScreen(title: "Tools", items: kind("Tool"))
+                    } label: {
+                        WikiRow(title: "Tools", symbol: "hammer.fill", symbolColor: .brown)
+                    }
+                    HairlineDivider()
+
+                    NavigationLink {
+                        ItemListScreen(title: "Other", items: kind("Other"))
+                    } label: {
+                        WikiRow(title: "Other", symbol: "square.stack.3d.up.fill", symbolColor: .gray)
+                    }
                 }
             }
         }
