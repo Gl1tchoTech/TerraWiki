@@ -3,35 +3,8 @@ import SwiftUI
 // MARK: - Mechanics list
 
 struct MechanicsView: View {
-    private var store: DataStore { .shared }
-    private let groups = ["Progression", "World", "Combat", "Systems", "Events", "Building"]
-
     var body: some View {
-        WikiScreen(title: "Mechanics") {
-            ScrollView {
-                LazyVStack(spacing: 0) {
-                    ForEach(groups, id: \.self) { group in
-                        let items = store.mechanics.filter { $0.group == group }.sorted { $0.name < $1.name }
-                        if !items.isEmpty {
-                            SectionHeader(text: group)
-                            ForEach(items) { mechanic in
-                                NavigationLink {
-                                    MechanicDetailView(mechanic: mechanic)
-                                } label: {
-                                    WikiRow(
-                                        title: mechanic.name,
-                                        subtitle: mechanic.summary,
-                                        symbol: mechanicSymbol(mechanic),
-                                        symbolColor: mechanicColor(group)
-                                    )
-                                }
-                                HairlineDivider()
-                            }
-                        }
-                    }
-                }
-            }
-        }
+        OfficialCatalogView(kind: .mechanics)
     }
 }
 
@@ -109,7 +82,12 @@ struct MechanicDetailView: View {
 
     private var header: some View {
         HStack(spacing: 14) {
-            PixelIcon(symbol: mechanicSymbol(mechanic), color: mechanicColor(mechanic.group), size: 52)
+            WikiArtwork(
+                url: wikiFileURL(for: mechanic.name),
+                fallbackSymbol: mechanicSymbol(mechanic),
+                fallbackColor: mechanicColor(mechanic.group),
+                size: 52
+            )
             VStack(alignment: .leading, spacing: 4) {
                 Text(mechanic.name)
                     .font(.system(size: 20, weight: .bold))

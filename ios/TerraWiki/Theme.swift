@@ -74,7 +74,7 @@ struct GrassBorder: View {
 struct PixelIcon: View {
     let symbol: String
     var color: Color = .wikiGreen
-    var size: CGFloat = 34
+    var size: CGFloat = 30
 
     var body: some View {
         RoundedRectangle(cornerRadius: size * 0.2, style: .continuous)
@@ -86,6 +86,37 @@ struct PixelIcon: View {
                     .foregroundStyle(color)
             }
     }
+}
+
+struct WikiArtwork: View {
+    let url: URL?
+    let fallbackSymbol: String
+    let fallbackColor: Color
+    let size: CGFloat
+
+    var body: some View {
+        AsyncImage(url: url) { phase in
+            if let image = phase.image {
+                image
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: size, height: size)
+            } else {
+                PixelIcon(symbol: fallbackSymbol, color: fallbackColor, size: size)
+            }
+        }
+        .frame(width: size, height: size)
+    }
+}
+
+func wikiFileURL(for name: String) -> URL? {
+    let fileName = name.replacingOccurrences(of: " ", with: "_") + ".png"
+    var components = URLComponents()
+    components.scheme = "https"
+    components.host = "terraria.wiki.gg"
+    components.path = "/wiki/Special:FilePath/\(fileName)"
+    components.queryItems = [URLQueryItem(name: "width", value: "192")]
+    return components.url
 }
 
 // MARK: - Icon helpers
@@ -174,8 +205,8 @@ struct WikiRow: View {
                     .foregroundStyle(Color(.systemGray3))
             }
         }
-        .padding(.horizontal, 16)
-        .padding(.vertical, 11)
+        .padding(.horizontal, 14)
+        .padding(.vertical, 8)
         .background(isSelected ? Color.wikiSelected : Color.white)
     }
 }

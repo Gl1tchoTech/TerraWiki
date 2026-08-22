@@ -4,7 +4,7 @@ import SwiftUI
 
 struct BossesView: View {
     var body: some View {
-        BossListScreen(title: "Bosses", bosses: DataStore.shared.bosses.sorted { $0.name < $1.name })
+        OfficialCatalogView(kind: .bosses)
     }
 }
 

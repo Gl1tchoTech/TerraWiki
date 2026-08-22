@@ -44,20 +44,22 @@ Select the `TerraWiki` scheme and run on a simulator or device.
 
 ## Data
 
-The wiki database lives as JSON in `ios/TerraWiki/Resources/`:
+The app ships with a fast offline starter database as JSON in `ios/TerraWiki/Resources/`:
 
-- `items.json` — items, weapons, armor, accessories, materials, ammo, and recipes
-- `npcs.json` — town and special NPCs
-- `bosses.json` — pre-Hardmode and Hardmode bosses
-- `mechanics.json` — game systems and guides
+- `items.json` — starter items, weapons, armor, accessories, materials, ammo, and recipes
+- `npcs.json` — starter town and special NPCs
+- `bosses.json` — starter pre-Hardmode and Hardmode bosses
+- `mechanics.json` — starter game systems and guides
 
-Edit those files to expand the database; no code changes are required.
+The All Items, NPCs, Mobs, Bosses, and Mechanics screens also sync the complete current catalogs from the Official Terraria Wiki (`terraria.wiki.gg`) through its public MediaWiki API. Results are cached on-device for subsequent launches, and every catalog entry links back to its source page. The wiki currently documents Desktop 1.4.5.7, including item IDs 6147–6195 added in that release. Artwork is loaded from the corresponding Official Terraria Wiki file when available.
+
+Edit the starter JSON files to customize the offline fallback; no code changes are required.
 
 ## CI / building the unsigned IPA
 
-On every push to `main` and every pull request, GitHub Actions runs the `Build & Test` job: it generates the project, builds for the iOS Simulator, and runs the unit tests.
+On every push to `main`, every pull request, and manual workflow run, GitHub Actions generates the project, builds for the iOS Simulator, runs the unit tests, and builds the unsigned device IPA. The IPA is uploaded as the `TerraWiki-unsigned.ipa` artifact on every run.
 
-To produce an IPA, run the **`Build unsigned IPA`** workflow manually (Actions → "iOS CI" → Run workflow). It compiles the app for device **without signing** and packages `Payload/TerraWiki.app` into a plain `.ipa` artifact — no Apple Developer account or signing secrets required.
+The **`Build unsigned IPA`** job compiles the app for device **without signing** and packages `Payload/TerraWiki.app` into a plain `.ipa` artifact — no Apple Developer account or signing secrets required.
 
 ### Installing with SideStore
 

@@ -3,44 +3,8 @@ import SwiftUI
 // MARK: - NPC list
 
 struct NpcsView: View {
-    @State private var query = ""
-    private var store: DataStore { .shared }
-
-    private var filtered: [Npc] {
-        let sorted = store.npcs.sorted { $0.name.localizedCaseInsensitiveCompare($1.name) == .orderedAscending }
-        let q = query.trimmingCharacters(in: .whitespaces).lowercased()
-        guard !q.isEmpty else { return sorted }
-        return sorted.filter {
-            $0.name.lowercased().contains(q)
-                || $0.role.lowercased().contains(q)
-                || $0.description.lowercased().contains(q)
-        }
-    }
-
     var body: some View {
-        WikiScreen(title: "NPCs") {
-            VStack(spacing: 0) {
-                WikiSearchBar(text: $query)
-                ScrollView {
-                    LazyVStack(spacing: 0) {
-                        SectionHeader(text: "Town NPCs")
-                        ForEach(filtered) { npc in
-                            NavigationLink {
-                                NpcDetailView(npc: npc)
-                            } label: {
-                                WikiRow(
-                                    title: npc.name,
-                                    subtitle: npc.description,
-                                    symbol: npcSymbol(npc),
-                                    symbolColor: .wikiGreen
-                                )
-                            }
-                            HairlineDivider()
-                        }
-                    }
-                }
-            }
-        }
+        OfficialCatalogView(kind: .npcs)
     }
 }
 

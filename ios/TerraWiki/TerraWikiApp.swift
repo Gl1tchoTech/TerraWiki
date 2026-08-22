@@ -65,6 +65,7 @@ struct RootView: View {
     var body: some View {
         NavigationSplitView {
             SidebarView(selection: $selection)
+                .navigationSplitViewColumnWidth(min: 260, ideal: 420, max: 520)
         } detail: {
             if let selection {
                 NavigationStack {
@@ -74,6 +75,7 @@ struct RootView: View {
                 ContentUnavailableView("Pick a category", systemImage: "square.grid.2x2")
             }
         }
+        .navigationSplitViewStyle(.balanced)
     }
 
     @ViewBuilder

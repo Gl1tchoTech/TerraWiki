@@ -25,30 +25,30 @@ struct EnemiesView: View {
             ScrollView {
                 LazyVStack(spacing: 0) {
                     NavigationLink {
-                        BossListScreen(title: "All enemies", bosses: bosses)
+                        OfficialCatalogView(kind: .mobs)
                     } label: {
-                        WikiRow(title: "All enemies", subtitle: "Bosses & minibosses", symbol: "eye.fill")
+                        WikiRow(title: "All mobs", subtitle: "Every enemy and hostile creature", symbol: "eye.fill", symbolColor: .red)
                     }
                     HairlineDivider()
 
                     NavigationLink {
-                        BossListScreen(title: "Pre-Hardmode Enemies", bosses: tier("Pre-Hardmode"))
+                        OfficialCatalogView(kind: .mobs)
                     } label: {
-                        WikiRow(title: "Pre-Hardmode Enemies", symbol: "person.fill", symbolColor: .green)
+                        WikiRow(title: "Pre-Hardmode Enemies", subtitle: "Filter the complete mob catalog", symbol: "person.fill", symbolColor: .green)
                     }
                     HairlineDivider()
 
                     NavigationLink {
-                        BossListScreen(title: "Hardmode Enemies", bosses: tier("Hardmode"))
+                        OfficialCatalogView(kind: .mobs)
                     } label: {
-                        WikiRow(title: "Hardmode Enemies", symbol: "shield.lefthalf.filled", symbolColor: .red)
+                        WikiRow(title: "Hardmode Enemies", subtitle: "Filter the complete mob catalog", symbol: "shield.lefthalf.filled", symbolColor: .red)
                     }
                     HairlineDivider()
 
                     NavigationLink {
-                        BossListScreen(title: "Event Enemies", bosses: eventBosses)
+                        OfficialCatalogView(kind: .mobs)
                     } label: {
-                        WikiRow(title: "Event Enemies", symbol: "snowflake", symbolColor: .cyan)
+                        WikiRow(title: "Event Enemies", subtitle: "Filter the complete mob catalog", symbol: "snowflake", symbolColor: .cyan)
                     }
                     HairlineDivider()
 
@@ -60,9 +60,9 @@ struct EnemiesView: View {
                     HairlineDivider()
 
                     NavigationLink {
-                        BossListScreen(title: "Event Bosses", bosses: eventBosses)
+                        OfficialCatalogView(kind: .bosses)
                     } label: {
-                        WikiRow(title: "Event Bosses", symbol: "sailboat.fill", symbolColor: .brown)
+                        WikiRow(title: "Event Bosses", subtitle: "Filter the complete boss catalog", symbol: "sailboat.fill", symbolColor: .brown)
                     }
                     HairlineDivider()
 

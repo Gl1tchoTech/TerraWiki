@@ -10,7 +10,7 @@ struct ItemsView: View {
             ScrollView {
                 LazyVStack(spacing: 0) {
                     NavigationLink {
-                        ItemListScreen(title: "All items", items: store.items.sorted { $0.name < $1.name })
+                        OfficialCatalogView(kind: .items)
                     } label: {
                         WikiRow(title: "All items", symbol: "square.grid.2x2.fill")
                     }
@@ -242,7 +242,12 @@ struct ItemDetailView: View {
 
     private var header: some View {
         HStack(spacing: 14) {
-            PixelIcon(symbol: itemSymbol(item), color: itemColor(item), size: 52)
+            WikiArtwork(
+                url: wikiFileURL(for: item.name),
+                fallbackSymbol: itemSymbol(item),
+                fallbackColor: itemColor(item),
+                size: 52
+            )
             VStack(alignment: .leading, spacing: 4) {
                 Text(item.name)
                     .font(.system(size: 20, weight: .bold))
