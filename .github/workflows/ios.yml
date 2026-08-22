@@ -39,7 +39,7 @@ jobs:
         run: |
           xcodebuild -project TerraWiki.xcodeproj \
             -scheme TerraWiki \
-            -destination 'platform=iOS Simulator,name=iPhone 16' \
+            -destination 'platform=iOS Simulator' \
             CODE_SIGNING_ALLOWED=NO \
             test
         working-directory: ios
