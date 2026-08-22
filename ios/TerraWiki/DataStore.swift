@@ -77,7 +77,7 @@ final class DataStore {
             if s > 0 { ranked.append(.init(result: .init(id: i.id, name: i.name, category: .items, blurb: i.description, group: i.kind), score: s)) }
         }
         for n in npcs {
-            let s = score(name: n.name, blurb: n.description, tags: n.tags)
+            let s = score(name: n.name, blurb: "\(n.role) \(n.description)", tags: n.tags)
             if s > 0 { ranked.append(.init(result: .init(id: n.id, name: n.name, category: .npcs, blurb: n.description, group: "NPC"), score: s)) }
         }
         for b in bosses {
