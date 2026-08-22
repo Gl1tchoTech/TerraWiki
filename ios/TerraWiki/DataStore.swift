@@ -110,19 +110,38 @@ final class DataStore {
 
     private static func load<T: Decodable>(_ name: String, from bundle: Bundle, default defaultValue: T) -> T {
         let resourceName = (name as NSString).deletingPathExtension
-        let bundles = [bundle] + Bundle.allBundles + Bundle.allFrameworks
-        let url = bundles.lazy.compactMap { candidate in
-            candidate.url(forResource: resourceName, withExtension: "json")
-                ?? candidate.url(forResource: resourceName, withExtension: "json", subdirectory: "Resources")
-        }.first
-        guard
-            let url,
-            let data = try? Data(contentsOf: url),
-            let decoded = try? JSONDecoder().decode(T.self, from: data)
-        else {
-            assertionFailure("Could not load \(name)")
-            return defaultValue
+        var bundles = [bundle, Bundle(for: DataStore.self)] + Bundle.allBundles + Bundle.allFrameworks
+        var visitedBundles = Set<ObjectIdentifier>()
+
+        for candidate in bundles {
+            let identifier = ObjectIdentifier(candidate)
+            guard visitedBundles.insert(identifier).inserted else { continue }
+
+            let directURLs = [
+                candidate.url(forResource: resourceName, withExtension: "json"),
+                candidate.url(forResource: resourceName, withExtension: "json", subdirectory: "Resources")
+            ].compactMap { $0 }
+
+            let nestedURLs: [URL]
+            if let resourceURL = candidate.resourceURL,
+               let enumerator = FileManager.default.enumerator(at: resourceURL, includingPropertiesForKeys: nil) {
+                nestedURLs = enumerator.compactMap { entry in
+                    guard let url = entry as? URL,
+                          url.lastPathComponent == "\(resourceName).json" else { return nil }
+                    return url
+                }
+            } else {
+                nestedURLs = []
+            }
+
+            for url in directURLs + nestedURLs {
+                guard let data = try? Data(contentsOf: url),
+                      let decoded = try? JSONDecoder().decode(T.self, from: data) else { continue }
+                return decoded
+            }
         }
-        return decoded
+
+        assertionFailure("Could not load \(name)")
+        return defaultValue
     }
 }
