@@ -35,7 +35,7 @@ final class TerraWikiTests: XCTestCase {
 
     func testRepresentativeMobsAndBossesExist() {
         let store = testStore
-        for name in ["Zombie", "Blue Slime", "Demon Eye", "Giant Worm", "Harpy", "Wyvern", "Mimic"] {
+        for name in ["Zombie", "Blue Slime", "Demon Eye", "Giant Worm", "Harpy", "Wyvern", "Mimics"] {
             XCTAssertNotNil(store.mob(named: name), "Mob '\(name)' should exist")
         }
         for name in ["King Slime", "Eye of Cthulhu", "Wall of Flesh", "Moon Lord", "Queen Slime", "Duke Fishron", "Betsy", "Mechdusa"] {

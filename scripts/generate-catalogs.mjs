@@ -115,8 +115,16 @@ function sentences(text, max) {
 // ---- infobox parsing ---------------------------------------------------------
 
 function infoboxOf(src) {
-  const m = src.match(/\{\{\s*npc\s*infobox[\s\S]*?\n\}\}/i);
-  return m ? m[0] : "";
+  // Find {{npc infobox ... }} with proper {{ }} depth tracking, so both
+  // multi-line (ending "\n}}") and single-line infoboxes are captured.
+  const start = src.search(/\{\{\s*npc\s*infobox/i);
+  if (start < 0) return "";
+  let depth = 0;
+  for (let i = start; i < src.length - 1; i++) {
+    if (src[i] === "{" && src[i + 1] === "{") { depth++; i++; continue; }
+    if (src[i] === "}" && src[i + 1] === "}") { depth--; i++; if (depth === 0) return src.slice(start, i + 1); }
+  }
+  return "";
 }
 
 function infoboxParam(box, name) {
@@ -138,8 +146,17 @@ function infoboxParams(box, name) {
   return fm ? fm[1].trim() : v.replace(/\s+/g, " ");
 }
 
+// Some entities' File:<Name>.png guesses differ from their page/entry names.
+const IMAGE_OVERRIDES = {
+  "Cat": "Town Cat.png",
+  "Dog": "Town Dog.png",
+  "Skeleton Merchant": "Skeleton Merchant.png",
+  "Mimics": "Mimic.png",
+};
+
 // Verified File:<Name>.png guess, used when the infobox has no explicit image.
 function guessedImage(title) {
+  if (IMAGE_OVERRIDES[title]) return IMAGE_OVERRIDES[title];
   const name = title.replace(/_/g, " ");
   return imageExistsNpc[name] ? name.replace(/ /g, "_") + ".png" : null;
 }
@@ -339,11 +356,18 @@ function buildMobs() {
     const box = infoboxOf(src);
     if (!box) continue;
     const npcId = mainNpcId(title, box);
-    const npc = npcFor(title, box, npcId);
+    let npc = npcFor(title, box, npcId);
+    if (!npc && title.endsWith("s")) {
+      // Family pages (e.g. "Mimics") store stats under the singular NPC name.
+      const singular = title.slice(0, -1);
+      npc = npcFor(singular, box, mainNpcId(singular, box));
+    }
     if (!npc || !npc.name) continue;
     // Friendly critters (bunnies, beetles, fish, etc.) and town NPCs are not hostile mobs.
     if (npc.friendly || npc.townNPC) continue;
 
+    // Keep the page title for family/variant pages ("Mimics") instead of the singular NPC name.
+    const entryName = npc.name === title ? npc.name : title;
     const env = environment(box);
     const hardmode = (infoboxParam(box, "hardmode") || "").toLowerCase() === "yes";
     const img = imageFor(title, box);
@@ -357,13 +381,13 @@ function buildMobs() {
     ];
     if (partSet.has(title)) tags.push("servant");
 
-    const id = kebab(npc.name);
+    const id = kebab(entryName);
     if (seen.has(id)) continue;
     seen.add(id);
 
     mobs.push({
       id,
-      name: npc.name,
+      name: entryName,
       tier: hardmode ? "Hardmode" : "Pre-Hardmode",
       biome: env || undefined,
       hp: statOf(npc, "lifeMax"),
@@ -530,8 +554,11 @@ function buildNpcs() {
     if (!npc) continue;
     const src = pages[title] || "";
     const box = infoboxOf(src);
-    const img = box ? imageFor(title, box) : null;
-    const intro = introFor(title);
+    // Redirect pages (e.g. town slimes -> "Town Slimes") have no infobox; the
+    // verified <Name>.png sprite still exists, so fall back to the guess.
+    const img = box ? imageFor(title, box) : guessedImage(title);
+    const isRedirect = src.startsWith("#REDIRECT");
+    const intro = isRedirect ? "" : introFor(title);
     const isPet = npc.housingCategory === 1;
     const id = kebab(npc.name);
     if (seen.has(id)) continue;
@@ -540,17 +567,22 @@ function buildNpcs() {
     const match = curatedByNorm.get(normalizeName(npc.name));
     const existing = isCurated(match) ? match : null;
     const role = existing?.role ?? (isPet ? "Town pet" : roleFromIntro(title, intro).replace(/^./, (c) => c.toUpperCase()));
+    const description =
+      (existing?.description ??
+        (isRedirect
+          ? `${npc.name} is a ${isPet ? "town pet" : "town NPC"} that lives in a suitable house and adds life to your town.`
+          : intro)) || `${npc.name} is a town NPC in Terraria.`;
     npcs.push({
       id,
       name: npc.name,
       role,
-      spawnCondition: existing?.spawnCondition ?? spawnFromIntro(intro),
+      spawnCondition: existing?.spawnCondition ?? (isRedirect ? "Moves into a suitable house when the required conditions are met." : spawnFromIntro(intro)),
       services: existing?.services ?? [],
       sells: existing?.sells ?? [],
       biome: existing?.biome ?? undefined,
       likes: existing?.likes ?? undefined,
       quotes: existing?.quotes ?? undefined,
-      description: (existing?.description ?? intro) || `${npc.name} is a town NPC in Terraria.`,
+      description,
       ...(existing?.notes ? { notes: existing.notes } : {}),
       ...(img ? { image: img } : {}),
       tags: existing?.tags ?? ["town", ...(isPet ? ["pet"] : [])],

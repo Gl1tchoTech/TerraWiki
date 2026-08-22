@@ -66,7 +66,8 @@
     "spawnCondition": "Moves into a suitable house when the required conditions are met.",
     "services": [],
     "sells": [],
-    "description": "#REDIRECT Town Cat Town Cat",
+    "description": "Cat is a town pet that lives in a suitable house and adds life to your town.",
+    "image": "Town Cat.png",
     "tags": [
       "town",
       "pet"
@@ -103,7 +104,8 @@
     "spawnCondition": "Moves into a suitable house when the required conditions are met.",
     "services": [],
     "sells": [],
-    "description": "#REDIRECT Town Slimes 1.4.4 Category:NPC redirects",
+    "description": "Clumsy Slime is a town pet that lives in a suitable house and adds life to your town.",
+    "image": "Clumsy_Slime.png",
     "tags": [
       "town",
       "pet"
@@ -116,7 +118,8 @@
     "spawnCondition": "Moves into a suitable house when the required conditions are met.",
     "services": [],
     "sells": [],
-    "description": "#REDIRECT Town Slimes 1.4.4 Category:NPC redirects",
+    "description": "Cool Slime is a town pet that lives in a suitable house and adds life to your town.",
+    "image": "Cool_Slime.png",
     "tags": [
       "town",
       "pet"
@@ -179,7 +182,8 @@
     "spawnCondition": "Moves into a suitable house when the required conditions are met.",
     "services": [],
     "sells": [],
-    "description": "#REDIRECT Town Slimes 1.4.4 Category:NPC redirects",
+    "description": "Diva Slime is a town pet that lives in a suitable house and adds life to your town.",
+    "image": "Diva_Slime.png",
     "tags": [
       "town",
       "pet"
@@ -192,7 +196,8 @@
     "spawnCondition": "Moves into a suitable house when the required conditions are met.",
     "services": [],
     "sells": [],
-    "description": "#REDIRECT Town Dog Town Dog",
+    "description": "Dog is a town pet that lives in a suitable house and adds life to your town.",
+    "image": "Town Dog.png",
     "tags": [
       "town",
       "pet"
@@ -256,7 +261,8 @@
     "spawnCondition": "Moves into a suitable house when the required conditions are met.",
     "services": [],
     "sells": [],
-    "description": "#REDIRECT Town Slimes 1.4.4 Category:NPC redirects",
+    "description": "Elder Slime is a town pet that lives in a suitable house and adds life to your town.",
+    "image": "Elder_Slime.png",
     "tags": [
       "town",
       "pet"
@@ -402,7 +408,8 @@
     "spawnCondition": "Moves into a suitable house when the required conditions are met.",
     "services": [],
     "sells": [],
-    "description": "#REDIRECT Town Slimes 1.4.4 Category:NPC redirects",
+    "description": "Mystic Slime is a town pet that lives in a suitable house and adds life to your town.",
+    "image": "Mystic_Slime.png",
     "tags": [
       "town",
       "pet"
@@ -415,7 +422,8 @@
     "spawnCondition": "Moves into a suitable house when the required conditions are met.",
     "services": [],
     "sells": [],
-    "description": "#REDIRECT Town Slimes 1.4.4 Category:NPC redirects",
+    "description": "Nerdy Slime is a town pet that lives in a suitable house and adds life to your town.",
+    "image": "Nerdy_Slime.png",
     "tags": [
       "town",
       "pet"
@@ -596,6 +604,7 @@
       "Underground"
     ],
     "description": "A friendly skeleton trading underground. Sells Glowsticks and other cave essentials.",
+    "image": "Skeleton Merchant.png",
     "tags": [
       "special",
       "shop",
@@ -609,7 +618,8 @@
     "spawnCondition": "Moves into a suitable house when the required conditions are met.",
     "services": [],
     "sells": [],
-    "description": "#REDIRECT Town Slimes#Types 1.4.4 Category:NPC redirects",
+    "description": "Squire Slime is a town pet that lives in a suitable house and adds life to your town.",
+    "image": "Squire_Slime.png",
     "tags": [
       "town",
       "pet"
@@ -671,7 +681,8 @@
     "spawnCondition": "Moves into a suitable house when the required conditions are met.",
     "services": [],
     "sells": [],
-    "description": "#REDIRECT Town Slimes 1.4.4 Category:NPC redirects",
+    "description": "Surly Slime is a town pet that lives in a suitable house and adds life to your town.",
+    "image": "Surly_Slime.png",
     "tags": [
       "town",
       "pet"

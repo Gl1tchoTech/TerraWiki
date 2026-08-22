@@ -1299,8 +1299,8 @@
     ]
   },
   {
-    "id": "cultist-archer",
-    "name": "Cultist Archer",
+    "id": "cultists",
+    "name": "Cultists",
     "tier": "Hardmode",
     "biome": "Dungeon entrance",
     "hp": "210",
@@ -1921,8 +1921,8 @@
     ]
   },
   {
-    "id": "enchanted-sword",
-    "name": "Enchanted Sword",
+    "id": "enchanted-sword-npc",
+    "name": "Enchanted Sword (NPC)",
     "tier": "Hardmode",
     "biome": "Underground Hallow",
     "hp": "200",
@@ -2359,8 +2359,8 @@
     ]
   },
   {
-    "id": "ghost",
-    "name": "Ghost",
+    "id": "ghost-enemy",
+    "name": "Ghost (enemy)",
     "tier": "Pre-Hardmode",
     "biome": "Graveyard",
     "hp": "50",
@@ -3616,28 +3616,6 @@
     ]
   },
   {
-    "id": "lost-girl",
-    "name": "Lost Girl",
-    "tier": "Pre-Hardmode",
-    "biome": "Cavern",
-    "hp": "250",
-    "damage": "10",
-    "defense": "30",
-    "knockback": "50%",
-    "coins": "2 gold",
-    "ai": "Lost Girl AI",
-    "drops": [
-      "Metal Detector (50%)"
-    ],
-    "description": ".]] The Nymph is a rare pre-Hardmode enemy that spawns in the Cavern layer of any biome. When encountered, she appears as the Lost Girl, who seems to be a helpless, stationary NPC in need of rescue. However, when a player gets close or attacks the Lost Girl, she transforms into the Nymph and starts attacking the player by running towards them. For a pre-Hardmode enemy, she deals comparatively high damage. The Lost Girl will only transform into a Nymph if any of the following conditions are met: * The Lost Girl does not have full health. * The distance between the player and the Lost Girl is less than 12.5 tiles, and she has a direct line of sight to the player. * The Lost Girl is moving in any direction (e.g. caused by falling or knockback). The Lost Girl is immune to the Confused debuff, but the transformed Nymph is not. The Nymph requires 25 kills to be awarded completion of her Bestiary entry and corresponding banner, as opposed to the usual 50 kills.",
-    "image": "Nymph.png",
-    "tags": [
-      "mob",
-      "pre-hardmode",
-      "cavern"
-    ]
-  },
-  {
     "id": "maggot-zombie",
     "name": "Maggot Zombie",
     "tier": "Pre-Hardmode",
@@ -3867,6 +3845,24 @@
       "hardmode",
       "lunar",
       "lunar-events"
+    ]
+  },
+  {
+    "id": "mimics",
+    "name": "Mimics",
+    "tier": "Pre-Hardmode",
+    "hp": "500",
+    "damage": "80",
+    "defense": "30",
+    "knockback": "70%",
+    "coins": "10 gold",
+    "ai": "Mimic AI",
+    "drops": [],
+    "description": "enemies disguising as Chests Mimics are rare Hardmode enemies disguised as Chests, appearing as the appropriate chest type for the environment. Mimics can be spawned by the player using the Chest Statue, even in pre-Hardmode. However, Mimics spawned this way only drop the Mimic Banner. Rarer Corrupt, Crimson, and Hallowed Mimics can also be spawned manually by players via a Key of Light or Key of Night (see the Biome Mimic section below). They are some of the few entities that can be detected by the Lifeform Analyzer or its upgrades. Corrupt, Crimson, and Hallowed Mimics require 25 kills to be awarded completion of their Bestiary entry and corresponding banner, as opposed to the usual 50 kills.",
+    "image": "Mimic.png",
+    "tags": [
+      "mob",
+      "pre-hardmode"
     ]
   },
   {
@@ -4158,6 +4154,28 @@
       "mob",
       "hardmode",
       "frost-moon"
+    ]
+  },
+  {
+    "id": "nymph",
+    "name": "Nymph",
+    "tier": "Pre-Hardmode",
+    "biome": "Cavern",
+    "hp": "250",
+    "damage": "10",
+    "defense": "30",
+    "knockback": "50%",
+    "coins": "2 gold",
+    "ai": "Lost Girl AI",
+    "drops": [
+      "Metal Detector (50%)"
+    ],
+    "description": ".]] The Nymph is a rare pre-Hardmode enemy that spawns in the Cavern layer of any biome. When encountered, she appears as the Lost Girl, who seems to be a helpless, stationary NPC in need of rescue. However, when a player gets close or attacks the Lost Girl, she transforms into the Nymph and starts attacking the player by running towards them. For a pre-Hardmode enemy, she deals comparatively high damage. The Lost Girl will only transform into a Nymph if any of the following conditions are met: * The Lost Girl does not have full health. * The distance between the player and the Lost Girl is less than 12.5 tiles, and she has a direct line of sight to the player. * The Lost Girl is moving in any direction (e.g. caused by falling or knockback). The Lost Girl is immune to the Confused debuff, but the transformed Nymph is not. The Nymph requires 25 kills to be awarded completion of her Bestiary entry and corresponding banner, as opposed to the usual 50 kills.",
+    "image": "Nymph.png",
+    "tags": [
+      "mob",
+      "pre-hardmode",
+      "cavern"
     ]
   },
   {
@@ -5655,8 +5673,8 @@
     ]
   },
   {
-    "id": "statue",
-    "name": "Statue",
+    "id": "statue-enemy",
+    "name": "Statue (enemy)",
     "tier": "Pre-Hardmode",
     "biome": "Graveyard",
     "hp": "400",
@@ -6304,6 +6322,24 @@
     "tags": [
       "mob",
       "hardmode"
+    ]
+  },
+  {
+    "id": "white-cultist-archer",
+    "name": "White Cultist Archer",
+    "tier": "Pre-Hardmode",
+    "hp": "210",
+    "damage": "45",
+    "defense": "14",
+    "knockback": "45%",
+    "coins": "10 silver",
+    "ai": "Fighter AI",
+    "drops": [],
+    "description": "1.3.0.1 .]] The White Cultist Archer is a Cultist variant that exists in Terraria's game files, but never actually spawns. It looks and behaves identically to the Blue Cultist Archer that appears in-game.",
+    "image": "White Cultist Archer.gif",
+    "tags": [
+      "mob",
+      "pre-hardmode"
     ]
   },
   {
