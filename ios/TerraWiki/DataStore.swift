@@ -109,8 +109,10 @@ final class DataStore {
     // MARK: Loading
 
     private static func load<T: Decodable>(_ name: String, from bundle: Bundle, default defaultValue: T) -> T {
+        let resourceName = (name as NSString).deletingPathExtension
         guard
-            let url = bundle.url(forResource: (name as NSString).deletingPathExtension, withExtension: "json"),
+            let url = bundle.url(forResource: resourceName, withExtension: "json")
+                ?? bundle.url(forResource: resourceName, withExtension: "json", subdirectory: "Resources"),
             let data = try? Data(contentsOf: url),
             let decoded = try? JSONDecoder().decode(T.self, from: data)
         else {
