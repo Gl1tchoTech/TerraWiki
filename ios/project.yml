@@ -18,7 +18,11 @@ targets:
         excludes:
           - Resources
     resources:
-      - path: TerraWiki/Resources
+      - path: TerraWiki/Resources/Assets.xcassets
+      - path: TerraWiki/Resources/items.json
+      - path: TerraWiki/Resources/npcs.json
+      - path: TerraWiki/Resources/bosses.json
+      - path: TerraWiki/Resources/mechanics.json
     info:
       path: TerraWiki/Info.plist
       properties:
@@ -50,7 +54,11 @@ targets:
     dependencies:
       - target: TerraWiki
     resources:
-      - path: TerraWiki/Resources
+      - path: TerraWiki/Resources/Assets.xcassets
+      - path: TerraWiki/Resources/items.json
+      - path: TerraWiki/Resources/npcs.json
+      - path: TerraWiki/Resources/bosses.json
+      - path: TerraWiki/Resources/mechanics.json
     settings:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: com.terraria.wiki.tests
