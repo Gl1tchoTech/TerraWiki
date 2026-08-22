@@ -1,16 +1,10 @@
 #!/usr/bin/env bun
 /**
  * Generates ios/TerraWiki/Resources/items.json from Official Terraria Wiki data.
+ * Produces detailed, human-readable descriptions from item stats + wiki extracts.
+ * Stores ALL recipes per item (not just the first one).
  *
- * Sources (cached in ./data or passed as args):
- *  - iteminfo.json  : Module:Iteminfo/data — full item stats keyed by item ID
- *  - recipes-all.json : Cargo `Recipes` table rows (legacy=0) for current platforms
- *
- * Fetch fresh dumps with:
- *   bun scripts/fetch-wiki-data.mjs
- *
- * Usage:
- *   bun scripts/generate-items.mjs [dataDir]
+ * Usage: bun scripts/generate-items.mjs [dataDir]
  */
 
 import { readFileSync, writeFileSync, mkdirSync } from "node:fs";
@@ -23,27 +17,25 @@ const outPath = join(root, "ios", "TerraWiki", "Resources", "items.json");
 
 const iteminfo = JSON.parse(readFileSync(join(dataDir, "iteminfo.json"), "utf8"));
 const recipes = JSON.parse(readFileSync(join(dataDir, "recipes-all.json"), "utf8"));
-let itemsTypes = [];
-try {
-  itemsTypes = JSON.parse(readFileSync(join(dataDir, "items-types.json"), "utf8"));
-} catch {
-  console.warn("items-types.json not found; falling back to flag-based classification");
-}
 
-// wiki type and exact image file by item name (first non-empty row wins; skip aggregate "set" rows)
+let itemsTypes = [];
+try { itemsTypes = JSON.parse(readFileSync(join(dataDir, "items-types.json"), "utf8")); } catch { /* ok */ }
+let wikiExtracts = {};
+try { wikiExtracts = JSON.parse(readFileSync(join(dataDir, "item-extracts.json"), "utf8")); } catch { /* ok */ }
+
+// ---- wiki type / image lookup ------------------------------------------------
+
 const wikiTypeByName = new Map();
 const wikiImageByName = new Map();
 for (const row of itemsTypes) {
   const name = row._pageName;
   const t = (row.type || "").split("^")[0].trim().toLowerCase();
   if (t === "set") continue;
-  const imageMatch = (row.image || "").match(/File:([^|\]]+)/);
-  const image = imageMatch ? decodeEntities(imageMatch[1].trim()) : null;
+  const im = (row.image || "").match(/File:([^|\]]+)/);
   if (t && !wikiTypeByName.has(name)) wikiTypeByName.set(name, t);
-  if (image && !wikiImageByName.has(name)) wikiImageByName.set(name, image);
+  if (im && !wikiImageByName.has(name)) wikiImageByName.set(name, decodeEntities(im[1].trim()));
 }
 
-// Wiki file names whose <Name>.png guess does not match the real file
 const IMAGE_OVERRIDES = {
   "1/2 Second Timer": "1 2 Second Timer.png",
   "1/4 Second Timer": "1 4 Second Timer.png",
@@ -54,64 +46,35 @@ const IMAGE_OVERRIDES = {
   "Advanced Combat Techniques: Volume Two": "Advanced Combat Techniques_Volume Two.png",
 };
 
-// Verified guesses: File:<Item Name>.png exists on the wiki
 let imageExists = {};
-try {
-  imageExists = JSON.parse(readFileSync(join(dataDir, "image-exists.json"), "utf8"));
-} catch {
-  console.warn("image-exists.json not found; image verification skipped");
-}
+try { imageExists = JSON.parse(readFileSync(join(dataDir, "image-exists.json"), "utf8")); } catch { /* ok */ }
 
 function decodeEntities(s) {
-  return s
-    .replace(/&#039;/g, "'")
-    .replace(/&amp;/g, "&")
-    .replace(/&quot;/g, "\"")
-    .replace(/&lt;/g, "<")
-    .replace(/&gt;/g, ">");
+  return s.replace(/&#039;/g, "'").replace(/&amp;/g, "&").replace(/&quot;/g, '"').replace(/&lt;/g, "<").replace(/&gt;/g, ">");
 }
 
 function imageFor(name) {
-  const exact = wikiImageByName.get(name);
-  if (exact) return exact;
-  const override = IMAGE_OVERRIDES[name];
-  if (override) return override;
-  const guess = name.replace(/ /g, "_") + ".png";
-  if (imageExists[name]) return guess;
-  return null;
+  return wikiImageByName.get(name) ?? IMAGE_OVERRIDES[name]
+    ?? (imageExists[name] ? name.replace(/ /g, "_") + ".png" : null);
 }
 
-// ---- recipe index ---------------------------------------------------------
+// ---- recipe index (ALL recipes per result) -----------------------------------
 
-const kebab = (s) =>
-  s
-    .replace(/([a-z0-9])([A-Z])/g, "$1-$2")
-    .replace(/[^a-zA-Z0-9]+/g, "-")
-    .replace(/^-+|-+$/g, "")
-    .toLowerCase();
+const kebab = (s) => s.replace(/([a-z0-9])([A-Z])/g, "$1-$2").replace(/[^a-zA-Z0-9]+/g, "-").replace(/^-+|-+$/g, "").toLowerCase();
 
 function parseIngs(ings) {
   if (!ings) return [];
-  const out = [];
-  for (const seg of ings.split("^")) {
-    const parts = seg.split("¦").filter(Boolean); // e.g. ["Wood","1"]
-    if (parts.length < 2) continue;
-    const name = parts[0].trim();
-    const qty = parseInt(parts[1], 10);
-    if (name && !Number.isNaN(qty)) out.push({ name, qty });
-  }
-  return out;
+  return ings.split("^").map(seg => {
+    const parts = seg.split("¦").filter(Boolean);
+    if (parts.length < 2) return null;
+    const name = parts[0].trim(), qty = parseInt(parts[1], 10);
+    return (name && !Number.isNaN(qty)) ? { name, qty } : null;
+  }).filter(Boolean);
 }
 
-// Desktop-relevant platforms only: all platforms, or any row that includes desktop.
-const desktopRecipes = recipes.filter((r) => {
-  const v = r.version || "";
-  return v === "" || v.includes("desktop");
-});
+const desktopRecipes = recipes.filter(r => { const v = r.version || ""; return v === "" || v.includes("desktop"); });
 
-// recipesByResult: result name -> recipes [{station, ingredients, amount}]
 const recipesByResult = new Map();
-// usedIn: ingredient name -> set of result names
 const usedIn = new Map();
 for (const r of desktopRecipes) {
   const ingredients = parseIngs(r.ings);
@@ -123,182 +86,252 @@ for (const r of desktopRecipes) {
     usedIn.get(ing.name).add(r.result);
   }
 }
+// Convert usedIn sets to sorted arrays
+const usedInArr = new Map();
+for (const [name, set] of usedIn) usedInArr.set(name, [...set].sort());
 
-// ---- helpers --------------------------------------------------------------
+// ---- helpers ------------------------------------------------------------------
 
 function coins(copper) {
   if (!copper || copper <= 0) return null;
-  const p = Math.floor(copper / 1000000);
-  const g = Math.floor((copper % 1000000) / 10000);
-  const s = Math.floor((copper % 10000) / 100);
-  const c = copper % 100;
+  const p = Math.floor(copper / 1000000), g = Math.floor((copper % 1000000) / 10000);
+  const s = Math.floor((copper % 10000) / 100), c = copper % 100;
   const parts = [];
-  if (p) parts.push(`${p} platinum`);
-  if (g) parts.push(`${g} gold`);
-  if (s) parts.push(`${s} silver`);
-  if (c) parts.push(`${c} copper`);
+  if (p) parts.push(`${p} platinum`); if (g) parts.push(`${g} gold`);
+  if (s) parts.push(`${s} silver`); if (c) parts.push(`${c} copper`);
   return parts.join(" ") || `${copper} copper`;
 }
 
 function classFlag(it) {
-  if (it.melee) return "melee";
-  if (it.ranged) return "ranged";
-  if (it.magic) return "magic";
-  if (it.summon) return "summon";
-  return null;
+  if (it.melee) return "melee"; if (it.ranged) return "ranged";
+  if (it.magic) return "magic"; if (it.summon) return "summon"; return null;
 }
 
-// wiki type -> app kind
 const WIKI_KIND = {
-  weapon: "Weapon",
-  armor: "Armor",
-  vanity: "Armor",
-  accessory: "Accessory",
-  shield: "Accessory",
-  boots: "Accessory",
-  ammunition: "Ammo",
-  tool: "Tool",
-  block: "Block",
-  wall: "Block",
-  furniture: "Furniture",
-  "crafting station": "Furniture",
-  storage: "Furniture",
-  mechanism: "Furniture",
-  "light source": "Furniture",
-  "light Source": "Furniture",
-  "background object": "Furniture",
-  ore: "Material",
-  bar: "Material",
-  brick: "Material",
-  gem: "Material",
-  "crafting material": "Material",
-  seeds: "Material",
-  potion: "Consumable",
-  food: "Consumable",
-  consumable: "Consumable",
-  "permanent booster": "Consumable",
-  "grab bag": "Consumable",
-  crate: "Consumable",
-  bait: "Consumable",
-  key: "Consumable",
-  "boss summon": "Consumable",
-  "event summon": "Consumable",
-  "item summon": "Consumable",
-  "mount summon": "Other",
-  "pet summon": "Other",
-  "light pet": "Other",
-  dye: "Other",
-  "hair dye": "Other",
-  miscellaneous: "Other",
+  weapon: "Weapon", armor: "Armor", vanity: "Armor", accessory: "Accessory",
+  shield: "Accessory", boots: "Accessory", ammunition: "Ammo", tool: "Tool",
+  block: "Block", wall: "Block", furniture: "Furniture", "crafting station": "Furniture",
+  storage: "Furniture", mechanism: "Furniture", "light source": "Furniture",
+  "light Source": "Furniture", "background object": "Furniture", ore: "Material",
+  bar: "Material", brick: "Material", gem: "Material", "crafting material": "Material",
+  seeds: "Material", potion: "Consumable", food: "Consumable", consumable: "Consumable",
+  "permanent booster": "Consumable", "grab bag": "Consumable", crate: "Consumable",
+  bait: "Consumable", key: "Consumable", "boss summon": "Consumable", "event summon": "Consumable",
+  "item summon": "Consumable", "mount summon": "Other", "pet summon": "Other",
+  "light pet": "Other", dye: "Other", "hair dye": "Other", miscellaneous: "Other",
 };
 
 function classify(it) {
-  const wikiType = wikiTypeByName.get(it.name);
-  if (wikiType && WIKI_KIND[wikiType]) return WIKI_KIND[wikiType];
-  // fallback classification from raw stats
-  if (it.ammo) return "Ammo";
-  if (it.accessory) return "Accessory";
+  const w = wikiTypeByName.get(it.name);
+  if (w && WIKI_KIND[w]) return WIKI_KIND[w];
+  if (it.ammo) return "Ammo"; if (it.accessory) return "Accessory";
   if (it.headSlot || it.bodySlot || it.legSlot) return "Armor";
   if (it.pick || it.axe || it.hammer) return "Tool";
   if (it.damage && classFlag(it)) return "Weapon";
   if ((it.createTile || it.createWall) && /(Ore|Bar|Brick|Gem)$/.test(it.name)) return "Material";
   if (it.createTile || it.createWall) return "Block";
-  if (it.material) return "Material";
-  if (it.consumable) return "Consumable";
+  if (it.material) return "Material"; if (it.consumable) return "Consumable";
   return "Other";
 }
 
 function rarityOf(rare) {
-  // wiki iteminfo rare: -1 junk(gray), 0 white ... 10 red, -11 quest, -12 expert, -13 master
   if (rare === undefined || rare === null) return 1;
-  if (rare === -1) return 0; // gray
-  if (rare === -11) return 4; // quest (orange-ish)
-  if (rare === -12 || rare === -13) return 11; // expert/master animated
-  const mapped = rare + 1; // 0->white ... 10->red
-  return Math.max(0, Math.min(11, mapped));
+  if (rare === -1) return 0; if (rare === -11) return 4;
+  if (rare === -12 || rare === -13) return 11;
+  return Math.max(0, Math.min(11, (rare + 1)));
 }
 
+function ucfirst(s) { return s.charAt(0).toUpperCase() + s.slice(1); }
+
+const DAMAGE_CLASS = { melee: "melee", ranged: "ranged", magic: "magic", summon: "summon" };
+
+// ---- RICH DESCRIPTION GENERATOR -----------------------------------------------
+
 function describe(it, kind, cls) {
-  const dmg = it.damage ? `${it.damage} damage` : null;
-  switch (kind) {
-    case "Weapon": {
-      const bits = [`A ${cls} weapon that deals ${dmg}`];
-      if (it.knockBack) bits.push(`has ${it.knockBack} knockback`);
-      if (it.crit) bits.push(`a ${it.crit}% critical strike chance`);
-      if (it.mana) bits.push(`costs ${it.mana} mana per use`);
-      if (it.shoot) bits.push("fires projectiles");
-      if (it.autoReuse) bits.push("can be used continuously");
-      return bits.join(", ") + ".";
+  const name = it.name;
+  const dmg = it.damage;
+  const kb = it.knockBack;
+  const crit = it.crit;
+  const mana = it.mana;
+  const defense = it.defense ?? 0;
+  const useTime = it.useTime;
+  const healLife = it.healLife;
+  const healMana = it.healMana;
+  const pick = it.pick;
+  const axe = it.axe;
+  const hammer = it.hammer;
+  const shoot = it.shoot;
+  const fishingPole = it.fishingPole;
+  const bait = it.bait;
+  const buffType = it.buffType;
+  const buffTime = it.buffTime;
+  const lifeRegen = it.lifeRegen;
+  const armorPenetration = it.armorPenetration;
+  const mountType = it.mountType;
+  const maxStack = it.maxStack;
+  const createTile = it.createTile;
+  const createWall = it.createWall;
+  const potion = it.potion;
+  const dye = it.dye;
+  const hairDye = it.hairDye;
+  const manaIncrease = it.manaIncrease;
+
+  const paragraph = (s) => s;
+
+  // ── Weapons ──
+  if (kind === "Weapon") {
+    const parts = [];
+    const dc = cls ? `${ucfirst(cls)} weapon` : "Weapon";
+    parts.push(`${name} is a ${dc} that deals ${dmg} base damage`);
+    if (kb) parts.push(`, has ${kb} knockback`);
+    if (crit) parts.push(`, and has a ${crit}% critical strike chance`);
+    parts[parts.length - 1] += ". ";
+
+    if (shoot) {
+      if (it.shootSpeed) parts.push(`It fires a projectile at a speed of ${it.shootSpeed}. `);
+      else parts.push(`It fires a projectile. `);
     }
-    case "Tool": {
-      const bits = ["A tool"];
-      if (it.pick) bits.push(`with ${it.pick}% pickaxe power`);
-      if (it.axe) bits.push(`with ${it.axe}% axe power`);
-      if (it.hammer) bits.push(`with ${it.hammer}% hammer power`);
-      if (dmg) bits.push(`that also deals ${dmg}`);
-      return bits.join(", ") + ".";
+    if (mana) parts.push(`Each use consumes ${mana} mana. `);
+    if (useTime) {
+      const speed = useTime <= 19 ? "very fast" : useTime <= 24 ? "fast" : useTime <= 29 ? "average" : useTime <= 39 ? "slow" : "very slow";
+      parts.push(`It has a ${speed} use time of ${useTime}. `);
     }
-    case "Armor": {
-      const bits = [`An armor piece granting ${it.defense ?? 0} defense`];
-      if (dmg) bits.push(`with ${dmg}`);
-      return bits.join(", ") + ".";
-    }
-    case "Accessory": {
-      const bits = ["An accessory that can be equipped for passive bonuses"];
-      if (it.defense) bits.push(`granting ${it.defense} defense`);
-      if (dmg) bits.push(`dealing ${dmg} when it hits`);
-      return bits.join(", ") + ".";
-    }
-    case "Ammo": {
-      const bits = ["Ammunition for ranged weapons"];
-      if (dmg) bits.push(`dealing ${dmg}`);
-      return bits.join(", ") + ".";
-    }
-    case "Material":
-      return "A crafting material used in the creation of other items.";
-    case "Consumable": {
-      if (it.healLife) return `A consumable that restores ${it.healLife} health when used.`;
-      if (it.healMana) return `A consumable that restores ${it.healMana} mana when used.`;
-      return "A consumable item used for a one-time effect.";
-    }
-    case "Block":
-      return "A placeable block used in building and construction.";
-    case "Furniture":
-      return "A placeable furniture or station item used in building and decoration.";
-    default:
-      return "A miscellaneous item found in Terraria.";
+    if (it.autoReuse) parts.push("It can be used continuously by holding the attack button. ");
+    if (armorPenetration) parts.push(`It ignores ${armorPenetration} enemy defense. `);
+    if (it.noMelee && cls === "melee" && shoot) parts.push("The blade itself does not deal contact damage; all damage comes from the projectile. ");
+
+    return parts.join("").trim();
   }
+
+  // ── Tools ──
+  if (kind === "Tool") {
+    const parts = [`${name} is a tool that can `];
+    const abilities = [];
+    if (pick) abilities.push(`mine blocks with ${pick}% pickaxe power`);
+    if (axe) abilities.push(`chop trees with ${axe}% axe power`);
+    if (hammer) abilities.push(`break walls and shape blocks with ${hammer}% hammer power`);
+    parts.push(abilities.join(", ") + ". ");
+    if (dmg) {
+      const combatBits = [`It also deals ${dmg} ${cls || "melee"} damage when used as a weapon`];
+      if (kb) combatBits.push(`with ${kb} knockback`);
+      if (useTime) combatBits.push(`and a use time of ${useTime}`);
+      parts.push(combatBits.join(", ") + ". ");
+    }
+    return parts.join("").trim();
+  }
+
+  // ── Armor ──
+  if (kind === "Armor") {
+    const parts = [];
+    const slot = it.headSlot ? "helmet" : it.bodySlot ? "chestplate" : it.legSlot ? "leggings" : "armor piece";
+    parts.push(`${name} is a ${slot} that provides ${defense} defense`);
+    if (dmg && cls) parts.push(`, increases ${cls} damage by ${dmg}%`);
+    if (crit) parts.push(`, with +${crit}% critical strike chance`);
+    parts[parts.length - 1] += ". ";
+    if (lifeRegen) parts.push(`It grants +${lifeRegen} life regeneration per second. `);
+    if (manaIncrease) parts.push(`It increases maximum mana by ${manaIncrease}. `);
+    if (it.bodySlot && it.setBonus) parts.push(`As part of a set, it may grant additional bonuses. `);
+    if (!dmg && !crit && !lifeRegen && !manaIncrease && !it.setBonus && defense === 0) {
+      parts.push(`It is a vanity item worn in the ${slot} slot for cosmetic purposes. `);
+    }
+    return parts.join("").trim();
+  }
+
+  // ── Accessories ──
+  if (kind === "Accessory") {
+    const parts = [`${name} is an accessory that can be equipped to provide various bonuses. `];
+    const bonuses = [];
+    if (defense) bonuses.push(`+${defense} defense`);
+    if (dmg && cls) bonuses.push(`+${dmg}% ${cls} damage`);
+    if (crit) bonuses.push(`+${crit}% critical strike chance`);
+    if (lifeRegen) bonuses.push(`+${lifeRegen} life regen`);
+    if (manaIncrease) bonuses.push(`+${manaIncrease} max mana`);
+    if (armorPenetration) bonuses.push(`${armorPenetration} armor penetration`);
+    if (it.moveSpeed) bonuses.push(`increased movement speed`);
+    if (it.wingSlot) bonuses.push(`flight capability`);
+    if (bonuses.length) parts.push(`Known bonuses: ${bonuses.join(", ")}.`);
+    return parts.join(" ").trim();
+  }
+
+  // ── Ammo ──
+  if (kind === "Ammo") {
+    const parts = [`${name} is a type of ammunition used with ranged weapons. `];
+    if (dmg) parts.push(`It deals ${dmg} damage per shot`);
+    if (kb) parts.push(`, with ${kb} knockback`);
+    parts[parts.length - 1] += ". ";
+    if (maxStack) parts.push(`It stacks up to ${maxStack}. `);
+    return parts.join("").trim();
+  }
+
+  // ── Consumable ──
+  if (kind === "Consumable") {
+    const parts = [`${name} is a consumable `];
+    if (potion) parts.push("potion ");
+    if (healLife) parts.push(`that restores ${healLife} health`);
+    if (healMana) parts.push(`that restores ${healMana} mana`);
+    if (buffType) {
+      parts.push(`that grants a ${buffTime ? `${Math.round(buffTime / 60)} minute` : ""} buff`);
+    }
+    if (!healLife && !healMana && !buffType && !potion)
+      parts.push("item used for a one-time effect");
+    parts[parts.length - 1] += ". ";
+    if (buffTime && buffType) parts.push(`The buff lasts for ${Math.round(buffTime / 60)} ${Math.round(buffTime / 60) === 1 ? "minute" : "minutes"}. `);
+    if (maxStack) parts.push(`It stacks up to ${maxStack}. `);
+    return parts.join("").trim();
+  }
+
+  // ── Fishing / Bait ──
+  if (fishingPole) return `${name} is a fishing pole with ${fishingPole}% fishing power. It can be used to fish in any body of water.`;
+  if (bait) return `${name} is bait with ${bait}% bait power. It can be used with a fishing pole to catch fish and crates.`;
+
+  // ── Mount / Pet ──
+  if (mountType !== undefined) return `${name} summons a rideable mount that allows the player to travel in unique ways. Each mount has different speed, flight, and abilities.`;
+  if (it.buffType && it.buffType > 0 && kind === "Other") return `${name} summons a pet that follows the player around. Pets are purely cosmetic companions.`;
+
+  // ── Dye ──
+  if (dye || hairDye) return `${name} is a ${hairDye ? "hair " : ""}dye that changes the color of equipped ${hairDye ? "hair styles" : "armor and accessories"} when applied in a dye slot.`;
+
+  // ── Material ──
+  if (kind === "Material") {
+    if (/Ore$/i.test(name)) return `${name} is an ore found underground. It can be smelted into bars at a Furnace and is used in many crafting recipes.`;
+    if (/Bar$/i.test(name)) return `${name} is a metal bar refined from ore. It is a key crafting material for weapons, armor, tools, and furniture.`;
+    if (/Gem$/i.test(name)) return `${name} is a gemstone found underground embedded in stone. It is used in crafting magical items, hooks, and gem-related equipment.`;
+    return `${name} is a crafting material used in the creation of other items.`;
+  }
+
+  // ── Block ──
+  if (kind === "Block") {
+    if (createWall) return `${name} is a placeable background wall used for building and NPC housing. Walls prevent enemy spawns when fully enclosed.`;
+    return `${name} is a placeable block used in building and construction. It can be placed to create structures, arenas, and housing for NPCs.`;
+  }
+
+  // ── Furniture ──
+  if (kind === "Furniture") {
+    return `${name} is a placeable furniture item. It can be used to decorate buildings, craft items (if it acts as a crafting station), or store items.`;
+  }
+
+  return `${name} is an item found in the world of Terraria.`;
 }
+
+// ---- tags -----------------------------------------------------------------------
 
 function tags(it, kind, cls, hasRecipe) {
   const t = [];
   if (cls) t.push(cls);
-  if (kind === "Weapon") t.push("weapon");
-  if (kind === "Tool") t.push("tool");
-  if (kind === "Armor") t.push("armor");
-  if (kind === "Accessory") t.push("accessory");
-  if (kind === "Material") t.push("material");
-  if (kind === "Consumable") t.push("consumable");
-  if (kind === "Ammo") t.push("ammo");
-  if (kind === "Block") t.push("block");
-  if (kind === "Furniture") t.push("furniture");
-  if (kind === "Other") t.push("other");
+  t.push(kind.toLowerCase());
   if (it.material) t.push("material");
   if (it.consumable) t.push("consumable");
   if (hasRecipe) t.push("crafted");
-  if (it.rare === -12) t.push("expert");
-  if (it.rare === -13) t.push("master");
-  if (it.rare === -11) t.push("quest");
+  if (it.rare === -12) t.push("expert"); if (it.rare === -13) t.push("master"); if (it.rare === -11) t.push("quest");
   if (it.defense) t.push("defense");
-  if (it.pick) t.push("mining");
-  if (it.axe) t.push("woodcutting");
-  if (it.hammer) t.push("hammering");
-  if (it.placeable) t.push("placeable");
-  if (it.mount) t.push("mount");
+  if (it.pick) t.push("mining"); if (it.axe) t.push("woodcutting"); if (it.hammer) t.push("hammering");
+  if (it.createTile || it.createWall) t.push("placeable");
+  if (it.mountType !== undefined) t.push("mount");
+  if (it.hardmode) t.push("hardmode");
   return [...new Set(t)];
 }
 
-// ---- build -----------------------------------------------------------------
+// ---- build -----------------------------------------------------------------------
 
 const items = [];
 for (const id of Object.keys(iteminfo)) {
@@ -307,24 +340,43 @@ for (const id of Object.keys(iteminfo)) {
   const kind = classify(it);
   const cls = classFlag(it);
   const damageStr = it.damage ? `${it.damage} ${cls ?? "melee"}` : null;
-  const recipesFor = recipesByResult.get(it.name) ?? null;
-  const recipe =
-    recipesFor && recipesFor.length > 0
-      ? {
-          station: recipesFor[0].station,
-          ingredients: recipesFor[0].ingredients,
-          resultQty: recipesFor[0].resultQty > 1 ? recipesFor[0].resultQty : undefined,
-        }
-      : null;
-  const usedInNames = usedIn.get(it.name);
-  const usedInList = usedInNames ? [...usedInNames].sort() : null;
-  const obtain = recipe
-    ? recipe.station === "By Hand"
-      ? "Crafted by hand."
-      : `Crafted at a ${recipe.station}.`
-    : "Found or dropped during gameplay — see the Official Terraria Wiki for exact sources.";
+
+  // ALL recipes for this item
+  const rawRecipes = recipesByResult.get(it.name) ?? [];
+  const itemRecipes = rawRecipes.map(r => ({
+    station: r.station,
+    ingredients: r.ingredients,
+    ...(r.resultQty > 1 ? { resultQty: r.resultQty } : {}),
+  }));
+
+  const usedInNames = usedInArr.get(it.name) ?? null;
+  const isCrafted = itemRecipes.length > 0;
+
+  const obtain = isCrafted
+    ? itemRecipes.length === 1
+      ? `Crafted at a ${itemRecipes[0].station}.`
+      : `Crafted (${itemRecipes.length} recipes).`
+    : "Obtained through world generation, enemy drops, fishing, or purchase from NPCs.";
+
+  // Wiki extract as notes (if available)
+  const extract = wikiExtracts[it.name];
+  const notes = (extract && extract.length > 60) ? extract : undefined;
+
+  // Clean wiki extract (remove ref markers, extra whitespace)
+  const cleanExtract = extract
+    ? extract.replace(/\[\d+\]/g, "").replace(/\{[^}]+\{[^}]+\}[^}]*\}/g, "").replace(/\s+/g, " ").trim()
+    : null;
+
+  // Description: use wiki extract if good, else rich auto-generated
+  let description;
+  if (cleanExtract && cleanExtract.length > 80) {
+    description = cleanExtract;
+  } else {
+    description = describe(it, kind, cls);
+  }
 
   const image = imageFor(it.name);
+
   items.push({
     id: kebab(it.internalName || it.name),
     name: it.name,
@@ -332,12 +384,13 @@ for (const id of Object.keys(iteminfo)) {
     rarity: rarityOf(it.rare),
     damage: damageStr,
     obtain,
-    ...(recipe ? { recipe } : {}),
-    ...(usedInList && usedInList.length ? { usedIn: usedInList } : {}),
+    ...(itemRecipes.length > 0 ? { recipe: itemRecipes[0], allRecipes: itemRecipes } : {}),
+    ...(usedInNames && usedInNames.length ? { usedIn: usedInNames } : {}),
     ...(image ? { image } : {}),
     sell: coins(it.value),
-    description: describe(it, kind, cls),
-    tags: tags(it, kind, cls, Boolean(recipe)),
+    description,
+    ...(notes ? { notes } : {}),
+    tags: tags(it, kind, cls, isCrafted),
   });
 }
 
@@ -347,6 +400,7 @@ writeFileSync(outPath, JSON.stringify(items, null, 2));
 
 const kinds = {};
 for (const it of items) kinds[it.kind] = (kinds[it.kind] || 0) + 1;
-console.log(`Wrote ${items.length} items -> ${outPath}`);
+const withRecipes = items.filter(i => i.recipe).length;
+const withNotes = items.filter(i => i.notes).length;
+console.log(`Wrote ${items.length} items (${withRecipes} with recipes, ${withNotes} with wiki notes) -> ${outPath}`);
 console.log("Kinds:", JSON.stringify(kinds));
-console.log("With recipes:", items.filter((i) => i.recipe).length);

@@ -68,7 +68,26 @@ async function verifyItemImages() {
   if (missing.length) console.log(`  guessed missing (overridden by generator): ${missing.join(", ")}`);
 }
 
-// 3) Recipes cargo table (current platforms only)
+// 4) Item page intro extracts (plain text for descriptions)
+async function fetchItemExtracts() {
+  const iteminfo = JSON.parse(readFileSync(join(dataDir, "iteminfo.json"), "utf8"));
+  const names = [...new Set(Object.values(iteminfo).map((it) => it.name).filter(Boolean))].sort();
+  const extracts = {};
+  for (let i = 0; i < names.length; i += 20) {
+    const batch = names.slice(i, i + 20);
+    const url = `${API}?action=query&prop=extracts&exintro&explaintext&exlimit=20&titles=${encodeURIComponent(batch.join("|"))}&format=json&formatversion=2`;
+    const j = await (await fetch(url)).json();
+    for (const page of j.query?.pages || []) {
+      if (page.extract) extracts[page.title] = page.extract;
+    }
+    if ((i / 20) % 5 === 0) console.log(`  item extracts: ${i}/${names.length}`);
+    await new Promise((r) => setTimeout(r, 200));
+  }
+  writeFileSync(join(dataDir, "item-extracts.json"), JSON.stringify(extracts));
+  console.log(`item-extracts.json: ${Object.keys(extracts).length} extracts`);
+}
+
+// 5) Recipes cargo table (current platforms only)
 async function fetchRecipes() {
   const where = encodeURIComponent("legacy=0");
   const all = [];
@@ -86,8 +105,14 @@ async function fetchRecipes() {
   console.log(`recipes-all.json: ${all.length} recipes`);
 }
 
-await fetchIteminfo();
-await fetchItemsTypes();
-await verifyItemImages();
-await fetchRecipes();
+const skip = (name) => {
+  const p = join(dataDir, name);
+  try { return Object.keys(JSON.parse(readFileSync(p, "utf8"))).length > 0; } catch { return false; }
+};
+
+if (!skip("iteminfo.json")) await fetchIteminfo();
+if (!skip("items-types.json")) await fetchItemsTypes();
+if (!skip("image-exists.json")) await verifyItemImages();
+if (!skip("item-extracts.json")) await fetchItemExtracts();
+if (!skip("recipes-all.json")) await fetchRecipes();
 console.log("Done. Run: bun scripts/generate-items.mjs");

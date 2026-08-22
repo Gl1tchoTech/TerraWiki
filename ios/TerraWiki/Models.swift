@@ -39,6 +39,7 @@ struct Item: Codable, Identifiable, Hashable {
     let damage: String?
     let obtain: String
     let recipe: Recipe?
+    let allRecipes: [Recipe]?
     let usedIn: [String]?
     let sell: String?
     let description: String

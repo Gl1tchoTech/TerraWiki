@@ -8,3 +8,5 @@ dist-ssr
 .env.*
 !.env.example
 scripts/data/
+# Downloaded wiki sprites (large; cached on first app launch via URLCache)
+ios/TerraWiki/Resources/Sprites/

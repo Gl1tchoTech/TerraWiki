@@ -94,19 +94,50 @@ struct WikiArtwork: View {
     let fallbackColor: Color
     let size: CGFloat
 
+    @State private var loadedImage: UIImage? = nil
+    @State private var didLoad = false
+
     var body: some View {
-        AsyncImage(url: url) { phase in
-            if let image = phase.image {
-                image
+        Group {
+            if let img = loadedImage {
+                Image(uiImage: img)
                     .resizable()
                     .scaledToFit()
                     .frame(width: size, height: size)
+            } else if let url, !didLoad {
+                Color.clear
+                    .frame(width: size, height: size)
+                    .task {
+                        loadedImage = await loadImage(url: url)
+                        didLoad = true
+                    }
             } else {
                 PixelIcon(symbol: fallbackSymbol, color: fallbackColor, size: size)
             }
         }
         .frame(width: size, height: size)
     }
+}
+
+/// Loads an image from URLCache (disk + memory), falling back to network.
+private func loadImage(url: URL) async -> UIImage? {
+    let request = URLRequest(url: url, cachePolicy: .returnCacheDataElseLoad, timeoutInterval: 15)
+    // Check cache first
+    if let cached = URLCache.shared.cachedResponse(for: request),
+       let image = UIImage(data: cached.data) {
+        return image
+    }
+    // Fetch from network
+    do {
+        let (data, response) = try await URLSession.shared.data(for: request)
+        if let image = UIImage(data: data) {
+            // Store in cache
+            let cached = CachedURLResponse(response: response, data: data)
+            URLCache.shared.storeCachedResponse(cached, for: request)
+            return image
+        }
+    } catch {}
+    return nil
 }
 
 func wikiFileURL(for name: String) -> URL? {

@@ -4,6 +4,16 @@ import SwiftUI
 struct TerraWikiApp: App {
     @StateObject private var favorites = Favorites()
 
+    init() {
+        // Large persistent disk cache so images are available offline after first load.
+        let cache = URLCache(
+            memoryCapacity: 50 * 1024 * 1024,   // 50 MB in-memory
+            diskCapacity: 300 * 1024 * 1024,    // 300 MB on disk
+            diskPath: "terrawiki_sprites"
+        )
+        URLCache.shared = cache
+    }
+
     var body: some Scene {
         WindowGroup {
             RootView()
