@@ -21,6 +21,7 @@ targets:
       - path: TerraWiki/Resources/Assets.xcassets
       - path: TerraWiki/Resources/items.json
       - path: TerraWiki/Resources/npcs.json
+      - path: TerraWiki/Resources/mobs.json
       - path: TerraWiki/Resources/bosses.json
       - path: TerraWiki/Resources/mechanics.json
     preBuildScripts:
@@ -62,6 +63,7 @@ targets:
       - path: TerraWiki/Resources/Assets.xcassets
       - path: TerraWiki/Resources/items.json
       - path: TerraWiki/Resources/npcs.json
+      - path: TerraWiki/Resources/mobs.json
       - path: TerraWiki/Resources/bosses.json
       - path: TerraWiki/Resources/mechanics.json
     preBuildScripts:

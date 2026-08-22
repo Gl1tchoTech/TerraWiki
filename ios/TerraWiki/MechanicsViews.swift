@@ -3,8 +3,41 @@ import SwiftUI
 // MARK: - Mechanics list
 
 struct MechanicsView: View {
+    private var store: DataStore { .shared }
+
     var body: some View {
-        OfficialCatalogView(kind: .mechanics)
+        MechanicListScreen(title: "Mechanics", mechanics: store.mechanics.sorted { $0.name < $1.name })
+    }
+}
+
+struct MechanicListScreen: View {
+    let title: String
+    let mechanics: [Mechanic]
+
+    var body: some View {
+        WikiScreen(title: title) {
+            if mechanics.isEmpty {
+                WikiEmptyState(title: "No mechanics in this category yet.", systemImage: "gearshape.2.fill")
+            } else {
+                ScrollView {
+                    LazyVStack(spacing: 0) {
+                        ForEach(mechanics) { mechanic in
+                            NavigationLink {
+                                MechanicDetailView(mechanic: mechanic)
+                            } label: {
+                                WikiRow(
+                                    title: mechanic.name,
+                                    subtitle: mechanic.group,
+                                    symbol: mechanicSymbol(mechanic),
+                                    symbolColor: mechanicColor(mechanic.group)
+                                )
+                            }
+                            HairlineDivider()
+                        }
+                    }
+                }
+            }
+        }
     }
 }
 
@@ -83,7 +116,7 @@ struct MechanicDetailView: View {
     private var header: some View {
         HStack(spacing: 14) {
             WikiArtwork(
-                url: wikiFileURL(for: mechanic.name),
+                url: wikiFileURL(for: mechanic),
                 fallbackSymbol: mechanicSymbol(mechanic),
                 fallbackColor: mechanicColor(mechanic.group),
                 size: 52

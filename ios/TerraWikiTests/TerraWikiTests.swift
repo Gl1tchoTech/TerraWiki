@@ -10,8 +10,96 @@ final class TerraWikiTests: XCTestCase {
         let store = testStore
         XCTAssertFalse(store.items.isEmpty, "Items should load from the bundle")
         XCTAssertFalse(store.npcs.isEmpty, "NPCs should load from the bundle")
+        XCTAssertFalse(store.mobs.isEmpty, "Mobs should load from the bundle")
         XCTAssertFalse(store.bosses.isEmpty, "Bosses should load from the bundle")
         XCTAssertFalse(store.mechanics.isEmpty, "Mechanics should load from the bundle")
+    }
+
+    // MARK: Full NPC / mob / boss / mechanic database coverage
+
+    func testMobDatabaseCoversFullCatalog() {
+        XCTAssertGreaterThanOrEqual(testStore.mobs.count, 250, "Mob database should include the complete enemy catalog")
+    }
+
+    func testBossDatabaseCoversFullCatalog() {
+        XCTAssertGreaterThanOrEqual(testStore.bosses.count, 25, "Boss database should include every boss")
+    }
+
+    func testNpcDatabaseCoversAllTownNPCs() {
+        XCTAssertGreaterThanOrEqual(testStore.npcs.count, 30, "NPC database should include every town NPC")
+    }
+
+    func testMechanicDatabaseCoversAllMechanics() {
+        XCTAssertGreaterThanOrEqual(testStore.mechanics.count, 100, "Mechanic database should include every game mechanic")
+    }
+
+    func testRepresentativeMobsAndBossesExist() {
+        let store = testStore
+        for name in ["Zombie", "Blue Slime", "Demon Eye", "Giant Worm", "Harpy", "Wyvern", "Mimic"] {
+            XCTAssertNotNil(store.mob(named: name), "Mob '\(name)' should exist")
+        }
+        for name in ["King Slime", "Eye of Cthulhu", "Wall of Flesh", "Moon Lord", "Queen Slime", "Duke Fishron", "Betsy", "Mechdusa"] {
+            XCTAssertNotNil(store.boss(named: name), "Boss '\(name)' should exist")
+        }
+        for name in ["Guide", "Merchant", "Wizard", "Princess", "Skeleton Merchant", "Cat"] {
+            XCTAssertNotNil(store.npc(named: name), "NPC '\(name)' should exist")
+        }
+    }
+
+    func testMobStatsArePopulated() {
+        guard let zombie = testStore.mob(named: "Zombie") else {
+            XCTFail("Zombie should exist")
+            return
+        }
+        XCTAssertFalse(zombie.hp.isEmpty, "Mobs should list health")
+        XCTAssertNotNil(zombie.damage, "Mobs should list damage")
+        XCTAssertNotNil(zombie.biome, "Mobs should list an environment")
+        XCTAssertFalse(zombie.description.isEmpty)
+        XCTAssertFalse(zombie.drops.isEmpty, "Zombie should list drops")
+    }
+
+    func testBossHasSummonAndStrategy() {
+        guard let moonLord = testStore.boss(named: "Moon Lord") else {
+            XCTFail("Moon Lord should exist")
+            return
+        }
+        XCTAssertGreaterThan(moonLord.summon.count, 20, "Bosses should describe how they are summoned")
+        XCTAssertGreaterThan(moonLord.strategy.count, 20, "Bosses should include strategy advice")
+        XCTAssertFalse(moonLord.drops.isEmpty, "Bosses should list drops")
+    }
+
+    func testEveryCatalogEntryHasImageReference() {
+        for entry in testStore.mobs {
+            XCTAssertNotNil(entry.image, "Mob '\(entry.name)' should carry an image reference")
+        }
+        for entry in testStore.bosses {
+            XCTAssertNotNil(entry.image, "Boss '\(entry.name)' should carry an image reference")
+        }
+        for entry in testStore.npcs {
+            XCTAssertNotNil(entry.image, "NPC '\(entry.name)' should carry an image reference")
+        }
+    }
+
+    func testCatalogImageURLsAreBuildable() {
+        for entry in testStore.mobs.prefix(100) {
+            XCTAssertNotNil(wikiFileURL(for: entry), "Mob '\(entry.name)' should produce a valid image URL")
+        }
+        for entry in testStore.bosses.prefix(30) {
+            XCTAssertNotNil(wikiFileURL(for: entry), "Boss '\(entry.name)' should produce a valid image URL")
+        }
+        for entry in testStore.npcs.prefix(40) {
+            XCTAssertNotNil(wikiFileURL(for: entry), "NPC '\(entry.name)' should produce a valid image URL")
+        }
+    }
+
+    func testSearchFindsMobByName() {
+        let results = testStore.search("zombie")
+        XCTAssertTrue(results.contains { $0.name == "Zombie" && $0.category == .mobs }, "Search should find the Zombie mob")
+    }
+
+    func testSearchFindsMechanicBySummary() {
+        let results = testStore.search("fishing pole")
+        XCTAssertTrue(results.contains { $0.name == "Fishing" }, "Search should find the Fishing mechanic")
     }
 
     func testSearchFindsByName() {

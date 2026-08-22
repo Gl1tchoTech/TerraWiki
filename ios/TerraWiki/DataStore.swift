@@ -7,12 +7,14 @@ final class DataStore {
 
     let items: [Item]
     let npcs: [Npc]
+    let mobs: [Mob]
     let bosses: [Boss]
     let mechanics: [Mechanic]
 
     init(bundle: Bundle = .main) {
         items = Self.load("items.json", from: bundle, default: [])
         npcs = Self.load("npcs.json", from: bundle, default: [])
+        mobs = Self.load("mobs.json", from: bundle, default: [])
         bosses = Self.load("bosses.json", from: bundle, default: [])
         mechanics = Self.load("mechanics.json", from: bundle, default: [])
     }
@@ -27,12 +29,17 @@ final class DataStore {
         npcs.first { $0.name.caseInsensitiveCompare(name) == .orderedSame }
     }
 
+    func mob(named name: String) -> Mob? {
+        mobs.first { $0.name.caseInsensitiveCompare(name) == .orderedSame }
+    }
+
     func boss(named name: String) -> Boss? {
         bosses.first { $0.name.caseInsensitiveCompare(name) == .orderedSame }
     }
 
     func item(id: String) -> Item? { items.first { $0.id == id } }
     func npc(id: String) -> Npc? { npcs.first { $0.id == id } }
+    func mob(id: String) -> Mob? { mobs.first { $0.id == id } }
     func boss(id: String) -> Boss? { bosses.first { $0.id == id } }
     func mechanic(id: String) -> Mechanic? { mechanics.first { $0.id == id } }
 
@@ -80,6 +87,10 @@ final class DataStore {
             let s = score(name: n.name, blurb: "\(n.role) \(n.description)", tags: n.tags)
             if s > 0 { ranked.append(.init(result: .init(id: n.id, name: n.name, category: .npcs, blurb: n.description, group: "NPC"), score: s)) }
         }
+        for m in mobs {
+            let s = score(name: m.name, blurb: "\(m.tier) \(m.biome ?? "") \(m.description)", tags: m.tags)
+            if s > 0 { ranked.append(.init(result: .init(id: m.id, name: m.name, category: .mobs, blurb: m.description, group: m.tier), score: s)) }
+        }
         for b in bosses {
             let s = score(name: b.name, blurb: b.description, tags: b.tags)
             if s > 0 { ranked.append(.init(result: .init(id: b.id, name: b.name, category: .bosses, blurb: b.description, group: b.tier), score: s)) }
@@ -101,6 +112,7 @@ final class DataStore {
     func favorite(_ id: String) -> WikiCategory? {
         if items.contains(where: { $0.id == id }) { return .items }
         if npcs.contains(where: { $0.id == id }) { return .npcs }
+        if mobs.contains(where: { $0.id == id }) { return .mobs }
         if bosses.contains(where: { $0.id == id }) { return .bosses }
         if mechanics.contains(where: { $0.id == id }) { return .mechanics }
         return nil

@@ -119,16 +119,44 @@ func wikiFileURL(for name: String) -> URL? {
     return components.url
 }
 
-func wikiFileURL(for item: Item) -> URL? {
-    // Prefer the exact verified image file from the database; fall back to a name-derived guess.
-    let fileName = (item.image ?? (item.name.replacingOccurrences(of: " ", with: "_") + ".png"))
-        .replacingOccurrences(of: " ", with: "_")
+private func wikiFileURL(fileName: String) -> URL? {
     var components = URLComponents()
     components.scheme = "https"
     components.host = "terraria.wiki.gg"
     components.path = "/wiki/Special:FilePath/\(fileName)"
     components.queryItems = [URLQueryItem(name: "width", value: "192")]
     return components.url
+}
+
+func wikiFileURL(for item: Item) -> URL? {
+    // Prefer the exact verified image file from the database; fall back to a name-derived guess.
+    let fileName = (item.image ?? (item.name.replacingOccurrences(of: " ", with: "_") + ".png"))
+        .replacingOccurrences(of: " ", with: "_")
+    return wikiFileURL(fileName: fileName)
+}
+
+func wikiFileURL(for mob: Mob) -> URL? {
+    let fileName = (mob.image ?? (mob.name.replacingOccurrences(of: " ", with: "_") + ".png"))
+        .replacingOccurrences(of: " ", with: "_")
+    return wikiFileURL(fileName: fileName)
+}
+
+func wikiFileURL(for npc: Npc) -> URL? {
+    let fileName = (npc.image ?? (npc.name.replacingOccurrences(of: " ", with: "_") + ".png"))
+        .replacingOccurrences(of: " ", with: "_")
+    return wikiFileURL(fileName: fileName)
+}
+
+func wikiFileURL(for boss: Boss) -> URL? {
+    let fileName = (boss.image ?? (boss.name.replacingOccurrences(of: " ", with: "_") + ".png"))
+        .replacingOccurrences(of: " ", with: "_")
+    return wikiFileURL(fileName: fileName)
+}
+
+func wikiFileURL(for mechanic: Mechanic) -> URL? {
+    let fileName = (mechanic.image ?? (mechanic.name.replacingOccurrences(of: " ", with: "_") + ".png"))
+        .replacingOccurrences(of: " ", with: "_")
+    return wikiFileURL(fileName: fileName)
 }
 
 // MARK: - Icon helpers

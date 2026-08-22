@@ -1,331 +1,841 @@
 [
   {
-    "id": "guide",
-    "name": "Guide",
-    "role": "Starter advisor & crafting reference",
-    "spawnCondition": "Present in every new world from the start.",
-    "services": ["Crafting guide", "Tips", "Wall of Flesh summon hint"],
-    "sells": [],
-    "biome": "Forest",
-    "likes": ["Forest"],
-    "quotes": [
-      "You should stay indoors at night. It is very dangerous to be wandering around in the dark.",
-      "If you show me an item, I can tell you what you can make with it."
+    "id": "angler",
+    "name": "Angler",
+    "role": "Fishing quest giver",
+    "spawnCondition": "Found sleeping at an Ocean, on the shore or in the water.",
+    "services": [
+      "Daily fishing quests",
+      "Rewards"
     ],
-    "description": "The Guide greets every new adventurer. Show him any material and he lists every recipe it belongs to.",
-    "notes": "Throwing his Guide Voodoo Doll into Underworld lava summons the Wall of Flesh.",
-    "tags": ["town", "crafting", "starter"]
-  },
-  {
-    "id": "merchant",
-    "name": "Merchant",
-    "role": "General goods vendor",
-    "spawnCondition": "Arrives when all players combined hold 50 silver coins or more.",
-    "services": ["Sells basic tools, torches, and arrows"],
-    "sells": ["Torch", "Wooden Arrow", "Piggy Bank", "Bug Net"],
-    "biome": "Forest",
-    "likes": ["Forest"],
-    "description": "Sells everyday essentials. A reliable early source of torches, arrows, and the Bug Net for bait.",
-    "tags": ["town", "shop", "starter"]
-  },
-  {
-    "id": "nurse",
-    "name": "Nurse",
-    "role": "Healer",
-    "spawnCondition": "Arrives after you use your first Life Crystal (200 max HP).",
-    "services": ["Full heal for a coin fee"],
     "sells": [],
-    "biome": "Hallowed",
-    "likes": ["Hallowed"],
-    "description": "Instantly restores your health and cures debuffs — for a price. Boss-fight insurance, if you can reach her mid-fight.",
-    "tags": ["town", "healing", "utility"]
-  },
-  {
-    "id": "demolitionist",
-    "name": "Demolitionist",
-    "role": "Explosives vendor",
-    "spawnCondition": "Arrives once you have an explosive in your inventory.",
-    "services": ["Sells grenades, bombs, and dynamite"],
-    "sells": ["Grenade", "Bomb", "Dynamite", "Hellfire Arrow"],
-    "biome": "Underground",
-    "likes": ["Underground"],
-    "description": "Loves loud noises. Explosives are the fastest way to dig shafts and demolish obstacles.",
-    "tags": ["town", "shop", "explosives"]
+    "biome": "Ocean",
+    "likes": [
+      "Ocean"
+    ],
+    "description": "Hands out daily fishing quests. Completing them earns fishing gear, potions, and the Cell Phone ingredients.",
+    "image": "Angler.png",
+    "tags": [
+      "town",
+      "fishing",
+      "quests"
+    ]
   },
   {
     "id": "arms-dealer",
     "name": "Arms Dealer",
     "role": "Firearms & ammo vendor",
     "spawnCondition": "Arrives once you have a bullet-firing gun in your inventory.",
-    "services": ["Sells guns and ammunition"],
-    "sells": ["Musket Ball", "Minishark", "Flintlock Pistol"],
+    "services": [
+      "Sells guns and ammunition"
+    ],
+    "sells": [
+      "Musket Ball",
+      "Minishark",
+      "Flintlock Pistol"
+    ],
     "biome": "Desert",
-    "likes": ["Desert"],
+    "likes": [
+      "Desert"
+    ],
     "description": "Your one-stop shop for guns, bullets, and later some of the strongest ranged weapons.",
-    "tags": ["town", "shop", "ranged"]
+    "image": "Arms_Dealer.png",
+    "tags": [
+      "town",
+      "shop",
+      "ranged"
+    ]
   },
   {
-    "id": "dryad",
-    "name": "Dryad",
-    "role": "Nature guardian & evil-spread reporter",
-    "spawnCondition": "Arrives after any boss is defeated.",
-    "services": ["Reports world evil percentage", "Sells purification & nature items"],
-    "sells": ["Purification Powder", "Grass Seeds", "Planter Boxes"],
-    "biome": "Jungle",
-    "likes": ["Jungle"],
-    "description": "Guardian of the world's natural balance. Ask her about the status of Corruption, Crimson, and Hallow spread.",
-    "tags": ["town", "shop", "nature", "evil"]
-  },
-  {
-    "id": "painter",
-    "name": "Painter",
-    "role": "Paints & wallpapers vendor",
-    "spawnCondition": "Arrives after three other town NPCs have moved in.",
-    "services": ["Sells paint and wallpapers"],
-    "sells": ["Paint", "Wallpaper", "Paint Roller"],
-    "biome": "Jungle",
-    "likes": ["Jungle"],
-    "description": "Sells every color of paint for personalizing your builds.",
-    "tags": ["town", "shop", "building"]
-  },
-  {
-    "id": "dye-trader",
-    "name": "Dye Trader",
-    "role": "Dyes vendor",
-    "spawnCondition": "Arrives once you have a dye-related item or a Strange Plant.",
-    "services": ["Sells dyes & the Dye Vat"],
-    "sells": ["Dyes", "Dye Vat"],
-    "biome": "Desert",
-    "likes": ["Desert"],
-    "description": "Trades dyes to recolor your armor and accessories.",
-    "tags": ["town", "shop", "cosmetic"]
-  },
-  {
-    "id": "stylist",
-    "name": "Stylist",
-    "role": "Hair & styles vendor",
-    "spawnCondition": "Rescued from a Web-covered cocoon in a Spider Cave.",
-    "services": ["Changes hair style and color"],
+    "id": "bunny",
+    "name": "Bunny",
+    "role": "A harmless critter that spawns in the Forest biome",
+    "spawnCondition": "the critter The Bunny is a harmless critter that spawns in the Forest biome.",
+    "services": [],
     "sells": [],
-    "biome": "Ocean",
-    "likes": ["Ocean"],
-    "description": "Found tangled in cobwebs underground. Changes your hairstyle and color for free.",
-    "tags": ["town", "cosmetic", "rescue"]
+    "description": "the critter The Bunny is a harmless critter that spawns in the Forest biome. They are the most common critters in Terraria, and are usually the first ones a new player will see. During a Blood Moon, or when hit with Vile Powder/Vicious Powder, Bunnies will turn into Corrupt Bunnies or Vicious Bunnies. During the Halloween seasonal event, Bunnies spawn wearing Green Slime costumes, during Christmas, Bunnies will spawn wearing Santa costumes, and during a Party, Bunnies can spawn with Party Hats. Gem Bunnies spawn near towns in the Cavern layer.",
+    "image": "Bunny.gif",
+    "tags": [
+      "town"
+    ]
   },
   {
-    "id": "goblin-tinkerer",
-    "name": "Goblin Tinkerer",
-    "role": "Reforging & Tinkerer's Workshop",
-    "spawnCondition": "Rescued after a Goblin Army invasion, found Bound underground.",
-    "services": ["Reforges items", "Sells Rocket Boots & Tinkerer's Workshop"],
-    "sells": ["Rocket Boots", "Tinkerer's Workshop", "Ruler"],
-    "biome": "Underground",
-    "likes": ["Underground"],
-    "description": "Reforges your gear for random stat bonuses (or curses) and sells the Tinkerer's Workshop for accessory crafting.",
-    "tags": ["town", "shop", "reforge", "rescue"]
-  },
-  {
-    "id": "mechanic",
-    "name": "Mechanic",
-    "role": "Wiring & mechanisms vendor",
-    "spawnCondition": "Rescued from the Dungeon after defeating Skeletron.",
-    "services": ["Sells wire, switches, and mechanisms"],
-    "sells": ["Wire", "Switch", "Pressure Plate", "Actuator"],
-    "biome": "Snow",
-    "likes": ["Snow"],
-    "description": "Unlocks Terraria's wiring system — the heart of automated farms, traps, and secret doors.",
-    "tags": ["town", "shop", "wiring", "rescue"]
-  },
-  {
-    "id": "witch-doctor",
-    "name": "Witch Doctor",
-    "role": "Jungle & summoner vendor",
-    "spawnCondition": "Arrives after the Queen Bee is defeated.",
-    "services": ["Sells summoner gear & Imbuing Station"],
-    "sells": ["Imbuing Station", "Tiki Armor (Hardmode)", "Leaf Wings"],
-    "biome": "Jungle",
-    "likes": ["Jungle"],
-    "description": "A Jungle-dwelling mystic. Sells summoner equipment and, at night in Hardmode, powerful wings.",
-    "tags": ["town", "shop", "summoner", "jungle"]
+    "id": "cat",
+    "name": "Cat",
+    "role": "Town pet",
+    "spawnCondition": "Moves into a suitable house when the required conditions are met.",
+    "services": [],
+    "sells": [],
+    "description": "#REDIRECT Town Cat Town Cat",
+    "tags": [
+      "town",
+      "pet"
+    ]
   },
   {
     "id": "clothier",
     "name": "Clothier",
     "role": "Vanity clothing vendor",
     "spawnCondition": "Freed after Skeletron is defeated (the cursed Old Man).",
-    "services": ["Sells vanity outfits"],
-    "sells": ["Vanity costumes", "Familiar Clothes"],
+    "services": [
+      "Sells vanity outfits"
+    ],
+    "sells": [
+      "Vanity costumes",
+      "Familiar Clothes"
+    ],
     "biome": "Underground",
-    "likes": ["Underground"],
+    "likes": [
+      "Underground"
+    ],
     "description": "The Old Man, freed from his curse. Sells vanity outfits and drops the Clothier Voodoo Doll.",
-    "tags": ["town", "shop", "vanity"]
+    "image": "Clothier.png",
+    "tags": [
+      "town",
+      "shop",
+      "vanity"
+    ]
   },
   {
-    "id": "angler",
-    "name": "Angler",
-    "role": "Fishing quest giver",
-    "spawnCondition": "Found sleeping at an Ocean, on the shore or in the water.",
-    "services": ["Daily fishing quests", "Rewards"],
+    "id": "clumsy-slime",
+    "name": "Clumsy Slime",
+    "role": "Town pet",
+    "spawnCondition": "Moves into a suitable house when the required conditions are met.",
+    "services": [],
     "sells": [],
-    "biome": "Ocean",
-    "likes": ["Ocean"],
-    "description": "Hands out daily fishing quests. Completing them earns fishing gear, potions, and the Cell Phone ingredients.",
-    "tags": ["town", "fishing", "quests"]
+    "description": "#REDIRECT Town Slimes 1.4.4 Category:NPC redirects",
+    "tags": [
+      "town",
+      "pet"
+    ]
   },
   {
-    "id": "zoologist",
-    "name": "Zoologist",
-    "role": "Critters & mounts vendor",
-    "spawnCondition": "Arrives after you fill 10% of the Bestiary.",
-    "services": ["Sells critter items and mounts"],
-    "sells": ["Critter-themed gear", "Mounts", "Guide to Critter Companionship"],
-    "biome": "Forest",
-    "likes": ["Forest"],
-    "description": "A bestiary enthusiast. Sell her creatures and buy critter-related equipment and mounts.",
-    "tags": ["town", "shop", "mounts", "bestiary"]
-  },
-  {
-    "id": "golfer",
-    "name": "Golfer",
-    "role": "Golf vendor & guide",
-    "spawnCondition": "Found in the Underground Desert.",
-    "services": ["Sells golf clubs and accessories"],
-    "sells": ["Golf clubs", "Golf balls", "Golf trophies"],
-    "biome": "Forest",
-    "likes": ["Forest"],
-    "description": "A laid-back golfer hiding in the Underground Desert. Sells everything you need for Terraria golf.",
-    "tags": ["town", "shop", "minigame"]
-  },
-  {
-    "id": "tavernkeep",
-    "name": "Tavernkeep",
-    "role": "Old One's Army vendor",
-    "spawnCondition": "Found unconscious after the Eater of Worlds or Brain of Cthulhu is defeated.",
-    "services": ["Sells sentry summon weapons & Defender Medals rewards"],
-    "sells": ["Sentry staffs", "Etherian gear", "Defender's Forge"],
-    "biome": "Hallowed",
-    "likes": ["Hallowed"],
-    "description": "Runs the Old One's Army event. Spend Defender Medals on sentry weapons and his unique forge.",
-    "tags": ["town", "shop", "event", "sentry"]
-  },
-  {
-    "id": "party-girl",
-    "name": "Party Girl",
-    "role": "Celebrations & fireworks vendor",
-    "spawnCondition": "Randomly arrives once you have a certain number of NPCs.",
-    "services": ["Sells party supplies & fireworks"],
-    "sells": ["Confetti", "Fireworks", "Party Center"],
-    "biome": "Hallowed",
-    "likes": ["Hallowed"],
-    "description": "Brings the party wherever she goes, selling confetti, fireworks, and party gear.",
-    "tags": ["town", "shop", "cosmetic"]
-  },
-  {
-    "id": "pirate",
-    "name": "Pirate",
-    "role": "Pirate-themed vendor",
-    "spawnCondition": "Arrives after the Pirate Invasion is defeated.",
-    "services": ["Sells pirate items & cannon"],
-    "sells": ["Cannon", "Pirate outfits"],
-    "biome": "Ocean",
-    "likes": ["Ocean"],
-    "description": "A salty sea dog who sells cannons and pirate gear after you repel the Pirate Invasion.",
-    "tags": ["town", "shop", "hardmode"]
-  },
-  {
-    "id": "steampunker",
-    "name": "Steampunker",
-    "role": "Tech & solution vendor",
-    "spawnCondition": "Arrives in Hardmode after a mechanical boss is defeated.",
-    "services": ["Sells Clentaminator & solutions", "Teleporter"],
-    "sells": ["Clentaminator", "Green Solution", "Teleporter", "Jetpack"],
-    "biome": "Desert",
-    "likes": ["Desert"],
-    "description": "The key to controlling world evil. Her Clentaminator and solutions spread or cleanse biomes.",
-    "tags": ["town", "shop", "hardmode", "evil"]
+    "id": "cool-slime",
+    "name": "Cool Slime",
+    "role": "Town pet",
+    "spawnCondition": "Moves into a suitable house when the required conditions are met.",
+    "services": [],
+    "sells": [],
+    "description": "#REDIRECT Town Slimes 1.4.4 Category:NPC redirects",
+    "tags": [
+      "town",
+      "pet"
+    ]
   },
   {
     "id": "cyborg",
     "name": "Cyborg",
     "role": "Futuristic vendor",
     "spawnCondition": "Arrives in Hardmode after Plantera is defeated.",
-    "services": ["Sells rockets & high-tech gear"],
-    "sells": ["Rockets", "Proximity Mine Launcher"],
+    "services": [
+      "Sells rockets & high-tech gear"
+    ],
+    "sells": [
+      "Rockets",
+      "Proximity Mine Launcher"
+    ],
     "biome": "Snow",
-    "likes": ["Snow"],
+    "likes": [
+      "Snow"
+    ],
     "description": "A robot vendor selling rockets and advanced launchers late in Hardmode.",
-    "tags": ["town", "shop", "hardmode"]
+    "image": "Cyborg.png",
+    "tags": [
+      "town",
+      "shop",
+      "hardmode"
+    ]
   },
   {
-    "id": "tax-collector",
-    "name": "Tax Collector",
-    "role": "Passive income",
-    "spawnCondition": "Purified from a Tortured Soul in the Underworld.",
-    "services": ["Collects taxes from other NPCs"],
+    "id": "demolitionist",
+    "name": "Demolitionist",
+    "role": "Explosives vendor",
+    "spawnCondition": "Arrives once you have an explosive in your inventory.",
+    "services": [
+      "Sells grenades, bombs, and dynamite"
+    ],
+    "sells": [
+      "Grenade",
+      "Bomb",
+      "Dynamite",
+      "Hellfire Arrow"
+    ],
+    "biome": "Underground",
+    "likes": [
+      "Underground"
+    ],
+    "description": "Loves loud noises. Explosives are the fastest way to dig shafts and demolish obstacles.",
+    "image": "Demolitionist.png",
+    "tags": [
+      "town",
+      "shop",
+      "explosives"
+    ]
+  },
+  {
+    "id": "diva-slime",
+    "name": "Diva Slime",
+    "role": "Town pet",
+    "spawnCondition": "Moves into a suitable house when the required conditions are met.",
+    "services": [],
     "sells": [],
-    "biome": "Snow",
-    "likes": ["Snow"],
-    "description": "Gathers a small amount of coins from your other town NPCs. Passive income, literally.",
-    "tags": ["town", "coins", "utility"]
+    "description": "#REDIRECT Town Slimes 1.4.4 Category:NPC redirects",
+    "tags": [
+      "town",
+      "pet"
+    ]
   },
   {
-    "id": "truffle",
-    "name": "Truffle",
-    "role": "Mushroom vendor",
-    "spawnCondition": "Moves into a house in a surface Glowing Mushroom biome (Hardmode).",
-    "services": ["Sells mushroom-themed items"],
-    "sells": ["Mushroom Spear", "Hammush", "Autohammer"],
-    "biome": "Mushroom",
-    "likes": ["Mushroom"],
-    "description": "A sentient mushroom who only settles in a surface Glowing Mushroom biome. Sells the Autohammer for Shroomite.",
-    "tags": ["town", "shop", "hardmode", "mushroom"]
+    "id": "dog",
+    "name": "Dog",
+    "role": "Town pet",
+    "spawnCondition": "Moves into a suitable house when the required conditions are met.",
+    "services": [],
+    "sells": [],
+    "description": "#REDIRECT Town Dog Town Dog",
+    "tags": [
+      "town",
+      "pet"
+    ]
   },
   {
-    "id": "santa-claus",
-    "name": "Santa Claus",
-    "role": "Seasonal vendor",
-    "spawnCondition": "Arrives during the Frost Legion-adjacent Christmas season (after Frost Legion).",
-    "services": ["Sells Christmas items"],
-    "sells": ["Christmas decorations", "Festive gear"],
+    "id": "dryad",
+    "name": "Dryad",
+    "role": "Nature guardian & evil-spread reporter",
+    "spawnCondition": "Arrives after any boss is defeated.",
+    "services": [
+      "Reports world evil percentage",
+      "Sells purification & nature items"
+    ],
+    "sells": [
+      "Purification Powder",
+      "Grass Seeds",
+      "Planter Boxes"
+    ],
+    "biome": "Jungle",
+    "likes": [
+      "Jungle"
+    ],
+    "description": "Guardian of the world's natural balance. Ask her about the status of Corruption, Crimson, and Hallow spread.",
+    "image": "Dryad.png",
+    "tags": [
+      "town",
+      "shop",
+      "nature",
+      "evil"
+    ]
+  },
+  {
+    "id": "dye-trader",
+    "name": "Dye Trader",
+    "role": "Dyes vendor",
+    "spawnCondition": "Arrives once you have a dye-related item or a Strange Plant.",
+    "services": [
+      "Sells dyes & the Dye Vat"
+    ],
+    "sells": [
+      "Dyes",
+      "Dye Vat"
+    ],
+    "biome": "Desert",
+    "likes": [
+      "Desert"
+    ],
+    "description": "Trades dyes to recolor your armor and accessories.",
+    "image": "Dye_Trader.png",
+    "tags": [
+      "town",
+      "shop",
+      "cosmetic"
+    ]
+  },
+  {
+    "id": "elder-slime",
+    "name": "Elder Slime",
+    "role": "Town pet",
+    "spawnCondition": "Moves into a suitable house when the required conditions are met.",
+    "services": [],
+    "sells": [],
+    "description": "#REDIRECT Town Slimes 1.4.4 Category:NPC redirects",
+    "tags": [
+      "town",
+      "pet"
+    ]
+  },
+  {
+    "id": "goblin-tinkerer",
+    "name": "Goblin Tinkerer",
+    "role": "Reforging & Tinkerer's Workshop",
+    "spawnCondition": "Rescued after a Goblin Army invasion, found Bound underground.",
+    "services": [
+      "Reforges items",
+      "Sells Rocket Boots & Tinkerer's Workshop"
+    ],
+    "sells": [
+      "Rocket Boots",
+      "Tinkerer's Workshop",
+      "Ruler"
+    ],
+    "biome": "Underground",
+    "likes": [
+      "Underground"
+    ],
+    "description": "Reforges your gear for random stat bonuses (or curses) and sells the Tinkerer's Workshop for accessory crafting.",
+    "image": "Goblin_Tinkerer.png",
+    "tags": [
+      "town",
+      "shop",
+      "reforge",
+      "rescue"
+    ]
+  },
+  {
+    "id": "golfer",
+    "name": "Golfer",
+    "role": "Golf vendor & guide",
+    "spawnCondition": "Found in the Underground Desert.",
+    "services": [
+      "Sells golf clubs and accessories"
+    ],
+    "sells": [
+      "Golf clubs",
+      "Golf balls",
+      "Golf trophies"
+    ],
+    "biome": "Forest",
+    "likes": [
+      "Forest"
+    ],
+    "description": "A laid-back golfer hiding in the Underground Desert. Sells everything you need for Terraria golf.",
+    "image": "Golfer.png",
+    "tags": [
+      "town",
+      "shop",
+      "minigame"
+    ]
+  },
+  {
+    "id": "guide",
+    "name": "Guide",
+    "role": "Starter advisor & crafting reference",
+    "spawnCondition": "Present in every new world from the start.",
+    "services": [
+      "Crafting guide",
+      "Tips",
+      "Wall of Flesh summon hint"
+    ],
+    "sells": [],
+    "biome": "Forest",
+    "likes": [
+      "Forest"
+    ],
+    "quotes": [
+      "You should stay indoors at night. It is very dangerous to be wandering around in the dark.",
+      "If you show me an item, I can tell you what you can make with it."
+    ],
+    "description": "The Guide greets every new adventurer. Show him any material and he lists every recipe it belongs to.",
+    "notes": "Throwing his Guide Voodoo Doll into Underworld lava summons the Wall of Flesh.",
+    "image": "Guide.png",
+    "tags": [
+      "town",
+      "crafting",
+      "starter"
+    ]
+  },
+  {
+    "id": "mechanic",
+    "name": "Mechanic",
+    "role": "Wiring & mechanisms vendor",
+    "spawnCondition": "Rescued from the Dungeon after defeating Skeletron.",
+    "services": [
+      "Sells wire, switches, and mechanisms"
+    ],
+    "sells": [
+      "Wire",
+      "Switch",
+      "Pressure Plate",
+      "Actuator"
+    ],
     "biome": "Snow",
-    "likes": ["Snow"],
-    "description": "A seasonal visitor who sells holiday items while Christmas lasts.",
-    "tags": ["town", "shop", "seasonal"]
+    "likes": [
+      "Snow"
+    ],
+    "description": "Unlocks Terraria's wiring system — the heart of automated farms, traps, and secret doors.",
+    "image": "Mechanic.png",
+    "tags": [
+      "town",
+      "shop",
+      "wiring",
+      "rescue"
+    ]
+  },
+  {
+    "id": "merchant",
+    "name": "Merchant",
+    "role": "General goods vendor",
+    "spawnCondition": "Arrives when all players combined hold 50 silver coins or more.",
+    "services": [
+      "Sells basic tools, torches, and arrows"
+    ],
+    "sells": [
+      "Torch",
+      "Wooden Arrow",
+      "Piggy Bank",
+      "Bug Net"
+    ],
+    "biome": "Forest",
+    "likes": [
+      "Forest"
+    ],
+    "description": "Sells everyday essentials. A reliable early source of torches, arrows, and the Bug Net for bait.",
+    "image": "Merchant.png",
+    "tags": [
+      "town",
+      "shop",
+      "starter"
+    ]
+  },
+  {
+    "id": "mystic-slime",
+    "name": "Mystic Slime",
+    "role": "Town pet",
+    "spawnCondition": "Moves into a suitable house when the required conditions are met.",
+    "services": [],
+    "sells": [],
+    "description": "#REDIRECT Town Slimes 1.4.4 Category:NPC redirects",
+    "tags": [
+      "town",
+      "pet"
+    ]
+  },
+  {
+    "id": "nerdy-slime",
+    "name": "Nerdy Slime",
+    "role": "Town pet",
+    "spawnCondition": "Moves into a suitable house when the required conditions are met.",
+    "services": [],
+    "sells": [],
+    "description": "#REDIRECT Town Slimes 1.4.4 Category:NPC redirects",
+    "tags": [
+      "town",
+      "pet"
+    ]
+  },
+  {
+    "id": "nurse",
+    "name": "Nurse",
+    "role": "Healer",
+    "spawnCondition": "Arrives after you use your first Life Crystal (200 max HP).",
+    "services": [
+      "Full heal for a coin fee"
+    ],
+    "sells": [],
+    "biome": "Hallowed",
+    "likes": [
+      "Hallowed"
+    ],
+    "description": "Instantly restores your health and cures debuffs — for a price. Boss-fight insurance, if you can reach her mid-fight.",
+    "image": "Nurse.png",
+    "tags": [
+      "town",
+      "healing",
+      "utility"
+    ]
+  },
+  {
+    "id": "old-man",
+    "name": "Old Man",
+    "role": "An NPC whose primary function is to summon Skeletron, and can be found at the Dungeon's entrance",
+    "spawnCondition": "The Old Man is an NPC whose primary function is to summon Skeletron, and can be found at the Dungeon's entrance.",
+    "services": [],
+    "sells": [],
+    "description": "The Old Man is an NPC whose primary function is to summon Skeletron, and can be found at the Dungeon's entrance. When spoken to at night, the Old Man will give the player the option to , which summons Skeletron. When spoken to during the day, the Old Man will tell the player to return at night. He will also judge players with 300 maximum health (15 hearts) or less, or 10 defense or less as unworthy, but still allows them to summon Skeletron. The Dungeon can be entered without defeating Skeletron, but traveling deeper than ground level within it (below zero depth) will spawn Dungeon Guardians that will most likely kill the player on contact (see Guide:Dungeon Guardian strategies). When Skeletron is defeated, the Old Man is freed from his curse and will arrive as the Clothier (as long as a vacant house is available), in addition to allowing access to the Dungeon.",
+    "image": "Old_Man.png",
+    "tags": [
+      "town"
+    ]
+  },
+  {
+    "id": "painter",
+    "name": "Painter",
+    "role": "Paints & wallpapers vendor",
+    "spawnCondition": "Arrives after three other town NPCs have moved in.",
+    "services": [
+      "Sells paint and wallpapers"
+    ],
+    "sells": [
+      "Paint",
+      "Wallpaper",
+      "Paint Roller"
+    ],
+    "biome": "Jungle",
+    "likes": [
+      "Jungle"
+    ],
+    "description": "Sells every color of paint for personalizing your builds.",
+    "image": "Painter.png",
+    "tags": [
+      "town",
+      "shop",
+      "building"
+    ]
+  },
+  {
+    "id": "party-girl",
+    "name": "Party Girl",
+    "role": "Celebrations & fireworks vendor",
+    "spawnCondition": "Randomly arrives once you have a certain number of NPCs.",
+    "services": [
+      "Sells party supplies & fireworks"
+    ],
+    "sells": [
+      "Confetti",
+      "Fireworks",
+      "Party Center"
+    ],
+    "biome": "Hallowed",
+    "likes": [
+      "Hallowed"
+    ],
+    "description": "Brings the party wherever she goes, selling confetti, fireworks, and party gear.",
+    "image": "Party_Girl.png",
+    "tags": [
+      "town",
+      "shop",
+      "cosmetic"
+    ]
+  },
+  {
+    "id": "pirate",
+    "name": "Pirate",
+    "role": "Pirate-themed vendor",
+    "spawnCondition": "Arrives after the Pirate Invasion is defeated.",
+    "services": [
+      "Sells pirate items & cannon"
+    ],
+    "sells": [
+      "Cannon",
+      "Pirate outfits"
+    ],
+    "biome": "Ocean",
+    "likes": [
+      "Ocean"
+    ],
+    "description": "A salty sea dog who sells cannons and pirate gear after you repel the Pirate Invasion.",
+    "image": "Pirate.png",
+    "tags": [
+      "town",
+      "shop",
+      "hardmode"
+    ]
   },
   {
     "id": "princess",
     "name": "Princess",
     "role": "Royal vendor",
     "spawnCondition": "Arrives once every other town NPC has moved in.",
-    "services": ["Sells royal and unique items"],
-    "sells": ["Royal gear", "Music Boxes", "Slime Staff (rare)"],
+    "services": [
+      "Sells royal and unique items"
+    ],
+    "sells": [
+      "Royal gear",
+      "Music Boxes",
+      "Slime Staff (rare)"
+    ],
     "biome": "Loves all biomes",
-    "likes": ["All biomes"],
+    "likes": [
+      "All biomes"
+    ],
     "description": "The final town NPC. She loves every biome and sells a collection of unique royal items.",
-    "tags": ["town", "shop", "late-game"]
+    "image": "Princess.png",
+    "tags": [
+      "town",
+      "shop",
+      "late-game"
+    ]
   },
   {
-    "id": "travelling-merchant",
-    "name": "Travelling Merchant",
-    "role": "Rotating special vendor",
-    "spawnCondition": "Randomly visits during the day if enough NPCs are present.",
-    "services": ["Sells rotating rare stock"],
-    "sells": ["Rotating rare items"],
-    "biome": "Any",
-    "likes": ["Any"],
-    "description": "A wandering merchant with a random inventory of rare items. Always worth checking when he shows up.",
-    "tags": ["special", "shop", "random"]
+    "id": "santa-claus",
+    "name": "Santa Claus",
+    "role": "Seasonal vendor",
+    "spawnCondition": "Arrives during the Frost Legion-adjacent Christmas season (after Frost Legion).",
+    "services": [
+      "Sells Christmas items"
+    ],
+    "sells": [
+      "Christmas decorations",
+      "Festive gear"
+    ],
+    "biome": "Snow",
+    "likes": [
+      "Snow"
+    ],
+    "description": "A seasonal visitor who sells holiday items while Christmas lasts.",
+    "image": "Santa_Claus.png",
+    "tags": [
+      "town",
+      "shop",
+      "seasonal"
+    ]
   },
   {
     "id": "skeleton-merchant",
     "name": "Skeleton Merchant",
     "role": "Underground vendor",
     "spawnCondition": "Randomly found deep underground; despawns if you leave.",
-    "services": ["Sells spelunking supplies"],
-    "sells": ["Glowsticks", "Bone Torches", "Magic Lantern"],
+    "services": [
+      "Sells spelunking supplies"
+    ],
+    "sells": [
+      "Glowsticks",
+      "Bone Torches",
+      "Magic Lantern"
+    ],
     "biome": "Underground",
-    "likes": ["Underground"],
+    "likes": [
+      "Underground"
+    ],
     "description": "A friendly skeleton trading underground. Sells Glowsticks and other cave essentials.",
-    "tags": ["special", "shop", "underground"]
+    "tags": [
+      "special",
+      "shop",
+      "underground"
+    ]
+  },
+  {
+    "id": "squire-slime",
+    "name": "Squire Slime",
+    "role": "Town pet",
+    "spawnCondition": "Moves into a suitable house when the required conditions are met.",
+    "services": [],
+    "sells": [],
+    "description": "#REDIRECT Town Slimes#Types 1.4.4 Category:NPC redirects",
+    "tags": [
+      "town",
+      "pet"
+    ]
+  },
+  {
+    "id": "steampunker",
+    "name": "Steampunker",
+    "role": "Tech & solution vendor",
+    "spawnCondition": "Arrives in Hardmode after a mechanical boss is defeated.",
+    "services": [
+      "Sells Clentaminator & solutions",
+      "Teleporter"
+    ],
+    "sells": [
+      "Clentaminator",
+      "Green Solution",
+      "Teleporter",
+      "Jetpack"
+    ],
+    "biome": "Desert",
+    "likes": [
+      "Desert"
+    ],
+    "description": "The key to controlling world evil. Her Clentaminator and solutions spread or cleanse biomes.",
+    "image": "Steampunker.png",
+    "tags": [
+      "town",
+      "shop",
+      "hardmode",
+      "evil"
+    ]
+  },
+  {
+    "id": "stylist",
+    "name": "Stylist",
+    "role": "Hair & styles vendor",
+    "spawnCondition": "Rescued from a Web-covered cocoon in a Spider Cave.",
+    "services": [
+      "Changes hair style and color"
+    ],
+    "sells": [],
+    "biome": "Ocean",
+    "likes": [
+      "Ocean"
+    ],
+    "description": "Found tangled in cobwebs underground. Changes your hairstyle and color for free.",
+    "image": "Stylist.png",
+    "tags": [
+      "town",
+      "cosmetic",
+      "rescue"
+    ]
+  },
+  {
+    "id": "surly-slime",
+    "name": "Surly Slime",
+    "role": "Town pet",
+    "spawnCondition": "Moves into a suitable house when the required conditions are met.",
+    "services": [],
+    "sells": [],
+    "description": "#REDIRECT Town Slimes 1.4.4 Category:NPC redirects",
+    "tags": [
+      "town",
+      "pet"
+    ]
+  },
+  {
+    "id": "tavernkeep",
+    "name": "Tavernkeep",
+    "role": "Old One's Army vendor",
+    "spawnCondition": "Found unconscious after the Eater of Worlds or Brain of Cthulhu is defeated.",
+    "services": [
+      "Sells sentry summon weapons & Defender Medals rewards"
+    ],
+    "sells": [
+      "Sentry staffs",
+      "Etherian gear",
+      "Defender's Forge"
+    ],
+    "biome": "Hallowed",
+    "likes": [
+      "Hallowed"
+    ],
+    "description": "Runs the Old One's Army event. Spend Defender Medals on sentry weapons and his unique forge.",
+    "image": "Tavernkeep.png",
+    "tags": [
+      "town",
+      "shop",
+      "event",
+      "sentry"
+    ]
+  },
+  {
+    "id": "tax-collector",
+    "name": "Tax Collector",
+    "role": "Passive income",
+    "spawnCondition": "Purified from a Tortured Soul in the Underworld.",
+    "services": [
+      "Collects taxes from other NPCs"
+    ],
+    "sells": [],
+    "biome": "Snow",
+    "likes": [
+      "Snow"
+    ],
+    "description": "Gathers a small amount of coins from your other town NPCs. Passive income, literally.",
+    "image": "Tax_Collector.png",
+    "tags": [
+      "town",
+      "coins",
+      "utility"
+    ]
+  },
+  {
+    "id": "traveling-merchant",
+    "name": "Traveling Merchant",
+    "role": "Rotating special vendor",
+    "spawnCondition": "Randomly visits during the day if enough NPCs are present.",
+    "services": [
+      "Sells rotating rare stock"
+    ],
+    "sells": [
+      "Rotating rare items"
+    ],
+    "biome": "Any",
+    "likes": [
+      "Any"
+    ],
+    "description": "A wandering merchant with a random inventory of rare items. Always worth checking when he shows up.",
+    "image": "Traveling_Merchant.png",
+    "tags": [
+      "special",
+      "shop",
+      "random"
+    ]
+  },
+  {
+    "id": "truffle",
+    "name": "Truffle",
+    "role": "Mushroom vendor",
+    "spawnCondition": "Moves into a house in a surface Glowing Mushroom biome (Hardmode).",
+    "services": [
+      "Sells mushroom-themed items"
+    ],
+    "sells": [
+      "Mushroom Spear",
+      "Hammush",
+      "Autohammer"
+    ],
+    "biome": "Mushroom",
+    "likes": [
+      "Mushroom"
+    ],
+    "description": "A sentient mushroom who only settles in a surface Glowing Mushroom biome. Sells the Autohammer for Shroomite.",
+    "image": "Truffle.png",
+    "tags": [
+      "town",
+      "shop",
+      "hardmode",
+      "mushroom"
+    ]
+  },
+  {
+    "id": "witch-doctor",
+    "name": "Witch Doctor",
+    "role": "Jungle & summoner vendor",
+    "spawnCondition": "Arrives after the Queen Bee is defeated.",
+    "services": [
+      "Sells summoner gear & Imbuing Station"
+    ],
+    "sells": [
+      "Imbuing Station",
+      "Tiki Armor (Hardmode)",
+      "Leaf Wings"
+    ],
+    "biome": "Jungle",
+    "likes": [
+      "Jungle"
+    ],
+    "description": "A Jungle-dwelling mystic. Sells summoner equipment and, at night in Hardmode, powerful wings.",
+    "image": "Witch_Doctor.png",
+    "tags": [
+      "town",
+      "shop",
+      "summoner",
+      "jungle"
+    ]
+  },
+  {
+    "id": "wizard",
+    "name": "Wizard",
+    "role": "A Hardmode NPC vendor who sells magic-related items",
+    "spawnCondition": "He will move in once the following criteria have been met: * There is an available vacant house.",
+    "services": [],
+    "sells": [],
+    "description": "The Wizard is a Hardmode NPC vendor who sells magic-related items. He will move in once the following criteria have been met: * There is an available vacant house. * Rescuing him as the Bound Wizard, who can be rarely encountered in the Cavern layer once the Wall of Flesh has been defeated. Interacting with him in this state with will free him. If the Bound Wizard is killed, he will still be able to respawn afterwards; if the Wizard NPC is killed, he will move in again after some time as long as there are vacant houses. The Wizard will defend himself against nearby enemies by casting fireballs similar to those of the Flower of Fire, which damage and inflict the On Fire! debuff on enemies for 5 seconds. He deals 18 / 27 / 31 damage at the start of the game, and gains various stat boosts as the player progresses. The Wizard occasionally replaces his regular quote with a comment about the player's luck, and this is the only way to estimate a player's luck value in the game.",
+    "image": "Wizard.png",
+    "tags": [
+      "town"
+    ]
+  },
+  {
+    "id": "zoologist",
+    "name": "Zoologist",
+    "role": "Critters & mounts vendor",
+    "spawnCondition": "Arrives after you fill 10% of the Bestiary.",
+    "services": [
+      "Sells critter items and mounts"
+    ],
+    "sells": [
+      "Critter-themed gear",
+      "Mounts",
+      "Guide to Critter Companionship"
+    ],
+    "biome": "Forest",
+    "likes": [
+      "Forest"
+    ],
+    "description": "A bestiary enthusiast. Sell her creatures and buy critter-related equipment and mounts.",
+    "image": "Zoologist.png",
+    "tags": [
+      "town",
+      "shop",
+      "mounts",
+      "bestiary"
+    ]
   }
 ]

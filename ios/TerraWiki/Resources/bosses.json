@@ -1,207 +1,708 @@
 [
   {
-    "id": "king-slime",
-    "name": "King Slime",
-    "tier": "Pre-Hardmode",
-    "summon": "Slime Crown (20 Gel + Gold/Platinum Crown at a Demon Altar), or by defeating 150 slimes during a Slime Rain.",
-    "hp": "2,000 (Classic)",
-    "drops": ["Ninja armor pieces", "Slime Hook", "Royal Gel (Expert)"],
-    "description": "A giant slime wearing a crown. The most approachable boss and a gentle introduction to boss fights.",
-    "strategy": "Keep moving to avoid contact damage and hit him from range. He splits into smaller slimes on defeat.",
-    "tags": ["slime", "starter", "event"]
-  },
-  {
-    "id": "eye-of-cthulhu",
-    "name": "Eye of Cthulhu",
-    "tier": "Pre-Hardmode",
-    "summon": "Suspicious Looking Eye (found in chests, or 6 Lens at a Demon/Crimson Altar) at night. May also spawn naturally once you reach 200 HP.",
-    "hp": "2,800 (Classic)",
-    "drops": ["Demonite/Crimtane Ore", "Shield of Cthulhu (Expert)", "Badger's Hat"],
-    "description": "A flying, bloodshot eye and the classic first real boss. Speeds up and charges as its health drops.",
-    "strategy": "Use an arena of platforms and ranged weapons. Dodge its dashes in phase two; the Shield of Cthulhu dash (Expert) makes this trivial.",
-    "tags": ["eye", "starter", "corruption", "crimson"]
-  },
-  {
-    "id": "eater-of-worlds",
-    "name": "Eater of Worlds",
-    "tier": "Pre-Hardmode",
-    "summon": "Worm Food (15 Vile Powder + 30 Rotten Chunk at a Demon Altar), or break 3 Shadow Orbs in the Corruption.",
-    "hp": "Segmented (10,050 total, Classic)",
-    "drops": ["Shadow Scale", "Demonite Ore", "Worm Scarf (Expert)"],
-    "description": "A colossal burrowing worm that splits into smaller worms when segments are destroyed. The Corruption's boss.",
-    "strategy": "Piercing weapons shred its many segments. Fight on the surface or in a large open cavern to avoid being swarmed.",
-    "tags": ["worm", "corruption", "pre-hardmode"]
+    "id": "betsy",
+    "name": "Betsy",
+    "tier": "Hardmode",
+    "summon": "Upon being summoned, Betsy cycles through the following attacks in the following order. ** This attack will not summon Etherian Wyverns if there are already at least five Etherian Wyverns currently existing in the world.",
+    "hp": "50,000",
+    "biome": "Old One's Army",
+    "drops": [
+      "Aerial Bane (25%)",
+      "Sky Dragon's Fury (25%)",
+      "Betsy's Wrath (25%)",
+      "Flying Dragon (25%)",
+      "Betsy's Wings (25%)",
+      "Betsy Mask (14.29%)",
+      "Betsy Trophy (10%)",
+      "Treasure Bag (Betsy) (100%)",
+      "Betsy's Egg (25%)",
+      "Betsy Relic (100%)"
+    ],
+    "description": "Old One's Army Betsy is a Hardmode, post-Golem mini-boss that spawns once during the seventh and final wave of Tier 3 of the Old One's Army event. Like all enemies in the Old One's Army, she will despawn upon completion or failure of the event. Defeating Betsy is the only way to complete the final wave of the event successfully.",
+    "strategy": "The On Fire! debuff is a major source of damage. Note that it negates life regen from Nebula armor's set bonus – hence, if the player is unable to avoid Betsy's flame breath attack, it might make the armor ineffective. The Obsidian Skin Potion can prevent the debuff. A floating pool of water (utilizing Bubbles) can be used to cancel the On Fire! debuff. Honey will also cancel the debuff and also give extra life regeneration, but slows down the player's movement while submerged in it unless they are using Flipper Potions. This does not apply to life-stealing effects such as the Spectre armor Hood set bonus or the Vampire Knives. It does not affect the Life Drain's health regen boost either.",
+    "image": "Animated Betsy.gif",
+    "tags": [
+      "boss",
+      "old-one-s-army"
+    ]
   },
   {
     "id": "brain-of-cthulhu",
     "name": "Brain of Cthulhu",
     "tier": "Pre-Hardmode",
-    "summon": "Bloody Spine (15 Vertebrae + 30 Vicious Powder at a Crimson Altar), or break 3 Crimson Hearts.",
-    "hp": "1,000 + 20 Creepers (Classic)",
-    "drops": ["Tissue Sample", "Crimtane Ore", "Brain of Confusion (Expert)"],
-    "description": "A floating brain surrounded by Creepers. The Crimson's boss and the Eater of Worlds' counterpart.",
-    "strategy": "Kill the Creepers first to expose the vulnerable brain, then burst it down. A strong piercing or AoE weapon helps.",
-    "tags": ["brain", "crimson", "pre-hardmode"]
+    "summon": "It can also be summoned manually by using a Bloody Spine in The Crimson or Underground Crimson, at any time.",
+    "hp": "1,250",
+    "biome": "The Crimson / Underground Crimson",
+    "drops": [],
+    "description": "The Brain of Cthulhu is a pre-Hardmode, Crimson-themed boss. Fighting the boss and its attendant Creepers is the only way to obtain Tissue Samples, and is one of the ways to obtain usable quantities of Crimtane Ore. Defeating the Brain of Cthulhu for the first time also allows the Tavernkeep NPC to spawn as the Unconscious Man, and allows meteorites to land. The Brain of Cthulhu is the Crimson counterpart to The Corruption's Eater of Worlds. Unlike its Corruption counterpart, however, it does not have a mechanical equivalent in Hardmode.",
+    "strategy": "Creepers have low individual health and are especially susceptible to the On Fire! and Frostburn debuffs. Weapons that inflict these debuffs can make quick work of them. Grenades and other splash damage weapons can kill the Creepers very quickly, as they will bunch up often. Since the Brain of Cthulhu is susceptible to knockback, weapons with high knockback such as The Rotted Fork can keep both Creepers and the Brain from closing distance between teleports. It is also possible to use early-game melee weapons such as the Katana or the Zombie Arm as long as they do not have disadvantageous modifiers. It is preferable to use spears for this fight since they deal more knockback, however, so the Trident or The Rotted Fork is recommended. Note that this may not work in Expert Mode and Master Mode, since it might be hard to tell which Brain to attack among the illusions.",
+    "image": "Brain_of_Cthulhu_(First_Phase).gif",
+    "tags": [
+      "boss",
+      "underground",
+      "crimson"
+    ]
   },
   {
-    "id": "queen-bee",
-    "name": "Queen Bee",
+    "id": "dark-mage",
+    "name": "Dark Mage",
     "tier": "Pre-Hardmode",
-    "summon": "Abeemination (Hive blocks + Honey Block + Stinger + Bottled Honey at an Altar), or break a Larva in a Jungle Hive.",
-    "hp": "3,400 (Classic)",
-    "drops": ["Bee armor pieces", "Bee Keeper", "The Bee's Knees", "Honeyed Goggles"],
-    "description": "The queen of the Jungle's giant bees, fought inside the Bee Hives of the Underground Jungle.",
-    "strategy": "Fight in an open area to avoid her charging attacks. Her summoned bees are deadly in enclosed spaces.",
-    "tags": ["bee", "jungle", "pre-hardmode"]
+    "summon": "The Dark Mage hovers slightly above the ground and randomly chooses between three attacks: * The Dark Mage summons an orb of Dark Energy and then hurls it directly at the player, dealing 80 / 160 / 240 damage. * The Dark Mage summons a large rune on the ground, which then generates a large area of light that heals most enemies within its 62.5-tile range, restoring up to 500 health.",
+    "hp": "800",
+    "biome": "Old One's Army",
+    "drops": [],
+    "description": "Old One's Army The Dark Mage is a mini-boss that spawns during the Old One's Army event, during wave 5 in Tier 1, and waves 4 and 6 in Tier 3.",
+    "strategy": "Bring your best gear, a well-prepared arena, and plenty of healing potions.",
+    "image": "Dark Mage.gif",
+    "tags": [
+      "boss",
+      "old-one-s-army"
+    ]
   },
   {
     "id": "deerclops",
     "name": "Deerclops",
     "tier": "Pre-Hardmode",
-    "summon": "Deer Thing (3 Flinx Fur + 5 Demonite/Crimtane Ore + 1 Lens at an Altar) in the Snow biome.",
-    "hp": "7,000 (Classic)",
-    "drops": ["Deerclops-themed gear", "Pew-matic Horn", "Lucy the Axe"],
-    "description": "A Don't Starve crossover boss. A one-eyed winter beast with powerful ice attacks and flying debris.",
-    "strategy": "Dodge the shadowy hands it summons and keep out of its melee range. It can only be fought in the Snow biome.",
-    "tags": ["snow", "crossover", "pre-hardmode"]
-  },
-  {
-    "id": "skeletron",
-    "name": "Skeletron",
-    "tier": "Pre-Hardmode",
-    "summon": "Speak to the Old Man at the Dungeon entrance at night. Defeating him unlocks the Dungeon.",
-    "hp": "4,400 head + 600 per hand (Classic)",
-    "drops": ["Dungeon access", "Skeletron Hand hook", "Book of Skulls"],
-    "description": "The guardian of the Dungeon. A giant skeleton whose spinning skull attack punishes those who enter unprepared.",
-    "strategy": "Destroy the hands first to lower the head's defense, then circle and attack the head. Fight before dawn or he becomes enraged.",
-    "tags": ["skeleton", "dungeon", "pre-hardmode"]
-  },
-  {
-    "id": "wall-of-flesh",
-    "name": "Wall of Flesh",
-    "tier": "Pre-Hardmode",
-    "summon": "Throw a Guide Voodoo Doll into Underworld lava while the Guide is alive. This permanently enters Hardmode.",
-    "hp": "8,000 (Classic)",
-    "biome": "The Underworld",
-    "drops": ["Pwnhammer", "Emblems", "Laser Rifle", "Breaker Blade", "Demon Heart (Expert)"],
-    "description": "The final pre-Hardmode boss and the gatekeeper to Hardmode. A towering wall of flesh that chases you across the Underworld.",
-    "strategy": "Build a long bridge and run away while firing behind you. Kill the Hungry and the eyes that attack, and never stop moving.",
-    "tags": ["underworld", "hardmode-gate", "pre-hardmode", "final"]
-  },
-  {
-    "id": "queen-slime",
-    "name": "Queen Slime",
-    "tier": "Hardmode",
-    "summon": "Gelatin Crystal found in the Underground Hallow (use during the day in the Hallow).",
-    "hp": "18,000 (Classic)",
-    "biome": "The Hallow",
-    "drops": ["Crystal Assassin armor", "Gelatinous Pillion", "Hook of Dissonance"],
-    "description": "The first Hardmode boss. A crystalline slime monarch who fires bouncing gel and summons crystal slimes.",
-    "strategy": "Stay mobile to avoid her bouncing projectiles and clear the crystal minions quickly so they don't swarm you.",
-    "tags": ["slime", "hallow", "hardmode"]
-  },
-  {
-    "id": "the-twins",
-    "name": "The Twins",
-    "tier": "Hardmode",
-    "summon": "Mechanical Eye (3 Lens + Iron/Lead Bar + 6 Souls of Light at a Mythril Anvil) at night.",
-    "hp": "20,000 + 23,000 (Classic)",
-    "drops": ["Hallowed Bars", "Souls of Sight"],
-    "description": "Two mechanical eyes — Retinazer and Spazmatism — that mimic the Eye of Cthulhu with lasers and cursed flames.",
-    "strategy": "Focus one twin at a time (usually Spazmatism first). A long sky bridge and high mobility are essential.",
-    "tags": ["mechanical", "eye", "hardmode"]
-  },
-  {
-    "id": "the-destroyer",
-    "name": "The Destroyer",
-    "tier": "Hardmode",
-    "summon": "Mechanical Worm (6 Rotten Chunks/Vertebrae + Iron/Lead Bar + 6 Souls of Night at a Mythril Anvil) at night.",
-    "hp": "80,000 (Classic)",
-    "drops": ["Hallowed Bars", "Souls of Might"],
-    "description": "A mechanical Eater of Worlds that tears through the ground, firing lasers from every segment.",
-    "strategy": "Piercing weapons and AoE damage tear through its long body. Build high platforms and watch for its laser barrage.",
-    "tags": ["mechanical", "worm", "hardmode"]
-  },
-  {
-    "id": "skeletron-prime",
-    "name": "Skeletron Prime",
-    "tier": "Hardmode",
-    "summon": "Mechanical Skull (30 Bones + Iron/Lead Bar + 3 Souls of Light + 3 Souls of Night at a Mythril Anvil) at night.",
-    "hp": "28,000 head (Classic)",
-    "drops": ["Hallowed Bars", "Souls of Fright"],
-    "description": "A mechanized Skeletron armed with a cannon, saw, vice, and laser. The most dangerous of the mechanical trio.",
-    "strategy": "Destroy its four weapon arms before focusing the head. Fight before dawn to avoid its enraged state.",
-    "tags": ["mechanical", "skeleton", "hardmode"]
-  },
-  {
-    "id": "plantera",
-    "name": "Plantera",
-    "tier": "Hardmode",
-    "summon": "Break a Plantera's Bulb in the Underground Jungle (after all three mechanical bosses are defeated).",
-    "hp": "30,000 (Classic)",
-    "biome": "Underground Jungle",
-    "drops": ["Temple Key", "Seedler", "Pygmy Staff", "Grenade Launcher"],
-    "description": "A monstrous jungle flower that becomes enraged if you leave the Underground Jungle. Unlocks the Jungle Temple.",
-    "strategy": "Clear a large open arena in the Jungle and circle around her, dodging seeds and spiky balls. Bring mobility and healing.",
-    "tags": ["jungle", "plant", "hardmode"]
-  },
-  {
-    "id": "golem",
-    "name": "Golem",
-    "tier": "Hardmode",
-    "summon": "Use a Lihzahrd Power Cell at the Lihzahrd Altar inside the Jungle Temple.",
-    "hp": "39,000 total (Classic)",
-    "biome": "Jungle Temple",
-    "drops": ["Picksaw", "Stynger", "Sun Stone", "Golem Fist"],
-    "description": "The Temple's guardian, a stone colossus that attacks with fists, fireballs, and a detaching laser head.",
-    "strategy": "Destroy the head and fists, then dodge the jumping body. A confined arena makes this fight cramped but manageable.",
-    "tags": ["temple", "golem", "hardmode"]
-  },
-  {
-    "id": "empress-of-light",
-    "name": "Empress of Light",
-    "tier": "Hardmode",
-    "summon": "Kill a Prismatic Lacewing in the Hallow at night (released from a Lacewing butterfly).",
-    "hp": "69,000 (Classic)",
-    "biome": "The Hallow",
-    "drops": ["Terraprisma (daytime kill)", "Starlight", "Eventide", "Soaring Insignia (Expert)"],
-    "description": "A radiant Hallow boss of pure light. Defeat her during the day for the ultimate challenge and the Terraprisma.",
-    "strategy": "Her attacks are all dodgeable with practice. Fighting at night is easier; a daytime victory requires a flawless run.",
-    "tags": ["hallow", "light", "hardmode", "challenge"]
+    "summon": "Deerclops can be summoned manually by using a Deer Thing in the Snow or Ice biome, at any time. Deerclops can also spawn naturally at midnight () in the surface Snow biome during a Blizzard when the following conditions are fulfilled: * At least one player in the world is in the surface Snow biome.",
+    "hp": "7,000",
+    "biome": "Snow biome+Blizzard",
+    "drops": [
+      "Eye Bone (33%)",
+      "Eyebrella (33%)",
+      "Radio Thing (33%)",
+      "Dizzy's Rare Gecko Chester (7.14%)",
+      "Pew-matic Horn (25%)",
+      "Weather Pain (25%)",
+      "Houndius Shootius (25%)",
+      "Lucy the Axe (25%)",
+      "Healing Potion ×5–15 (100%)",
+      "Deerclops Mask (14.29%)",
+      "Deerclops Trophy (10%)",
+      "Treasure Bag (Deerclops) (100%)",
+      "Deerclops Eyeball (25%)",
+      "Deerclops Relic (100%)"
+    ],
+    "description": "1.4.3 Deerclops is a pre-Hardmode boss encountered in the Snow biome. Fighting Deerclops is not required for game progression, but defeating it rewards the player with coins and other useful items.",
+    "strategy": "There are no prerequisite bosses that are required to be defeated in order to summon this boss. However, Deerclops' strength may warrant waiting until the player has defeated the Eater of Worlds or the Brain of Cthulhu to fight it. With sufficient skill, the Deerclops can be defeated earlier in game progression, which can be helpful to the player during pre-Hardmode. A Warmth Potion is useful when fighting Deerclops, as the boss is affected by its buff. In addition, one may find it useful to bring a Hand Warmer to the battle, since the Frozen debuff can easily cause the player to die quickly if inflicted. Building a platform of non-solid blocks about 6 tiles (twice the height of the player) up in the air, along with staircases made of solid blocks on either side to allow Deerclops to get on, can elevate it high enough above the ground to prevent the boss from using its debris attack entirely, making the fight much easier.",
+    "image": "Deerclops.png",
+    "tags": [
+      "boss",
+      "snow"
+    ]
   },
   {
     "id": "duke-fishron",
     "name": "Duke Fishron",
     "tier": "Hardmode",
-    "summon": "Fish with a Truffle Worm as bait in the Ocean.",
-    "hp": "50,000 (Classic)",
+    "summon": "Duke Fishron is summoned by fishing in the Ocean at any time, using a Truffle Worm as bait (see Notes for details). Once the bobber bobs, reeling in the line spawns Duke Fishron, who emerges from the water, pauses for a moment, and then begins attacking the player. Duke Fishron is invulnerable during his summoning animation.",
+    "hp": "60,000",
     "biome": "Ocean",
-    "drops": ["Razorblade Typhoon", "Flairon", "Fishron Wings", "Tsunami"],
-    "description": "A shark-pig-duke hybrid that charges through the air at terrifying speed. One of Hardmode's hardest fights.",
-    "strategy": "Use fast wings and dodge in wide circles. Avoid his tornado and bubble attacks, and keep damaging him consistently.",
-    "tags": ["ocean", "fish", "hardmode", "challenge"]
+    "drops": [
+      "debuff2 = Feral Bite ×2"
+    ],
+    "description": "the Hardmode boss Duke Fishron is a Hardmode boss. While he can be summoned as soon as Hardmode is initiated, his difficulty is on par with that of a post-Golem boss, making him a serious threat to unprepared players. Fighting Duke Fishron is not required for , but his defeat rewards the player with powerful weapons and equipment.",
+    "strategy": "The player should keep in mind their distance from the Ocean to prevent Duke Fishron from becoming enraged. One option is to build solid blocks around the Ocean boundaries to prevent accidentally enraging him. The Inferno Potion can come in handy during this fight to prevent taking any damage from Duke Fishron's Detonating Bubbles. While there is a slight delay between the damage intervals of the Inferno Potion's ring of fire, it is capable of clearing out groups of bubbles all at once. Since Detonating Bubbles have a larger damaging area when they explode, the player should still keep some distance from them even when using the Inferno Potion. Players can build a platform along the top of the Ocean to avoid sinking. Water Walking Boots, their upgrades, or Water Walking Potions can be used as a substitute for platforms.",
+    "image": "Duke Fishron (First Form).gif",
+    "tags": [
+      "boss",
+      "ocean"
+    ]
+  },
+  {
+    "id": "eater-of-worlds",
+    "name": "Eater of Worlds",
+    "tier": "Pre-Hardmode",
+    "summon": "It can also be summoned manually by using a Worm Food in The Corruption or Underground Corruption, at any time.",
+    "hp": "150",
+    "biome": "The Corruption / Underground Corruption",
+    "drops": [
+      "Shadow Scale ×0–134 (100%)",
+      "Demonite Ore ×20–395 (100%)",
+      "Eater's Bone (5%)",
+      "Lesser Healing Potion ×5–15 (100%)",
+      "Eater of Worlds Mask (14.29%)",
+      "Eater of Worlds Trophy (10%)",
+      "Treasure Bag (Eater of Worlds) (100%)",
+      "Writhing Remains (25%)",
+      "Eater of Worlds Relic (100%)"
+    ],
+    "description": "The Eater of Worlds is a pre-Hardmode Corruption-themed worm boss. It is not a single target, but a string of segments with individual health. When any inner body segment is destroyed, it splits into multiple smaller worms, each with their own head and tail. Each section of the Eater of Worlds must be killed in order to defeat the entire boss. The Eater of Worlds, like all enemies that pass through blocks, is immune to lava. Fighting the Eater of Worlds is the only way to obtain Shadow Scales, and it is one of the only ways to obtain usable quantities of Demonite Ore. Individual segments drop some of these when killed, with a larger amount of them being dropped upon defeating the entire boss. The Eater of Worlds is the Corruption counterpart to The Crimson's Brain of Cthulhu. The Hardmode mechanical boss equivalent to the Eater of Worlds is The Destroyer.",
+    "strategy": "If the player manages to quickly find the initial spawning location of Eater of Worlds, they can attack it with a piercing weapon while it is still in its coiled state, which will damage many of its segments at once and can potentially kill it in seconds. Effective weapons include piercing or area-of-effect weapons, such as the Vilethorn, Spiky Balls, whips, and fast melee weapons, such as the Falcon Blade and the Terragrim. In Classic Mode, Grenades are an effective weapon against the Eater. That is not true in higher difficulties, since the Eater gains resistance to explosives. Like other worm-types, once the Eater's head passes a given point, every body segment must follow. This allows the player to stand next to the body, attacking every segment as it goes by. The player should be wary of the head looping back around.",
+    "image": "Eater of Worlds.png",
+    "tags": [
+      "boss",
+      "underground",
+      "corruption"
+    ]
+  },
+  {
+    "id": "empress-of-light",
+    "name": "Empress of Light",
+    "tier": "Hardmode",
+    "summon": "The Empress of Light is summoned by killing a Prismatic Lacewing, at any time. Prismatic Lacewings spawn in The Hallow on the Surface between dusk () and midnight () once Plantera has been defeated. They can be caught with a Bug Net (or its upgrades), then released elsewhere and killed by the player.",
+    "hp": "70,000",
+    "biome": "The Hallow",
+    "drops": [],
+    "description": "1.4.0.1 The Empress of Light is a Hardmode, post-Plantera boss. She is generally fought at night, and becomes \"enraged\" with greatly increased damage during the day. Fighting the Empress of Light is not required for game progression, but her defeat rewards the player with powerful weapons and equipment. While she can be summoned as soon as Plantera is defeated, her difficulty is on par with that of a post-Golem boss, making her a serious threat to unprepared players. Taking her on early poses a significant challenge that typically requires practicing to dodge her telegraphed attacks.",
+    "strategy": "The Guide to Critter Companionship can be used to avoid accidentally summoning the boss, as it prevents the player from damaging critters, including the Prismatic Lacewing. Capturing Prismatic Lacewings with a Bug Net rather than killing them immediately allows the player to fight the Empress of Light at a proper time and place once prepared. Although the Prismatic Lacewing can only spawn at night, the Empress of Light can be spawned at any time of day using captured Prismatic Lacewings. If the Prismatic Lacewing is released outside of the Hallow, it will disappear very quickly. To ensure that it gets killed, the player can place the critter directly into a stationary area-of-effect projectile, such as a Clinger Staff's flame pillar or a Rainbow Gun's rainbow.",
+    "image": "Empress of Light.gif",
+    "tags": [
+      "boss",
+      "hallow"
+    ]
+  },
+  {
+    "id": "everscream",
+    "name": "Everscream",
+    "tier": "Hardmode",
+    "summon": "The Everscream is a Hardmode, post-Plantera mini-boss that spawns during the Frost Moon event. It is the Frost Moon equivalent of the Mourning Wood, which behaves in an almost identical way to the Everscream. Defeating the Everscream during the Frost Moon event will add 50 / 100 / 125 points to the final score.",
+    "hp": "13,000",
+    "biome": "Frost Moon",
+    "drops": [
+      "Christmas Tree Sword (10.37%)",
+      "Christmas Hook (10.37%)",
+      "Razorpine (10.37%)",
+      "Festive Wings (2.22%)",
+      "Everscream Trophy // During wave 15 and up (16.67%)",
+      "Shrub Star (25%)",
+      "Everscream Relic (100%)"
+    ],
+    "description": "The Everscream is a Hardmode, post-Plantera mini-boss that spawns during the Frost Moon event. It is the Frost Moon equivalent of the Mourning Wood, which behaves in an almost identical way to the Everscream. Defeating the Everscream during the Frost Moon event will add 50 / 100 / 125 points to the final score.",
+    "strategy": "Most of the Everscream's attacks can easily be avoided by staying on platforms high enough above the ground, as the attacks have limited range. Attacking with any ranged or long-range melee weapon from there trivializes the fight. The Everscream is one of the few mini-bosses whose attacks can be shielded, as its Ornament and Pine Needle attacks do not go through blocks. Unlike Mourning Wood, the Everscream's attacks do not deal increased damage after its health drops past 25%.",
+    "image": "Everscream.gif",
+    "tags": [
+      "boss",
+      "frost-moon"
+    ]
+  },
+  {
+    "id": "eye-of-cthulhu",
+    "name": "Eye of Cthulhu",
+    "tier": "Pre-Hardmode",
+    "summon": "It can also be summoned manually with the Suspicious Looking Eye at night (see Summoning and spawning below). The Eye of Cthulhu can be summoned manually using a Suspicious Looking Eye at night (from to ).",
+    "hp": "2,800",
+    "biome": "Surface+Night / Space+Night",
+    "drops": [],
+    "description": "}} Not to be confused with The Eye of Cthulhu, a Hardmode yoyo, or the True Eye of Cthulhu, a minion of the Moon Lord. The Eye of Cthulhu is a pre-Hardmode boss. It is typically one of the first bosses a player may encounter, as it spawns automatically when a relatively early level of game advancement is achieved. It can also be summoned manually with the Suspicious Looking Eye at night (see Summoning and spawning below).",
+    "strategy": "The Eye of Cthulhu drops either Demonite or Crimtane Ore. While the corresponding set of armor and a number of tools additionally require Shadow Scales or Tissue Samples respectively—which the Eye does not drop—the sword, bow, axe, yoyo, whip, and fishing pole can be crafted with only the bars. Due to the ease of crafting its summoning item and relatively low difficulty, farming the Eye of Cthulhu is one of the more effective ways of prior to Hardmode. It drops / up front, plus ores which can be sold as bars for twice (Demonite) or triple (Crimtane) that amount. The Eye of Cthulhu will only spawn randomly if a player has more than 10 defense. Taking defense-boosting equipment off before dusk can prevent it from spawning randomly. The boss looks at the player it will follow, which can be helpful information in multiplayer.",
+    "image": "Eye of Cthulhu (Phase 1).gif",
+    "tags": [
+      "boss"
+    ]
+  },
+  {
+    "id": "flying-dutchman",
+    "name": "Flying Dutchman",
+    "tier": "Hardmode",
+    "summon": "** Weapons that can be used in these situations include any kind of summoning weapon, the Daedalus Stormbow, the Meteor Staff, the Nimbus Rod, and the Flying Knife.",
+    "hp": "50",
+    "biome": "Pirate Invasion",
+    "drops": [
+      "Coin Gun (2%)",
+      "Barrel Launcher (10%)",
+      "Lucky Coin (6.67%)",
+      "Discount Card (6.67%)",
+      "Pirate Staff (6.67%)",
+      "Gold Ring (6.67%)",
+      "The Dutchman (5%)",
+      "Cutlass (10%)",
+      "Golden furniture (100%)",
+      "Flying Dutchman Trophy (10%)",
+      "Flying Dutchman Relic (100%)",
+      "The Black Spot (25%)"
+    ],
+    "description": "1.3.0.1 The Flying Dutchman is a Hardmode mini-boss that spawns during the Pirate Invasion event. The Flying Dutchman emits golden particles while hovering approximately 26 tiles above the player, and is armed with four cannons that fire explosive cannonballs toward the nearest player while occasionally spawning standard Pirate Invasion enemies that fall from the deck and onto solid ground. The boss will be defeated and drop loot upon depleting the health of all four cannons. The Flying Dutchman does not disappear after the Pirate Invasion is over (though it will explode if it has not been engaged before the invasion ends), and defeating the Flying Dutchman will not end the invasion. Several Flying Dutchmen can appear during a single Pirate Invasion, or none at all. They only appear when the event progress has passed 50%, and where there is at least 40×30 tiles space.",
+    "strategy": "Any weapons that can hit multiple targets at once are good for taking out the cannons. Due to the way it moves and the way the cannonballs fire, it is very easy to find positions where it cannot hit the player, yet they can hit it. Weapons that can be used in these situations include any kind of summoning weapon, the Daedalus Stormbow, the Meteor Staff, the Nimbus Rod, and the Flying Knife. Due to the fact that they stop upon hitting a wall, and continuously spawn pirates, the Flying Dutchmen can be stopped above a half-block deep pit of lava (or other trap) and used to farm the various items pertaining to the Pirate Invasion.",
+    "image": "Animated Flying Dutchman.gif",
+    "tags": [
+      "boss",
+      "pirate-invasion"
+    ]
+  },
+  {
+    "id": "golem",
+    "name": "Golem",
+    "tier": "Hardmode",
+    "summon": "Golem is summoned by using a Lihzahrd Power Cell at the Lihzahrd Altar located in the final chamber of the Jungle Temple, at any time, and only if the current world is in Hardmode after Plantera is defeated. Upon pressing on the Lihzahrd Altar, one Lihzahrd Power Cell is consumed from the player's inventory and Golem is summoned directly above the altar. The Lihzahrd Altar can be relocated after being mined with a Picksaw or better.",
+    "hp": "15,000",
+    "biome": "Jungle Temple",
+    "drops": [
+      "Picksaw (25%)",
+      "Beetle Husk ×4–8 (100%)",
+      "Stynger/Stynger Bolt",
+      "Possessed Hatchet (14.29%)",
+      "Sun Stone (14.29%)",
+      "Eye of the Golem (14.29%)",
+      "Heat Ray (14.29%)",
+      "Staff of Earth (14.29%)",
+      "Golem Fist (14.29%)",
+      "Mobius Strip (16.67%)",
+      "Greater Healing Potion ×5–15 (100%)",
+      "Golem Mask (14.29%)",
+      "Golem Trophy (10%)",
+      "Treasure Bag (Golem) (100%)",
+      "Guardian Golem (25%)",
+      "Golem Relic (100%)"
+    ],
+    "description": "the post-Plantera boss Golem is a Hardmode, post-Plantera boss fought in the Jungle Temple. It attacks the player by stomping on them, launching its fists, and firing barrages of projectiles. Defeating Golem is a prerequisite for unlocking the Lunar Events, the Martian Madness, and Tier 3 of the Old One's Army.",
+    "strategy": "In some cases, the terrain surrounding the Lihzahrd Altar will cause Golem to get stuck when it spawns. It can attack with its fists and projectiles but will be unable to jump around. Players can also recreate this condition by placing blocks near the altar. The three Lihzahrd Bricks under the Lihzahrd Altar cannot be actuated, hence it is impossible to relocate the altar prior to defeating Golem for the first time.",
+    "image": "Golem.png",
+    "tags": [
+      "boss",
+      "jungle"
+    ]
+  },
+  {
+    "id": "ice-queen",
+    "name": "Ice Queen",
+    "tier": "Hardmode",
+    "summon": "The Ice Queen is a Hardmode, post-Plantera mini-boss that spawns during the Frost Moon event. She is the event's final enemy and can move freely through blocks. She is the equivalent to the Pumpking from the Pumpkin Moon, being the Frost Moon's most powerful enemy, coming in at the last waves of the event, and being the event's only flying boss. Defeating the Ice Queen during the Frost Moon event will add 150 / 300 / 375 points to the final score, giving the most number of points for any enemy in the event.",
+    "hp": "34,000",
+    "biome": "Frost Moon",
+    "drops": [
+      "Blizzard Staff (10.37%)",
+      "Snowman Cannon (10.37%)",
+      "North Pole (10.37%)",
+      "Baby Grinch's Mischief Whistle (2.22%)",
+      "Reindeer Bells // During wave 15 and up (2.22%)",
+      "Ice Queen Trophy // During wave 15 and up (16.67%)",
+      "Frozen Crown (25%)",
+      "Ice Queen Relic (100%)"
+    ],
+    "description": "The Ice Queen is a Hardmode, post-Plantera mini-boss that spawns during the Frost Moon event. She is the event's final enemy and can move freely through blocks. She is the equivalent to the Pumpking from the Pumpkin Moon, being the Frost Moon's most powerful enemy, coming in at the last waves of the event, and being the event's only flying boss. Defeating the Ice Queen during the Frost Moon event will add 150 / 300 / 375 points to the final score, giving the most number of points for any enemy in the event.",
+    "strategy": "Both of the Ice Queen's attacks will inflict the Chilled debuff, which slows the player's movement speed, and Frost Waves will sometimes inflict the Frozen debuff which completely immobilizes the player. Equipping a Hand Warmer or Ankh Shield will negate these effects and potentially make the fight much less frustrating. Drinking a Warmth Potion is recommended as it will significantly lower the damage the Ice Queen can inflict on the player, and it will last for the entire duration of the event. The Frozen debuff causes players to exit their mounts. This may kill a player without immunity to fall damage if inflicted at a high enough point in the sky. The Ice Queen is most vulnerable while executing her twirl attack, when she spins in place rapidly and shoots Frost Shards in all directions. This is the only time she stays in one spot.",
+    "image": "Ice_Queen.png",
+    "tags": [
+      "boss",
+      "frost-moon"
+    ]
+  },
+  {
+    "id": "king-slime",
+    "name": "King Slime",
+    "tier": "Pre-Hardmode",
+    "summon": "* The Spiked Slime, Pirate's Curse, Jungle Mimic, and Golden Slime are the only non-invincible enemies in the game without a Bestiary entry, and King Slime is the only boss whose summoned enemies do not have one.",
+    "hp": "2,000",
+    "biome": "Forest/Slime Rain",
+    "drops": [
+      "Solidifier (100%)",
+      "Slimy Saddle (25%)",
+      "Ninja Hood (33.33%)",
+      "Ninja Shirt (33.33%)",
+      "Ninja Pants (33.33%)",
+      "Slime Hook (33.33%)",
+      "Slime Gun (66.67%)",
+      "Lesser Healing Potion ×5–15 (100%)",
+      "King Slime Mask (14.29%)",
+      "King Slime Trophy (10%)",
+      "Slime Staff (3.33%)",
+      "Treasure Bag (King Slime) (100%)",
+      "Royal Delight (25%)",
+      "King Slime Relic (100%)"
+    ],
+    "description": "King Slime is a pre-Hardmode boss. Fighting King Slime is not required for game progression, but his defeat may reward the player with useful items. Defeating him for the first time also causes the Nerdy Slime town pet to spawn from the boss.",
+    "strategy": "Piercing weapons can not only damage King Slime, but also kill the additional slimes he spawns. When King Slime is about to teleport, he shrinks and his map icon will get closer towards the ground. The latter can be used to know when he is about to return if he goes offscreen. The Blue Slimes that are spawned during the fight can drop Hearts and Stars, which respectively restore 20 health and 100 mana. Due to the high number of Blue Slimes spawned during the fight, summoning King Slime while in specific areas can be a quick, easy way to farm for specific drops. Examples include Biome Keys, Pirate Maps, Halloween and Christmas drops, or the Cascade, Hel-Fire, Amarok, Yelets, and Kraken yoyos.",
+    "image": "King Slime.gif",
+    "tags": [
+      "boss",
+      "slime-rain"
+    ]
   },
   {
     "id": "lunatic-cultist",
     "name": "Lunatic Cultist",
     "tier": "Hardmode",
-    "summon": "Defeat the four Cultists at the Dungeon entrance after Golem is defeated.",
-    "hp": "32,000 (Classic)",
+    "summon": "The Lunatic Cultist is summoned after killing the Cultists that spawn at the Dungeon's entrance after Skeletron and Golem have been defeated.",
+    "hp": "32,000",
     "biome": "Dungeon entrance",
-    "drops": ["Ancient Manipulator crafting station"],
-    "description": "The leader of the cultists who guards the Lunar Events. Defeating him triggers the Celestial Pillars.",
-    "strategy": "Attack the real cultist, not his duplicates — hitting a decoy spawns a Phantasm Dragon. Learn his clone pattern.",
-    "tags": ["cultist", "lunar", "hardmode", "endgame"]
+    "drops": [
+      "Ancient Manipulator (100%)",
+      "Greater Healing Potion ×5–15 (100%)",
+      "Lunatic Cultist Mask (14.29%)",
+      "Lunatic Cultist Trophy (10%)",
+      "Tablet Fragment (25%)",
+      "Lunatic Cultist Relic (100%)"
+    ],
+    "description": "1.3.0.1 The Lunatic Cultist is a Hardmode, post-Golem boss. Defeating it initiates the Lunar Events, and also causes the Clothier to begin selling the Solar and Lunar Cultist sets depending on the time of day. Unlike most bosses, the Lunatic Cultist does not drop any weapons, accessories, or materials. However, it does drop the Ancient Manipulator, a placeable crafting station used to craft many endgame items.",
+    "strategy": "The player should avoid defeating the Lunatic Cultist if they are not yet ready for the Lunar Events. Beating the Lunatic Cultist causes the Lunar Events to begin immediately, and there is no way to de-summon them thereafter (aside from defeating all of the Celestial Pillars). The real Lunatic Cultist can be distinguished from its decoys in a number of ways: The real Cultist has pointed, angry eyes, while the decoys' eyes are round and neutral. The real Cultist has a line on its hood while the decoys do not.",
+    "image": "Lunatic_Cultist.png",
+    "tags": [
+      "boss",
+      "dungeon"
+    ]
+  },
+  {
+    "id": "martian-saucer",
+    "name": "Martian Saucer",
+    "tier": "Hardmode",
+    "summon": "1.3.0.1 The Martian Saucer is a Hardmode, post-Golem mini-boss that spawns during the Martian Madness event after it is at least 30% completed. The Martian Saucer hovers in the air and can pass through blocks. It has four turrets that must be destroyed individually: two rocket launchers and two laser machine guns. In addition, the Martian Saucer itself fires a \"\", a large yellow beam that can only be fired directly downwards and cannot be destroyed independently.",
+    "hp": "100",
+    "biome": "Martian Madness",
+    "drops": [
+      "Xenopopper (16.66%)",
+      "Xeno Staff (16.66%)",
+      "Laser Machinegun (16.66%)",
+      "Electrosphere Launcher (16.66%)",
+      "Influx Waver (16.66%)",
+      "Cosmic Car Key (16.66%)",
+      "Greater Healing Potion ×5–15 (100%)",
+      "Martian Saucer Trophy (10%)",
+      "Arc Surge (2%)",
+      "Martian Saucer Relic (100%)",
+      "Cosmic Skateboard (25%)"
+    ],
+    "description": "1.3.0.1 The Martian Saucer is a Hardmode, post-Golem mini-boss that spawns during the Martian Madness event after it is at least 30% completed. The Martian Saucer hovers in the air and can pass through blocks. It has four turrets that must be destroyed individually: two rocket launchers and two laser machine guns. In addition, the Martian Saucer itself fires a \"\", a large yellow beam that can only be fired directly downwards and cannot be destroyed independently.",
+    "strategy": "To dodge the Martian Saucer's laser machineguns, hover above or below its lasers. To dodge its missiles, run away from it as it shoots so that most of the missiles hit the ground in front of the player. To avoid getting caught in its deathray, a recommended strategy is to position oneself above the Martian Saucer, either by flying above it with wings or by teleporting with the Rod of Discord or Hook of Dissonance. During the second phase, move as far away from the Martian Saucer as possible during its brief phase transition, and, when the Martian Saucer is firing deathrays, the player should move in the same direction as it if they cannot get above it, which can be supplemented by equipment that provides dashing such as the Tabi and its upgrades. With well-timed dashes, the deathray can be completely avoided. When the Cute Fishron's \"wet\" bonus is activated, the player can fly slightly faster than the Martian Saucer.",
+    "image": "Martian Saucer.gif",
+    "tags": [
+      "boss",
+      "martian-madness"
+    ]
+  },
+  {
+    "id": "mechdusa",
+    "name": "Mechdusa",
+    "tier": "Hardmode",
+    "summon": "Mechdusa can be summoned manually with Ocram's Razor anywhere at any time. In addition, if any of its constituent bosses have not yet been defeated and a Demon or Crimson Altar has been destroyed, Mechdusa has a chance to spawn naturally at dusk ().",
+    "hp": "256,800",
+    "biome": "Surface+Night / Space+Night",
+    "drops": [
+      "Waffle's Iron (100%)"
+    ],
+    "description": "1.4.4 Not to be confused with Medusa, a Hardmode Marble Cave enemy. Mechdusa is a Hardmode boss exclusive to worlds that combine the For the Worthy and Remix seeds. Technically, it is not considered a separate boss, but is merely a combination of all three mechanical bosses. It resembles a large serpentine-like creature composed of the three bosses: The Destroyer's head is attached to Skeletron Prime's head, and The Twins are individually connected via tendrils to Skeletron Prime's eye sockets instead of to each other. There are also two extra Probes attached to The Destroyer's head. Mechdusa can be summoned manually with Ocram's Razor anywhere at any time. In addition, if any of its constituent bosses have not yet been defeated and a Demon or Crimson Altar has been destroyed, Mechdusa has a chance to spawn naturally at dusk (). If spawning this way, its arrival is announced by the status message \"\"",
+    "strategy": "Make sure to be well prepared, as this boss can be quite difficult due to the limited area size in many regions. It is advised to destroy Skeletron Prime last, as this will keep the other bosses stuck together without them flying around separately. Since the Twins will attempt to stay above Skeletron Prime when not charging, this makes evading Spazmatism's flamethrower attack in its second phase easier. Just like against The Destroyer, it is advised to use piercing weapons to hit all three bosses simultaneously.",
+    "image": "Mechdusa.png",
+    "tags": [
+      "boss"
+    ]
   },
   {
     "id": "moon-lord",
     "name": "Moon Lord",
     "tier": "Hardmode",
-    "summon": "Defeat all four Celestial Pillars, or use a Celestial Sigil crafted from their fragments.",
-    "hp": "145,000 total (Classic)",
-    "drops": ["Luminite", "Meowmere", "Star Wrath", "Terrarian", "Celebration Mk2"],
-    "description": "The final boss of Terraria. A cosmic god whose eyes and core must be destroyed to claim victory.",
-    "strategy": "Take out the eyes on his hands and head, then the core. A long asphalt skybridge and strong mobility are standard tactics.",
-    "tags": ["final", "endgame", "cosmic", "hardmode"]
+    "summon": "The Moon Lord will spawn after destroying the four Celestial Pillars or can be summoned manually using a Celestial Sigil in any world where Golem has been defeated. If the Moon Lord is spawned by destroying the Celestial Pillars, it takes 60 seconds for him to spawn, and the screen effect will appear 5 times; each time the screen will go darker and all objects and walls will oscillate more violently.",
+    "hp": "45,000",
+    "biome": "Lunar Events",
+    "drops": [
+      "Portal Gun (100%)",
+      "Luminite ×70–90 (100%)",
+      "Meowmere (20%)",
+      "Terrarian (20%)",
+      "Star Wrath (20%)",
+      "S.D.M.G. (20%)",
+      "Celebration Mk2 (20%)",
+      "Last Prism (20%)",
+      "Lunar Flare (20%)",
+      "Rainbow Crystal Staff (20%)",
+      "Lunar Portal Staff (20%)",
+      "Possession (20%)",
+      "Meowmere Minecart (10%)",
+      "Super Healing Potion ×5–15 (100%)",
+      "Moon Lord Mask (14.29%)",
+      "Moon Lord Trophy (10%)",
+      "Treasure Bag (Moon Lord) (100%)",
+      "Piece of Moon Squid (25%)",
+      "Moon Lord Relic (100%)"
+    ],
+    "description": "1.3.0.1 The Moon Lord is a Hardmode, post-Lunatic Cultist boss. He is the final boss of the versions of Terraria.",
+    "strategy": "Keeping a distance while dodging the Moon Lord's attacks is crucial. In particular, his Phantasmal Deathray should be avoided at all costs. Useful items that increase the player's mobility include Gravitation Potions, fast wings like the Fishron, Betsy's, or Empress Wings, the Rod of Discord, items allowing to dash (e.g. the Tabi or its upgrade, the Master Ninja Gear), the Soaring Insignia, and numerous mount-summoning items like the Gelatinous Pillion, Shrimpy Truffle, Cosmic Car Key, or Witch's Broom. The player might also consider constructing a skybridge made out of Asphalt Blocks or Minecart Tracks (with a minecart boosted by the Minecart Upgrade Kit). Items that provide high horizontal speed (Minecart Upgrade Kit-boosted minecarts, Soaring Insignia with hoverable wings, Hexxed Branch, etc.) allow the player to outrange the Phantasmal Deathray from the True Eyes of Cthulhu. Using homing weapons or ammo like Chlorophyte Bullets allow the player to focus on dodging.",
+    "image": "Moon Lord.gif",
+    "tags": [
+      "boss",
+      "lunar-events",
+      "lunar"
+    ]
+  },
+  {
+    "id": "mourning-wood",
+    "name": "Mourning Wood",
+    "tier": "Hardmode",
+    "summon": "** Additionally, it is the only enemy that can drop two mount-summoning items at once: the Witch's Broom and the Hexxed Branch.",
+    "hp": "14,000",
+    "biome": "Pumpkin Moon",
+    "drops": [
+      "Spooky Hook (20%)",
+      "Spooky Twig (20%)",
+      "Stake Launcher/Stake",
+      "Cursed Sapling (20%)",
+      "Necromantic Scroll (20%)",
+      "Mourning Wood Trophy // During wave 15 and up (50%)",
+      "Witch's Broom (20%)",
+      "Mourning Wood Relic (100%)",
+      "Hexxed Branch (25%)",
+      "Spooky Wood ×15–30 (100%)"
+    ],
+    "description": "The Mourning Wood is a Hardmode, post-Plantera mini-boss that spawns during the Pumpkin Moon event. It is the Pumpkin Moon equivalent of the Everscream, which behaves in an almost identical way to the Mourning Wood. Defeating the Mourning Wood during the Pumpkin Moon event will add 75 / 150 / 187.5 points to the final score.",
+    "strategy": "Pay attention to when a Mourning Wood stops walking, as it is about to perform one of its two ranged attacks. It is advisable not to enter a small room while fighting a Mourning Wood because its \"\" attack can go through walls. The Mourning Wood's \"\" attacks cannot pass through water, therefore submerging the mini-boss at least halfway up is an easier way to defeat it. Note the \"\" attacks do pass through water. The Mourning Wood can be defeated with relative ease by aiming the North Pole above it so it gets hit by several of its snowflake projectiles.",
+    "image": "Mourning Wood.gif",
+    "tags": [
+      "boss",
+      "pumpkin-moon"
+    ]
+  },
+  {
+    "id": "ogre",
+    "name": "Ogre",
+    "tier": "Hardmode",
+    "summon": "Old One's Army The Ogre is a Hardmode, post-one mechanical boss mini-boss that spawns in the Old One's Army event during wave 7 in Tier 2, and waves 5 and 6 in Tier 3.",
+    "hp": "5,000",
+    "biome": "Old One's Army",
+    "drops": [],
+    "description": "Old One's Army The Ogre is a Hardmode, post-one mechanical boss mini-boss that spawns in the Old One's Army event during wave 7 in Tier 2, and waves 5 and 6 in Tier 3.",
+    "strategy": "Although the Ogre has a powerful close-ranged club swing attack, he can be easily maneuvered around due to his generally slow speed, making it easy for the player to keep their distance and dodge his snot ball and melee attacks. Using yoyos with the Yoyo Bag equipped can be an extremely effective method of killing the Ogre. In Tier 3, the club swing attack deals damage in Master Mode, which can kill players in one hit. This is easily the most damage that can be dealt by a single attack from any of the enemies in the Old One's Army event, even surpassing all of Betsy's attacks. An easy method to dodge the Ogre's stomp is to either jump before he lands or to constantly stay in the air by using wings, accessories that provide extra jumps, or by using flying mounts, such as those from The Black Spot, Witch's Broom, Shrimpy Truffle, or Cosmic Car Key.",
+    "image": "Ogre.gif",
+    "tags": [
+      "boss",
+      "old-one-s-army"
+    ]
+  },
+  {
+    "id": "plantera",
+    "name": "Plantera",
+    "tier": "Hardmode",
+    "summon": "After all three mechanical bosses have been defeated, Plantera's Bulbs will randomly spawn in the Underground Jungle (indicated by the status message \"\"). These bulbs emit a faint pink light in dark areas and immediately summon Plantera nearby upon being destroyed, usually a fair distance off-screen.",
+    "hp": "30,000",
+    "biome": "Underground Jungle",
+    "drops": [],
+    "description": "Plantera is a Hardmode boss that can be fought in the Underground Jungle after all three mechanical bosses (The Twins, The Destroyer, and Skeletron Prime) have been defeated. Plantera drops a Temple Key upon being defeated, allowing access to the Jungle Temple.",
+    "strategy": "Excavate a sizable area to allow easier dodging before summoning Plantera. This can be done quicker with the use of Scarab Bombs. Widening a Bee Hive in the Underground Jungle is a fast and effective way of making an arena for fighting Plantera (though care should be taken around the Larva). Make sure the area has no background walls. This will significantly reduce Plantera's mobility in the second form as she does not have walls to hook onto. Living Fire Blocks work excellently for lighting up the arena in place of torches; Plantera cannot grab onto them.",
+    "image": "Plantera (First form).gif",
+    "tags": [
+      "boss",
+      "underground",
+      "jungle"
+    ]
+  },
+  {
+    "id": "pumpking",
+    "name": "Pumpking",
+    "tier": "Hardmode",
+    "summon": "The Pumpking is a Hardmode, post-Plantera mini-boss that spawns during the Pumpkin Moon event. He is the event's final enemy and can move freely through blocks. He is the equivalent to the Ice Queen from the Frost Moon, being the Pumpkin Moon's most powerful enemy, coming in at the last waves of the event, and being the event's only flying boss. Defeating the Pumpking during the Pumpkin Moon event will add 150 / 300 / 375 points to the final score, giving the most number of points for any enemy in the event. Like the Mourning Wood, the later the Pumpkin Moon wave in which the Pumpking is killed in, the more likely he is to drop items. A Pumpking defeated during wave 15 has a guaranteed chance to drop at least one item from his standard drop table.",
+    "hp": "26,000",
+    "biome": "Pumpkin Moon",
+    "drops": [
+      "Candy Corn Rifle/Candy Corn",
+      "Jack 'O Lantern Launcher/Explosive Jack 'O Lantern",
+      "Black Fairy Dust (12.5%)",
+      "The Horseman's Blade (12.5%)",
+      "Bat Scepter (12.5%)",
+      "Raven Staff (12.5%)",
+      "Dark Harvest (12.5%)",
+      "Spider Egg (12.5%)",
+      "Pumpking Trophy // During wave 15 and up (50%)",
+      "Pumpking Relic (100%)",
+      "Pumpkin Scented Candle (25%)"
+    ],
+    "description": "The Pumpking is a Hardmode, post-Plantera mini-boss that spawns during the Pumpkin Moon event. He is the event's final enemy and can move freely through blocks. He is the equivalent to the Ice Queen from the Frost Moon, being the Pumpkin Moon's most powerful enemy, coming in at the last waves of the event, and being the event's only flying boss. Defeating the Pumpking during the Pumpkin Moon event will add 150 / 300 / 375 points to the final score, giving the most number of points for any enemy in the event. Like the Mourning Wood, the later the Pumpkin Moon wave in which the Pumpking is killed in, the more likely he is to drop items. A Pumpking defeated during wave 15 has a guaranteed chance to drop at least one item from his standard drop table.",
+    "strategy": "The Flairon can be very effective against the Pumpking, who tends to float right above players (well within the range of the Flairon and its homing bubbles), causing very high damage per hit. The Pumpking's contact damage is relatively lower than the damage inflicted by his projectiles, especially his Flaming Scythes. Using wings and other flight-based accessories like the Soaring Insignia to fly closer towards his head while tanking his contact damage with high defense may help the player avoid taking excessive amounts of damage, especially in cases when they are being attacked by multiple Pumpkings at once. High-mobility items, such as the Anti-Gravity Hook, the Tabi and its upgrades, or the Shield of Cthulhu, allow for easier handling of the Pumpking.",
+    "image": "Pumpking head.gif",
+    "tags": [
+      "boss",
+      "pumpkin-moon"
+    ]
+  },
+  {
+    "id": "queen-bee",
+    "name": "Queen Bee",
+    "tier": "Pre-Hardmode",
+    "summon": "The Queen Bee is a pre-Hardmode boss. Fighting her is not required for game progression, but defeating her rewards the player with useful items and weapons and allows the Witch Doctor NPC to move into an available vacant house.",
+    "hp": "3,400",
+    "biome": "Bee Hive (biome) / Jungle / Underground Jungle",
+    "drops": [
+      "Bee Gun (33%)",
+      "Bee Keeper (33%)",
+      "The Bee's Knees (33%)",
+      "Hive Wand (33%)",
+      "Bee Hat (11%)",
+      "Bee Shirt (11%)",
+      "Bee Pants (11%)",
+      "Honey Comb (33%)",
+      "Nectar (6.7%)",
+      "Queen of Bees (6.67%)",
+      "Honeyed Goggles (5%)",
+      "Beenade ×10–30 (75%)",
+      "Bee Wax ×16–26 (100%)",
+      "Bottled Honey ×5–15 (100%)",
+      "Queen Bee Mask (14.29%)",
+      "Queen Bee Trophy (10%)",
+      "Treasure Bag (Queen Bee) (100%)",
+      "Sparkling Honey (25%)",
+      "Queen Bee Relic (100%)"
+    ],
+    "description": "The Queen Bee is a pre-Hardmode boss. Fighting her is not required for game progression, but defeating her rewards the player with useful items and weapons and allows the Witch Doctor NPC to move into an available vacant house.",
+    "strategy": "The Honey naturally found in Bee Hives can be used to craft Bottled Honey, provide passive health regeneration mid-fight, and help to negate the potency of being afflicted by Poisoned. However, standing in Honey will slow down the player significantly, so prolonged submersion is not recommended. Equipping a Bezoar can help the player avoid taking large amounts of damage from being afflicted with Poisoned, especially in Expert and Master Mode due to its significantly extended duration, where it can reach upwards of 25 seconds. The Bees do little damage, but can easily become an annoyance as they can push the player around. If the player does not have a Cobalt Shield or Obsidian Shield to avoid knockback, any grappling hook can be used to anchor the player to blocks. In Classic difficulty, a spinning flail is sufficient to kill any incoming Bees before they can reach the player.",
+    "image": "Queen Bee.gif",
+    "tags": [
+      "boss",
+      "underground",
+      "jungle"
+    ]
+  },
+  {
+    "id": "queen-slime",
+    "name": "Queen Slime",
+    "tier": "Hardmode",
+    "summon": "Queen Slime is summoned by using a Gelatin Crystal in The Hallow or Underground Hallow, at any time.",
+    "hp": "18,000",
+    "biome": "The Hallow",
+    "drops": [],
+    "description": "1.4.0.1 Queen Slime is an early-Hardmode, Hallow-themed boss. Fighting Queen Slime is not required for game progression – much like her pre-Hardmode counterpart, King Slime – but her defeat may reward the player with useful items.",
+    "strategy": "The Dart Pistol or Dart Rifle combined with Crystal Darts can make quick work of her minions as well as damage her multiple times per dart. Palladium armor can be useful due to the Rapid Healing buff it provides. Queen Slime herself has a relatively simple attack pattern. Half the threat comes from the minions she spawns, which can fill the screen with projectiles and quickly overwhelm the player. Killing or avoiding these should be a top priority. Stay in the air using wings or mounts during her first phase, as many of her attacks cannot reach the player there. During her second phase, the player should stay closer to the ground while occasionally luring her back up, as they can avoid many of her projectiles and minions due to their slow and predictable movement patterns.",
+    "image": "Queen_Slime.png",
+    "tags": [
+      "boss",
+      "hallow"
+    ]
+  },
+  {
+    "id": "retinazer",
+    "name": "Retinazer",
+    "tier": "Hardmode",
+    "summon": "The Twins can be summoned manually using a Mechanical Eye at night (from to ). The Twins can also spawn naturally at the start of the night, as long as they have not yet been defeated at least once in the current world.",
+    "hp": "20,000",
+    "biome": "Surface+Night/Space+Night",
+    "drops": [
+      "Soul of Sight ×25–40 (100%)",
+      "Hallowed Bar ×15–30 (100%)",
+      "Greater Healing Potion ×5–15 (100%)",
+      "Twins Mask (14.29%)",
+      "Treasure Bag (The Twins) (100%)",
+      "Pair of Eyeballs (25%)",
+      "Twins Relic (100%)"
+    ],
+    "description": "The Twins are a Hardmode mechanical boss which are essentially a more difficult version of the Eye of Cthulhu. The Twins are two separate flying entities, Retinazer and Spazmatism, connected by a tendril, each with its own attack pattern and health. Both must be killed in order to defeat the boss.",
+    "strategy": "Focus on defeating one eye completely first without inflicting too much damage on the other one. Battling The Twins while both are in their second form makes the battle much more difficult, especially in Expert Mode. Spazmatism may be a better choice for defeating first, since its Cursed Flames are difficult to avoid without proper mobility equipment and buffs in its second phase. Retinazer is less deadly, as it cannot inflict debuffs and will not charge in its second phase, which helps the player attack it from a safe distance with ranged attacks. In its first phase, Retinazer's accuracy is low enough that it will simply miss most shots against a stationary player. If Spazmatism is already defeated, even moderately tanky builds can maximize DPS for less effort by staying put, except to dodge charges. The Twins are only immune to Confused and Poisoned, so using a weapon that inflicts a debuff may be useful during the fight.",
+    "image": "The_Twins.png",
+    "tags": [
+      "boss"
+    ]
+  },
+  {
+    "id": "santa-nk1",
+    "name": "Santa-NK1",
+    "tier": "Hardmode",
+    "summon": "Santa-NK1 is a Hardmode, post-Plantera mini-boss that spawns during the Frost Moon event. When below half health, the face and beard of the Santa mask are torn apart to reveal a rather morbid mechanical skull underneath. Defeating Santa-NK1 during the Frost Moon event will add 100 / 200 / 250 points to the final score.",
+    "hp": "18,000",
+    "biome": "Frost Moon",
+    "drops": [
+      "Elf Melter (16.67%)",
+      "Chain Gun (16.67%)",
+      "Santa-NK1 Trophy // During wave 15 and up (16.67%)",
+      "Toy Tank (25%)",
+      "Santa-NK1 Relic (100%)"
+    ],
+    "description": "Santa-NK1 is a Hardmode, post-Plantera mini-boss that spawns during the Frost Moon event. When below half health, the face and beard of the Santa mask are torn apart to reveal a rather morbid mechanical skull underneath. Defeating Santa-NK1 during the Frost Moon event will add 100 / 200 / 250 points to the final score.",
+    "strategy": "Players should note that its Present launcher and Missile barrage attacks are highly inaccurate. Using wings to fly over it back and forth will make its chain gun and the Missile barrage harder to hit the player. The Razorpine and Golden Shower/Betsy's Wrath are very effective against it. Hitting it first with the Golden Shower/Betsy's Wrath lowers its defense, increasing the of the Razorpine. This is highly effective with Spectre armor with the Spectre Hood as it fully heals the player no matter how low the player's health is.",
+    "image": "Santa-NK1.png",
+    "tags": [
+      "boss",
+      "frost-moon"
+    ]
+  },
+  {
+    "id": "skeletron",
+    "name": "Skeletron",
+    "tier": "Pre-Hardmode",
+    "summon": "Summoning Skeletron requires the player to speak to the Old Man at the Dungeon's entrance at night. Upon selecting the \"\" option, he will turn into Skeletron. Skeletron can only be summoned once per night, as the Old Man will not respawn until dawn.",
+    "hp": "4,400",
+    "biome": "Dungeon entrance+Night",
+    "drops": [
+      "Healing Potion ×5–15 (100%)",
+      "Skeletron Mask (14.29%)",
+      "Skeletron Hand (12.24%)",
+      "Book of Skulls (10.5%)",
+      "Skeletron Trophy (10%)",
+      "Chippy's Couch (14.29%)",
+      "Treasure Bag (Skeletron) (100%)",
+      "Possessed Skull (25%)",
+      "Skeletron Relic (100%)"
+    ],
+    "description": "Not to be confused with the Skeleton, an enemy found underground, or Skeletron Prime, the Hardmode version of Skeletron. Skeletron is a pre-Hardmode boss. Defeating Skeletron for the first time grants unlimited access to all Dungeon areas for players within the current world and allows the Clothier NPC to move into an available vacant house. If attempting to enter the Dungeon before killing Skeletron, Dungeon Guardians spawn once a player reaches 0 depth. These enemies deal damage and generally kill any player in a single hit. Managing to defeat a Dungeon Guardian does not grant access to the Dungeon, thus defeating Skeletron is mandatory for accessing the Dungeon safely.",
+    "strategy": "Defeating Skeletron is not necessary for game progression until Golem has been defeated. The Cultists, required for initiating the Lunar Events, will only spawn once both Golem and Skeletron have been defeated. However, skipping Skeletron in pre-Hardmode results in a lack of valuable Dungeon loot, keeps Shadow Chests from being opened (due to the inaccessible Shadow Key), blocks access to the Mechanic, as well as renders the Safe and Void Vault unobtainable. Try to avoid staying above or far to one side of Skeletron for a long time. It will accelerate to move back above the player during this time, and it can be hard to avoid both the head and hands as they rebound into position. The Slime Mount can help the player escape Skeletron's head-spin attack. Using a grappling hook can also help evade Skeletron's attacks and is an especially useful tool to escape its head-spin attack.",
+    "image": "Skeletron.png",
+    "tags": [
+      "boss",
+      "dungeon"
+    ]
+  },
+  {
+    "id": "skeletron-prime",
+    "name": "Skeletron Prime",
+    "tier": "Hardmode",
+    "summon": "Not to be confused with Skeletron, the pre-Hardmode boss. Skeletron Prime is a Hardmode mechanical boss which is essentially a more difficult version of Skeletron. It consists of a head and four limbs, but, similarly to Skeletron, only the head needs to be defeated to defeat the boss.",
+    "hp": "28,000",
+    "biome": "Surface+Night/ Space+Night",
+    "drops": [
+      "Soul of Fright ×25–40 (100%)",
+      "Hallowed Bar ×15–30 (100%)",
+      "Greater Healing Potion ×5–15 (100%)",
+      "Skeletron Prime Mask (14.29%)",
+      "Skeletron Prime Trophy (10%)",
+      "Treasure Bag (Skeletron Prime) (100%)",
+      "Robotic Skull (25%)",
+      "Skeletron Prime Relic (100%)"
+    ],
+    "description": "Not to be confused with Skeletron, the pre-Hardmode boss. Skeletron Prime is a Hardmode mechanical boss which is essentially a more difficult version of Skeletron. It consists of a head and four limbs, but, similarly to Skeletron, only the head needs to be defeated to defeat the boss.",
+    "strategy": "Unhindered movement is crucial when Skeletron Prime's head starts spinning, as it deals double the regular damage. Wings greatly aid in moving vertically, and flattened terrain or a sky bridge are convenient for horizontal movement. Although it is a little more time-consuming, focusing on the arms first is very rewarding. Once Skeletron Prime's head is no longer shielded by anything, the fight becomes a lot easier. Prioritize damage on the arm which is causing the most damage or disruption, so it can be destroyed and removed from the fight as quick as possible. A good idea is to focus on the Prime Laser first, as it is harder to dodge than the other limbs. Due to Skeletron Prime's overall high defense, inflicting it with is effective, as it is not immune to it. Note that most Ichor weapons lack in damage compared to other weapons, so they should only be used periodically for inflicting the debuff.",
+    "image": "Skeletron Prime head.gif",
+    "tags": [
+      "boss"
+    ]
+  },
+  {
+    "id": "the-destroyer",
+    "name": "The Destroyer",
+    "tier": "Hardmode",
+    "summon": "The Destroyer can be summoned manually using a Mechanical Worm at night (from to ). The Destroyer can also spawn naturally at the start of the night, as long as it has not yet been defeated at least once in the current world.",
+    "hp": "80,000",
+    "biome": "Surface+Night / Space+Night",
+    "drops": [
+      "Soul of Might ×25–40 (100%)",
+      "Hallowed Bar ×15–30 (100%)",
+      "Greater Healing Potion ×5–15 (100%)",
+      "Destroyer Mask (14.29%)",
+      "Destroyer Trophy (10%)",
+      "Treasure Bag (The Destroyer) (100%)",
+      "Deactivated Probe (25%)",
+      "Destroyer Relic (100%)"
+    ],
+    "description": "The Destroyer is a Hardmode mechanical boss that is essentially a more difficult version of the Eater of Worlds. Its segments share a single health pool, meaning individual segments cannot die. Each of The Destroyer's segments fires lasers at the player, and as they take damage, they launch Probe, independent flying enemies that fire lasers and can be killed individually.",
+    "strategy": "Since The Destroyer follows the player instead of despawning, one can use any means of teleportation (Magic Mirrors, Teleporters, etc.) to easily avoid it during the fight. Keep in mind that The Destroyer can move freely without blocks while it is off-screen. As with the Eater of Worlds, weapons that can hit several enemies are highly effective against The Destroyer. For extra risk and reward, line up with the head (which has no defense) and fire down the length of its body.",
+    "image": "The Destroyer.png",
+    "tags": [
+      "boss"
+    ]
+  },
+  {
+    "id": "wall-of-flesh",
+    "name": "Wall of Flesh",
+    "tier": "Pre-Hardmode",
+    "summon": "The Wall of Flesh can be summoned by dropping a Guide Voodoo Doll into lava in The Underworld while the Guide is alive, which destroys the Guide Voodoo Doll and kills the Guide in the process. Alternatively, the boss can also be summoned by letting the Guide die within lava in The Underworld. He can die by any means (the player, an enemy, or the environment), as long as he is touching lava when he dies.",
+    "hp": "8,000",
+    "biome": "The Underworld",
+    "drops": [
+      "Pwnhammer (100%)",
+      "Breaker Blade (25%)",
+      "Clockwork Assault Rifle (25%)",
+      "Laser Rifle (25%)",
+      "Firecracker (25%)",
+      "Warrior Emblem (25%)",
+      "Ranger Emblem (25%)",
+      "Sorcerer Emblem (25%)",
+      "Summoner Emblem (25%)",
+      "Healing Potion ×5–15 (100%)",
+      "Wall of Flesh Mask (14.29%)",
+      "Wall of Flesh Trophy (10%)",
+      "Treasure Bag (Wall of Flesh) (100%)",
+      "Goat Skull (25%)",
+      "Wall of Flesh Relic (100%)"
+    ],
+    "description": "The Wall of Flesh is the final pre-Hardmode boss. Once it is defeated, the world permanently converts to Hardmode, which brings new content and challenges. To defeat the Wall of Flesh, the player must attack either its eyes or its mouth. They all share the same health counter, so attacking any of the three will deplete the total health of the boss. However, the eyes have less defense (thus take more damage) than the mouth. No other parts of the Wall of Flesh can be damaged. See below for information on the two exclusive debuffs from the boss, Horrified and The Tongue.",
+    "strategy": "If the Wall of Flesh is accidentally summoned, the player can quit and re-enter the world to despawn it. Note that doing so will also remove any dropped items and teleport the player back to their spawn point. If the Wall of Flesh was recently summoned, make sure the Guide has respawned before attempting to summon the Wall of Flesh again to avoid the unnecessary loss of Voodoo Dolls. A common \"arena\" to fight the boss should consist of a long horizontal bridge spanning at least 1000 blocks. The two main types of Wall of Flesh arenas are solid bridges and platform bridges, each with their own pros and cons.",
+    "image": "Wall of Flesh.gif",
+    "tags": [
+      "boss",
+      "underworld"
+    ]
   }
 ]

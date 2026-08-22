@@ -48,16 +48,26 @@ Terraria is too large to add safely in one batch. The incremental content roadma
 
 ## Data
 
-The app ships with a fast offline starter database as JSON in `ios/TerraWiki/Resources/`:
+The app bundles a complete offline database as JSON in `ios/TerraWiki/Resources/`, generated from the Official Terraria Wiki (`terraria.wiki.gg`, Desktop **1.4.5.7**):
 
-- `items.json` — starter items, weapons, armor, accessories, materials, ammo, and recipes
-- `npcs.json` — starter town and special NPCs
-- `bosses.json` — starter pre-Hardmode and Hardmode bosses
-- `mechanics.json` — starter game systems and guides
+- `items.json` — all **6,180 items** with kind, rarity, stats, sell value, recipes, used-in links, and exact artwork filenames
+- `mobs.json` — all **286 enemies** with HP, damage, defense, knockback resist, coins, AI, drops, and biome
+- `npcs.json` — all **40 town NPCs and pets** with spawn conditions, services, sells, and quotes
+- `bosses.json` — all **29 bosses** (incl. event and secret-seed bosses) with summons, stats, drops, and strategy
+- `mechanics.json` — all **119 game mechanics** with summaries and tips
 
-The All Items, NPCs, Mobs, Bosses, and Mechanics screens also sync the complete current catalogs from the Official Terraria Wiki (`terraria.wiki.gg`) through its public MediaWiki API. Results are cached on-device for subsequent launches, and every catalog entry links back to its source page. The wiki currently documents Desktop 1.4.5.7, including item IDs 6147–6195 added in that release. Artwork is loaded from the corresponding Official Terraria Wiki file when available.
+Everything works fully offline. Artwork is loaded from the corresponding Official Terraria Wiki file at runtime, falling back to the built-in icon when offline.
 
-Edit the starter JSON files to customize the offline fallback; no code changes are required.
+The database is rebuilt from the wiki with two reproducible scripts:
+
+```bash
+bun scripts/fetch-wiki-data.mjs     # item stats, types, recipes, and artwork verification
+bun scripts/fetch-npc-data.mjs      # NPC stats, categories, page text, and artwork verification
+bun scripts/generate-items.mjs      # writes items.json
+bun scripts/generate-catalogs.mjs   # writes mobs.json, npcs.json, bosses.json, mechanics.json
+```
+
+Raw wiki dumps are cached in `scripts/data/` (gitignored); `scripts/npcs-curated.json` holds the hand-authored NPC overlay that is merged into the generated data.
 
 ## CI / building the unsigned IPA
 

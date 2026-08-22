@@ -162,10 +162,11 @@ struct FavoritesView: View {
         WikiScreen(title: "Favorites") {
             let itemFavs = store.items.filter { favorites.contains($0.id) }
             let npcFavs = store.npcs.filter { favorites.contains($0.id) }
+            let mobFavs = store.mobs.filter { favorites.contains($0.id) }
             let bossFavs = store.bosses.filter { favorites.contains($0.id) }
             let mechFavs = store.mechanics.filter { favorites.contains($0.id) }
 
-            if itemFavs.isEmpty && npcFavs.isEmpty && bossFavs.isEmpty && mechFavs.isEmpty {
+            if itemFavs.isEmpty && npcFavs.isEmpty && mobFavs.isEmpty && bossFavs.isEmpty && mechFavs.isEmpty {
                 WikiEmptyState(title: "No favorites yet.\nTap the star on any entry to save it.", systemImage: "star")
             } else {
                 ScrollView {
@@ -183,7 +184,16 @@ struct FavoritesView: View {
                             SectionHeader(text: "NPCs")
                             ForEach(npcFavs) { npc in
                                 NavigationLink { NpcDetailView(npc: npc) } label: {
-                                    WikiRow(title: npc.name, subtitle: npc.role, symbol: npcSymbol(npc), symbolColor: .wikiGreen)
+                                    WikiRow(title: npc.name, subtitle: npc.role, symbol: npcSymbol(npc), symbolColor: .wikiGreen, thumbnailURL: wikiFileURL(for: npc))
+                                }
+                                HairlineDivider()
+                            }
+                        }
+                        if !mobFavs.isEmpty {
+                            SectionHeader(text: "Mobs")
+                            ForEach(mobFavs) { mob in
+                                NavigationLink { MobDetailView(mob: mob) } label: {
+                                    WikiRow(title: mob.name, subtitle: mobSubtitle(mob), symbol: mobSymbol(mob), symbolColor: mobColor(mob), thumbnailURL: wikiFileURL(for: mob))
                                 }
                                 HairlineDivider()
                             }
@@ -320,6 +330,7 @@ struct SearchView: View {
             if let item = DataStore.shared.item(id: result.id) { return itemSymbol(item) }
             return "cube.fill"
         case .npcs: return "person.fill"
+        case .mobs: return "eye.fill"
         case .bosses: return "crown.fill"
         case .mechanics: return "gearshape.fill"
         }
@@ -331,6 +342,7 @@ struct SearchView: View {
             if let item = DataStore.shared.item(id: result.id) { return itemColor(item) }
             return .wikiGreen
         case .npcs: return .wikiGreen
+        case .mobs: return .red
         case .bosses: return .orange
         case .mechanics: return .blue
         }
@@ -346,6 +358,10 @@ struct SearchView: View {
         case .npcs:
             if let npc = DataStore.shared.npc(id: result.id) {
                 NpcDetailView(npc: npc)
+            }
+        case .mobs:
+            if let mob = DataStore.shared.mob(id: result.id) {
+                MobDetailView(mob: mob)
             }
         case .bosses:
             if let boss = DataStore.shared.boss(id: result.id) {

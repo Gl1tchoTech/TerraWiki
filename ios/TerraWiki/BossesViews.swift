@@ -3,8 +3,10 @@ import SwiftUI
 // MARK: - Boss list
 
 struct BossesView: View {
+    private var store: DataStore { .shared }
+
     var body: some View {
-        OfficialCatalogView(kind: .bosses)
+        BossListScreen(title: "Bosses", bosses: store.bosses.sorted { $0.name < $1.name })
     }
 }
 
@@ -27,7 +29,8 @@ struct BossListScreen: View {
                                     title: boss.name,
                                     subtitle: bossSubtitle(boss),
                                     symbol: bossSymbol(boss),
-                                    symbolColor: bossColor(boss)
+                                    symbolColor: bossColor(boss),
+                                    thumbnailURL: wikiFileURL(for: boss)
                                 )
                             }
                             HairlineDivider()
@@ -93,7 +96,12 @@ struct BossDetailView: View {
 
     private var header: some View {
         HStack(spacing: 14) {
-            PixelIcon(symbol: bossSymbol(boss), color: bossColor(boss), size: 52)
+            WikiArtwork(
+                url: wikiFileURL(for: boss),
+                fallbackSymbol: bossSymbol(boss),
+                fallbackColor: bossColor(boss),
+                size: 52
+            )
             VStack(alignment: .leading, spacing: 4) {
                 Text(boss.name)
                     .font(.system(size: 20, weight: .bold))

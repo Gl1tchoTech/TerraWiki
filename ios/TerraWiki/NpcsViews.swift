@@ -3,8 +3,42 @@ import SwiftUI
 // MARK: - NPC list
 
 struct NpcsView: View {
+    private var store: DataStore { .shared }
+
     var body: some View {
-        OfficialCatalogView(kind: .npcs)
+        NpcListScreen(title: "NPCs", npcs: store.npcs.sorted { $0.name < $1.name })
+    }
+}
+
+struct NpcListScreen: View {
+    let title: String
+    let npcs: [Npc]
+
+    var body: some View {
+        WikiScreen(title: title) {
+            if npcs.isEmpty {
+                WikiEmptyState(title: "No NPCs in this category yet.", systemImage: "person.2.fill")
+            } else {
+                ScrollView {
+                    LazyVStack(spacing: 0) {
+                        ForEach(npcs) { npc in
+                            NavigationLink {
+                                NpcDetailView(npc: npc)
+                            } label: {
+                                WikiRow(
+                                    title: npc.name,
+                                    subtitle: npc.role,
+                                    symbol: npcSymbol(npc),
+                                    symbolColor: .wikiGreen,
+                                    thumbnailURL: wikiFileURL(for: npc)
+                                )
+                            }
+                            HairlineDivider()
+                        }
+                    }
+                }
+            }
+        }
     }
 }
 
@@ -82,7 +116,12 @@ struct NpcDetailView: View {
 
     private var header: some View {
         HStack(spacing: 14) {
-            PixelIcon(symbol: npcSymbol(npc), color: .wikiGreen, size: 52)
+            WikiArtwork(
+                url: wikiFileURL(for: npc),
+                fallbackSymbol: npcSymbol(npc),
+                fallbackColor: .wikiGreen,
+                size: 52
+            )
             VStack(alignment: .leading, spacing: 4) {
                 Text(npc.name)
                     .font(.system(size: 20, weight: .bold))

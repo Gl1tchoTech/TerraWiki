@@ -4,13 +4,14 @@ import SwiftUI
 // MARK: - Domain models
 
 enum WikiCategory: String, Codable, CaseIterable, Identifiable {
-    case items, npcs, bosses, mechanics
+    case items, npcs, mobs, bosses, mechanics
     var id: String { rawValue }
 
     var label: String {
         switch self {
         case .items: return "Item"
         case .npcs: return "NPC"
+        case .mobs: return "Mob"
         case .bosses: return "Boss"
         case .mechanics: return "Mechanic"
         }
@@ -68,6 +69,26 @@ struct Npc: Codable, Identifiable, Hashable {
     let quotes: [String]?
     let description: String
     let notes: String?
+    /// Exact wiki image file name; nil falls back to a name-derived URL.
+    let image: String?
+    let tags: [String]
+}
+
+struct Mob: Codable, Identifiable, Hashable {
+    let id: String
+    let name: String
+    let tier: String
+    let biome: String?
+    let hp: String
+    let damage: String?
+    let defense: String?
+    let knockback: String?
+    let coins: String?
+    let ai: String?
+    let drops: [String]
+    let description: String
+    /// Exact wiki image file name; nil falls back to a name-derived URL.
+    let image: String?
     let tags: [String]
 }
 
@@ -81,6 +102,8 @@ struct Boss: Codable, Identifiable, Hashable {
     let drops: [String]
     let description: String
     let strategy: String
+    /// Exact wiki image file name; nil falls back to a name-derived URL.
+    let image: String?
     let tags: [String]
 }
 
@@ -92,6 +115,8 @@ struct Mechanic: Codable, Identifiable, Hashable {
     let howItWorks: String
     let tips: [String]?
     let related: [String]?
+    /// Exact wiki image file name; nil falls back to a name-derived URL.
+    let image: String?
     let tags: [String]
 }
 

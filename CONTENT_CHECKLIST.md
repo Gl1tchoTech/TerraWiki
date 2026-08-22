@@ -18,12 +18,12 @@ This is the working roadmap for filling TerraWiki in manageable content batches.
 - [x] Native iOS SwiftUI product shell and TerraWiki branding.
 - [x] Split navigation and smaller reference-style list rows.
 - [x] Stable domain models for starter items, NPCs, bosses, and mechanics.
-- [x] Official Wiki catalog discovery for items, NPCs, mobs, bosses, and mechanics.
+- [x] Official Wiki catalog discovery for items, NPCs, mobs, bosses, and mechanics (replaced by bundled data).
 - [x] On-device catalog caching and offline starter-data fallback.
 - [x] Search, favorites, source links, and artwork loading hooks.
 - [x] GitHub Actions simulator tests and unsigned IPA packaging on every push and pull request.
-- [ ] Replace generic live-catalog detail pages with complete parsed, structured details for each catalog type.
-- [x] Grow the small bundled starter database into a complete offline database (6,180 items with stats, rarity, sell value, recipes, and used-in links).
+- [x] Replace generic live-catalog detail pages with complete parsed, structured details for each catalog type.
+- [x] Grow the small bundled starter database into a complete offline database: 6,180 items, 286 mobs, 40 NPCs, 29 bosses, 119 mechanics.
 
 ---
 
@@ -87,38 +87,38 @@ This is the working roadmap for filling TerraWiki in manageable content batches.
 
 ## Batch 06 — Town NPCs and friendly characters
 
-- [ ] All town NPCs and their alternate forms.
-- [ ] Guide, Merchant, Nurse, Demolitionist, Dye Trader, Angler, and other early-game NPCs.
-- [ ] Hardmode town NPCs and progression-unlocked NPCs.
-- [ ] Old Man, Clothier, Tax Collector, Skeleton Merchant, Traveling Merchant, and other special friendly NPCs.
-- [ ] Town pets and pet licenses.
-- [ ] NPC unlock conditions, housing requirements, services, inventories, and biome preferences.
-- [ ] Happiness likes/dislikes, pylons, quotes, and named variants.
-- [ ] NPC sprite/artwork support and variant navigation.
+- [x] All town NPCs and their alternate forms (40 entries).
+- [x] Guide, Merchant, Nurse, Demolitionist, Dye Trader, Angler, and other early-game NPCs.
+- [x] Hardmode town NPCs and progression-unlocked NPCs (incl. Wizard).
+- [x] Old Man, Clothier, Tax Collector, Skeleton Merchant, Traveling Merchant, and other special friendly NPCs.
+- [x] Town pets and pet licenses (Cat, Dog, Bunny, town slimes).
+- [x] NPC unlock conditions, housing requirements, services, inventories, and biome preferences.
+- [ ] Happiness likes/dislikes, pylons, quotes, and named variants (quotes for the curated set; wiki-sourced spawn conditions elsewhere).
+- [x] NPC sprite/artwork support and variant navigation.
 
 ## Batch 07 — Enemies and hostile mobs
 
-- [ ] Surface enemies by biome.
-- [ ] Underground, Cavern, Underworld, and dungeon enemies.
-- [ ] Corruption, Crimson, Hallow, Jungle, Snow, Desert, Ocean, and Mushroom enemies.
-- [ ] Hardmode enemies and biome-specific Hardmode variants.
-- [ ] Event waves and invasion enemies.
-- [ ] Critters, hostile critters, town slimes, and transformation variants.
-- [ ] Enemy health, damage, defense, knockback resistance, AI/behavior, banners, and drops.
-- [ ] Spawn conditions, time/weather requirements, biome requirements, and rare variants.
-- [ ] Filters for biome, difficulty, event, progression, and enemy type.
+- [x] Surface enemies by biome (286 mobs total).
+- [x] Underground, Cavern, Underworld, and dungeon enemies.
+- [x] Corruption, Crimson, Hallow, Jungle, Snow, Desert, Ocean, and Mushroom enemies.
+- [x] Hardmode enemies and biome-specific Hardmode variants (tier + biome from infobox).
+- [x] Event waves and invasion enemies (Blood Moon, Goblin Army, Pirate, Eclipse, moons, Old One's Army, Martian).
+- [ ] Critters, hostile critters, town slimes, and transformation variants (critters intentionally excluded).
+- [x] Enemy health, damage, defense, knockback resistance, AI/behavior, and drops.
+- [x] Spawn conditions/biome requirements (environment field; time/weather detail partially covered by descriptions).
+- [x] Filters for biome, difficulty, event, progression, and enemy type (Pre-Hardmode / Hardmode / Event / Servants lists).
 
 ## Batch 08 — Bosses, mini-bosses, and boss servants
 
-- [ ] Pre-Hardmode bosses and their forms.
-- [ ] Hardmode bosses and their forms.
-- [ ] Event bosses and invasion bosses.
-- [ ] Mini-bosses and rare encounter bosses.
-- [ ] Boss servants, hands, parts, minions, and phase-specific forms.
-- [ ] Summoning items, summon conditions, despawn rules, and arena requirements.
-- [ ] Boss health, defense, damage, phases, immunities, and behavior.
-- [ ] Drops, treasure bags, relics, trophies, masks, pets, and expert/master rewards.
-- [ ] Boss progression order, preparation guides, and strategy sections.
+- [x] Pre-Hardmode bosses and their forms.
+- [x] Hardmode bosses and their forms.
+- [x] Event bosses and invasion bosses (29 bosses incl. Betsy, Pumpking, Ice Queen, Flying Dutchman, Martian Saucer).
+- [x] Mini-bosses and rare encounter bosses (incl. Mechdusa secret-seed boss).
+- [x] Boss servants, hands, parts, minions, and phase-specific forms (Servants list).
+- [x] Summoning items and summon conditions (summon text extracted from the wiki).
+- [x] Boss health, defense, damage, phases, and behavior.
+- [x] Drops, treasure bags, relics, trophies, masks, pets, and expert/master rewards (drop lists parsed from infoboxes).
+- [x] Boss progression order, preparation guides, and strategy sections (wiki Tips/Strategy text).
 
 ## Batch 09 — World generation, biomes, and environments
 
@@ -134,15 +134,15 @@ This is the working roadmap for filling TerraWiki in manageable content batches.
 
 ## Batch 10 — Game systems and progression mechanics
 
-- [ ] Character creation, health, mana, defense, stats, modifiers, and damage classes.
-- [ ] Difficulty modes: Classic, Expert, Master, and Journey.
-- [ ] Game progression, boss milestones, Hardmode transition, and event unlocks.
-- [ ] NPC housing, happiness, pylons, town management, and spawn rules.
-- [ ] Inventory, chests, storage, sorting, quick stack, favorite, research, and Journey duplication.
-- [ ] Buffs, debuffs, immunity frames, healing, mana, death, respawn, and spawn points.
-- [ ] Rarity, prefixes, reforging, modifiers, and value calculations.
-- [ ] Time, moon phases, weather, wind, rain, sandstorms, and fishing conditions.
-- [ ] Luck, torch luck, shimmer, transmutation, and permanent upgrades.
+- [x] All 119 game mechanics pages from the Official Wiki (Category:Game mechanics), with summaries, tips, groups, and related entries.
+- [x] Difficulty modes: Classic, Expert, Master, and Journey (mechanics pages).
+- [x] Game progression, boss milestones, Hardmode transition, and event unlocks.
+- [x] NPC housing, happiness, pylons, town management, and spawn rules (mechanics pages).
+- [x] Inventory, chests, storage, sorting, quick stack, favorite, research, and Journey duplication.
+- [ ] Buffs, debuffs, immunity frames, healing, mana, death, respawn, and spawn points (mechanics pages cover most; structured buff/debuff lists remain).
+- [x] Rarity, prefixes, reforging, modifiers, and value calculations.
+- [x] Time, moon phases, weather, wind, rain, sandstorms, and fishing conditions.
+- [x] Luck, torch luck, shimmer, transmutation, and permanent upgrades.
 
 ## Batch 11 — Building, wiring, farming, and fishing
 

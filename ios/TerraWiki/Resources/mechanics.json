@@ -1,195 +1,1915 @@
 [
   {
-    "id": "crafting",
-    "name": "Crafting",
+    "id": "aggro",
+    "name": "Aggro",
     "group": "Systems",
-    "summary": "Turn gathered materials into equipment, tools, and furniture at the right crafting station.",
-    "howItWorks": "Stand near a crafting station and open the crafting menu. The Guide can tell you every recipe that uses any material you show him. Different recipes require different stations — a Work Bench, Furnace, Anvil, Loom, Sawmill, and more.",
-    "tips": [
-      "Check the Guide constantly — he is the in-game recipe browser.",
-      "Keep all crafting stations in one room for convenience."
+    "summary": "Aggro, short for aggression or aggravation, is an invisible statistic that determines which player enemies will prioritize as a target. Outside of multiplayer, aggro has little effect.",
+    "howItWorks": "All enemies target the player based on criteria set in their AI. While some kinds of enemies may only target the player if they are in water, for example, most will constantly try to find the closest target. Armor and other items that have the effect of \"enemies are more/less likely to target the player\" cause enemies to consider a player to be closer or farther away than they actually are. Enemies generally do not have a maximum range, and will always target the player if no other targets are available, regardless of distance or aggro.",
+    "related": [
+      "Ai",
+      "Multiplayer"
     ],
-    "tags": ["systems", "crafting", "guide"]
+    "tags": [
+      "mechanic",
+      "systems",
+      "old-one-s-army"
+    ]
   },
   {
-    "id": "hardmode-activation",
-    "name": "Hardmode Activation",
-    "group": "Progression",
-    "summary": "Defeating the Wall of Flesh transforms the world into Hardmode, unlocking new ores, enemies, and bosses.",
-    "howItWorks": "Throw a Guide Voodoo Doll into Underworld lava. When the Wall of Flesh dies, the world is blessed/cursed: the Hallow and the existing evil biome spread, new ores appear, and Hardmode enemies and bosses become available. Hardmode cannot be undone.",
-    "tips": [
-      "Prepare arenas, housing, and a solid weapon loadout first.",
-      "The Hallow and evil spread in a V shape — plan your base accordingly."
-    ],
-    "related": ["Wall of Flesh", "Plantera"],
-    "tags": ["progression", "hardmode", "wall-of-flesh"]
+    "id": "ai",
+    "name": "AI",
+    "group": "Wiring",
+    "summary": "AI (artificial intelligence) refers to the behavioral pattern exhibited by an NPC. An AI type can be considered a template: some base AIs are shared across many NPCs, while others are unique.",
+    "howItWorks": "Furthermore, some NPCs have additional AI logic on top of their base AI, such as the non-aggressive mode of surface slimes, the Wandering Eye's increased acceleration, or the ranged attack of some Fighter AI enemies. Most AIs are not explicitly named in the game code, thus the wiki names them for identification. Names are mainly given based on observed behavior (e.g. Flying AI), NPC groups (e.g.",
+    "tags": [
+      "mechanic",
+      "wiring"
+    ]
   },
   {
-    "id": "npc-happiness",
-    "name": "NPC Happiness & Pylons",
-    "group": "Systems",
-    "summary": "Town NPCs have biome and neighbor preferences that affect shop prices and unlock Pylons.",
-    "howItWorks": "NPCs are happier in biomes they love and when they live near NPCs they like. Happy NPCs sell for less. A Pylon can be bought from a happy NPC, letting you teleport between Pylon networks across the map.",
+    "id": "alternative-crafting-ingredients",
+    "name": "Alternative crafting ingredients",
+    "group": "Crafting",
+    "summary": "An alternative crafting ingredient is an item that can be used in place of another item in a crafting recipe. These alternatives are grouped as \"Any <groupname>\".",
+    "howItWorks": "For instance, items that use Any Wood as an ingredient can be crafted with regular Wood, Ebonwood, Shadewood, etc. While these alternative crafting ingredients can be substituted in many recipes in which they appear, they may not be able to be substituted in all of them. Certain recipes still specifically require regular Wood, for example, even though many others use Any Wood. See an item's page for details on which recipes it can be substituted in.",
     "tips": [
-      "Build small towns of 2-3 NPCs in their preferred biomes.",
-      "Place a Pylon in each town for instant fast travel."
+      "Using a combination of Iron and Lead Bars for the same item can help conserve bars when the player does not have a large supply."
     ],
-    "tags": ["systems", "town", "pylons", "happiness"]
+    "tags": [
+      "mechanic",
+      "crafting"
+    ]
   },
   {
-    "id": "evil-spread",
-    "name": "World Evil Spread",
+    "id": "ambient-entities",
+    "name": "Ambient entities",
     "group": "World",
-    "summary": "The Corruption, Crimson, and Hallow spread across the world and convert surrounding blocks.",
-    "howItWorks": "Evil biomes convert adjacent grass, stone, sand, and ice. Spread is slow before Hardmode but accelerates drastically after the Wall of Flesh dies. The Dryad reports the exact percentage of each biome, and the Steampunker's Clentaminator can cleanse or spread it.",
-    "tips": [
-      "Dig 3-block-wide tunnels to quarantine your base.",
-      "Use Green Solution with the Clentaminator to cleanse corruption."
+    "summary": "Ambient entities are objects that appear and move around in the background, and cannot be interacted with in any way. They are displayed depending on the time of day, biome, weather, and current events.",
+    "howItWorks": "While some can be seen regularly, others are only displayed rarely. Clouds can be considered background entities although they are not affected by biomes. Ambient entities' motion speeds up with time.",
+    "tags": [
+      "mechanic",
+      "world"
+    ]
+  },
+  {
+    "id": "ambient-objects",
+    "name": "Ambient objects",
+    "group": "Systems",
+    "summary": "Throughout most biomes and layers, various ambient objects are randomly scattered on world creation. These are naturally-placed background objects that can be broken with a pickaxe, drill, or explosive, but otherwise cause no effects, and do not drop items.",
+    "howItWorks": "They function primarily as visual ambiance and do not regenerate once broken, with the exception of icicles. Ambient objects cannot be collected by the player, and unlike several other naturally-generating objects, cannot be crafted with the help of Ecto Mist. However, the Mitey-Titey and Rubblemaker can be used to place ambient objects. Destroying certain ambient objects has a 1/6 (16.67%) chance to spawn a Worm that jumps out of the object and can be collected with a Bug Net.",
+    "related": [
+      "Spawn",
+      "World"
     ],
-    "related": ["Dryad", "Steampunker"],
-    "tags": ["world", "evil", "corruption", "crimson", "hallow"]
+    "tags": [
+      "mechanic",
+      "systems"
+    ]
+  },
+  {
+    "id": "ammo-conservation",
+    "name": "Ammo conservation",
+    "group": "Combat",
+    "summary": "Ammo conservation is a mechanic which prevents ammunition items from being consumed, i.e. removed from the player's inventory, when fired.",
+    "howItWorks": "By default, every item of ammo fired will be consumed, but certain items add a chance to conserve ammo.",
+    "tips": [
+      "Ammo conservation is highly useful when using weapons with expensive ammo, such as the Clentaminator or Super Star Shooter, or ammo-hungry weapons, such as the Hellwing Bow or guns that perform optimally with Chlorophyte Bullets.",
+      "The following combinations of items grant high ammo conservation values:."
+    ],
+    "related": [
+      "Inventory"
+    ],
+    "tags": [
+      "mechanic",
+      "combat"
+    ]
+  },
+  {
+    "id": "ammo-conversion",
+    "name": "Ammo conversion",
+    "group": "Combat",
+    "summary": "Certain ranged weapons have the ability to convert ammo and then fire a special projectile. When ammo is converted and fired, all properties of the ammo are lost besides its base damage, knockback, and velocity.",
+    "howItWorks": "Certain ranged weapons have the ability to convert ammo and then fire a special projectile. When ammo is converted and fired, all properties of the ammo are lost besides its base damage, knockback, and velocity.",
+    "tips": [
+      "For weapons that can convert any type of ammo, the player should use the ammo types with the highest base damage at each stage of the game, as no special effects are inherited when converting.",
+      "A table of said ammo is provided below, with alternatives listed behind the best option if said option requires relatively more effort to obtain or is restricted via world evil."
+    ],
+    "related": [
+      "Damage",
+      "Knockback",
+      "Velocity"
+    ],
+    "tags": [
+      "mechanic",
+      "combat"
+    ]
+  },
+  {
+    "id": "attack-speed",
+    "name": "Attack speed",
+    "group": "Combat",
+    "summary": "Attack speed in Terraria refers to the rate at which a weapon can attack. Despite many modifiers and effects showing changes to attack or melee speed, attack speed is not an in-game statistic and is instead determined by its reciprocal, known as use time.",
+    "howItWorks": "This is the amount of ticks it takes to swing (attack with) or use an item. If use time increases, attack speed decreases, and vice versa. For example, a weapon with a use time of 30 will have a lower attack speed (slower rate of fire) than a weapon with a use time of 10. As such, any attack speed modifiers will in actuality act as a variable within the use time equation.",
+    "related": [
+      "Use Time"
+    ],
+    "tags": [
+      "mechanic",
+      "combat"
+    ]
+  },
+  {
+    "id": "autoswing",
+    "name": "Autoswing",
+    "group": "Systems",
+    "summary": "Autoswing, also known as autofire or autouse, is a property that can apply to usable items, such as weapons, tools and blocks, wherein the item is automatically reused (or swung) while the ⚒ Use / Attack key/button is held down. In contrast, weapons without autoswing require that the player repeatedly clicks or presses ⚒ Use / Attack in order to continue attacking.",
+    "howItWorks": "On the wiki, items with autoswing feature the icon in the top-right corner of their infobox.",
+    "tags": [
+      "mechanic",
+      "systems"
+    ]
+  },
+  {
+    "id": "biome-backgrounds",
+    "name": "Biome backgrounds",
+    "group": "Systems",
+    "summary": "Biome backgrounds are images that appear behind objects and blocks in each biome. Each biome has its own set of backgrounds that usually show a landscape of the biome.",
+    "howItWorks": "In a world, each biome is randomly assigned a background from its own set, and can be changed by using a World Globe. Backgrounds can also be overridden using monoliths. Backgrounds do not affect a biome in any way, except in The Hallow, where the current background affects the style of hallowed trees. Turning off backgrounds in Settings hides them, though ambient entities will still appear.",
+    "related": [
+      "Ambient Entities",
+      "Settings",
+      "World"
+    ],
+    "tags": [
+      "mechanic",
+      "systems"
+    ]
+  },
+  {
+    "id": "biome-spread",
+    "name": "Biome spread",
+    "group": "World",
+    "summary": "The evil biomes and The Hallow, unlike all other biomes, can spread to other areas of a world. They slowly convert, or \"infect\", certain tiles which are near their own biome-exclusive tiles to their respective biome counterparts, increasing the size of the biome.",
+    "howItWorks": "The exact rules for biome spread are slightly different for each of the three infectious biomes, as described in depth below. Collectively, these three biomes can be called the \"infectious biomes\". Blocks and walls which are vulnerable to infection are called \"corruptible\", and those which cannot be infected under any circumstances are \"non-corruptible\". Blocks and walls which could be infected, but have not been, are called \"pure\".",
+    "related": [
+      "Hardmode",
+      "World",
+      "World Generation"
+    ],
+    "tags": [
+      "mechanic",
+      "world"
+    ]
+  },
+  {
+    "id": "block-swap",
+    "name": "Block Swap",
+    "group": "Systems",
+    "summary": "Block Swap is a building mechanic that allows the player to replace placed blocks, background walls, and certain types of furniture items in a single step, rather than having to remove existing tiles manually first. Block Swap can be activated or deactivated via a toggle located to the left of the main inventory / in the tools menu below the inventory.",
+    "howItWorks": "When Block Swap is enabled, the player can place tiles over existing placed tiles, \"swapping\" the two. The previously placed tiles are freed and dropped for collection, as if they were mined normally. Swapping blocks and furniture items still requires that the player possess a tool with sufficient pickaxe power to free the target tile, as the game performs a check for a tool of sufficient power before allowing Block Swap to occur. Additionally, certain tiles can only be swapped under certain conditions, while some can never be swapped via Block Swap at all (see Exceptions below).",
+    "tips": [
+      "Block Swap can be used to extract ore veins that are hanging over a cliff and would cause the player to fall when broken.",
+      "This does not grant the Ooo! Shiny! achievement.",
+      "Chlorophyte Ore can be swapped with Mud Blocks to collect the Chlorophyte while allowing it to grow back."
+    ],
+    "related": [
+      "Inventory",
+      "Pickaxe Power"
+    ],
+    "tags": [
+      "mechanic",
+      "systems"
+    ]
+  },
+  {
+    "id": "boss-health-bar",
+    "name": "Boss health bar",
+    "group": "Combat",
+    "summary": "When a player is within the range of a boss or mini-boss, a red health bar will appear on their screen that represents the boss' total remaining health. On the Desktop version and Console version, the bar is displayed at the bottom of the player's screen, while on the Mobile version, it is displayed below the minimap.",
+    "howItWorks": "When there are multiple bosses in the player's range, only the most recent boss that had been damaged or the closest one in proximity to the player will be shown. The boss health bar also has a togglable option that enables a numeric display for boss health called \"Boss Health Bar Numbers\" in the settings. The maximum and remaining health of the boss will be shown on the bar when the option is on.",
+    "related": [
+      "Health",
+      "Minimap",
+      "Settings"
+    ],
+    "tags": [
+      "mechanic",
+      "combat"
+    ]
+  },
+  {
+    "id": "breath-meter",
+    "name": "Breath meter",
+    "group": "Combat",
+    "summary": "The breath meter appears when a player's head is under either water or honey, representing the time the player has until they begin drowning. The breath meter consists of 10 ( 5) air bubbles (one shown on the right) which fade and disappear gradually as long as the character's head is submerged.",
+    "howItWorks": "When the breath meter is depleted, the player begins to drown and health is lost. The breath meter will start refilling as soon as the player emerges from liquid. It refills at a fixed speed, taking 1.11 seconds to refill from empty to full. For breathing purposes, the player is considered \"in liquid\" when the pixel right above their eye is under liquid surface.",
+    "related": [
+      "Drowning",
+      "Health"
+    ],
+    "tags": [
+      "mechanic",
+      "combat"
+    ]
+  },
+  {
+    "id": "by-hand",
+    "name": "By Hand",
+    "group": "Crafting",
+    "summary": "Some items can be crafted By Hand, meaning they are crafted without the use of an external crafting station. These items are relatively simple to craft and many are essential to basic gameplay.",
+    "howItWorks": "Some items can be crafted By Hand, meaning they are crafted without the use of an external crafting station. These items are relatively simple to craft and many are essential to basic gameplay.",
+    "tags": [
+      "mechanic",
+      "crafting"
+    ]
+  },
+  {
+    "id": "camera-mode",
+    "name": "Camera Mode",
+    "group": "Systems",
+    "summary": "Camera Mode is a special interface which allows taking screenshots of a Terraria world, providing controls to capture images of selected areas of the minimap or screen. Camera Mode is activated by pressing F4 or left-clicking the camera icon above the armor dye slots in the inventory, which replaces the gameplay interface with a specialized image capture interface.",
+    "howItWorks": "While Camera Mode is active, mouse control is used to frame the picture, and the player can neither build nor use items. Selecting an item on the hotbar, using the number keys, or pressing Esc will cancel Camera Mode. Unrevealed sections of the world will not be uncovered by Camera Mode, represented as black swaths similar to ordinary unexplored areas on the minimap.",
+    "related": [
+      "Inventory",
+      "Minimap",
+      "World"
+    ],
+    "tags": [
+      "mechanic",
+      "systems"
+    ]
+  },
+  {
+    "id": "character",
+    "name": "Character",
+    "group": "Combat",
+    "summary": "The term character or avatar refers to the figure controlled by the player through the game controls. All of Terraria's gameplay revolves around actions performed by the character, and the camera is nearly always locked to place the character in the middle of the screen.",
+    "howItWorks": "The term player is often used as a synonym with character, but may also refer to the person accessing the game if the topic is unrelated to character mechanics. Only one character can be played at a given time (in similar fashion to how the player may only access one world at a time), but the player is free to create as many characters as they desire. Characters are not locked to worlds, hence it is, for instance, possible to start playing in a new world with a powerful character from another world. Items held in any part of the character's inventory (including slots for equipment, armor, ammo, and dyes), or any of the personal portable storage items, are all stored with the character, who will bring them to any world they enter.",
+    "related": [
+      "Game Controls",
+      "Inventory",
+      "Storage Items",
+      "World"
+    ],
+    "tags": [
+      "mechanic",
+      "combat"
+    ]
+  },
+  {
+    "id": "character-styles",
+    "name": "Character styles",
+    "group": "Crafting",
+    "summary": "Styles are chosen during character creation and determine the character's base clothing style, which is displayed when no armor or vanity items are equipped, or when the player is wearing Familiar clothes. This style of a character can be changed at any time at a dresser, and a character's gender can be changed at any time with the Gender Change Potion.",
+    "howItWorks": "Styles are chosen during character creation and determine the character's base clothing style, which is displayed when no armor or vanity items are equipped, or when the player is wearing Familiar clothes. This style of a character can be changed at any time at a dresser, and a character's gender can be changed at any time with the Gender Change Potion.",
+    "related": [
+      "Character",
+      "Vanity Items"
+    ],
+    "tags": [
+      "mechanic",
+      "crafting"
+    ]
+  },
+  {
+    "id": "chat",
+    "name": "Chat",
+    "group": "Progression",
+    "summary": "Chat is the system by which players in a multiplayer game can communicate. On Desktop version, Chat messages received are shown near the bottom left corner of the screen.",
+    "howItWorks": "Players can press ↵ Enter to open the chat box, type a message, then press ↵ Enter again to send it. It is also possible to cut, copy and paste entire messages being entered, using Ctrl + X, Ctrl + C, and Ctrl + V respectively. The alternative shortcuts ⇧ Shift + Delete, Ctrl + Insert and ⇧ Shift + Insert, respectively, also work. The following are the keys used for opening chat on other game platforms: Xbox: + .",
+    "related": [
+      "Difficulty",
+      "Multiplayer",
+      "Server",
+      "Status Messages"
+    ],
+    "tags": [
+      "mechanic",
+      "progression"
+    ]
+  },
+  {
+    "id": "classic-mode",
+    "name": "Classic Mode",
+    "group": "Progression",
+    "summary": "Classic Mode is a difficulty option that is selected by default during world creation. As the name suggests, Classic Mode worlds offer Terraria's \"normal\" gameplay experience which existed prior to the introduction of other world modes.",
+    "howItWorks": "As such, Classic Mode worlds do not feature the \"creative\" freedom of Journey Mode worlds, nor are they as challenging as Expert Mode or Master Mode worlds. All newly created characters in Classic Mode and above spawn with a Copper Shortsword, Copper Axe, and Copper Pickaxe in their inventory. While the world content of Classic Mode worlds in general mirrors that of the other world modes, it does not contain any Expert-exclusive or Master-exclusive items. There is no Classic Mode-exclusive content.",
+    "related": [
+      "Difficulty",
+      "Expert Mode",
+      "Journey Mode",
+      "Inventory",
+      "Master Mode",
+      "Spawn"
+    ],
+    "tags": [
+      "mechanic",
+      "progression"
+    ]
+  },
+  {
+    "id": "coin-pickup-in-expert-mode",
+    "name": "Coin pickup in Expert Mode",
+    "group": "Progression",
+    "summary": "In Expert Mode, most enemies can pick up dropped coins. They will emit a sound () when doing so.",
+    "howItWorks": "Enemies holding dropped coins emit a sparkle effect based on the color of the best coin they are holding.",
+    "related": [
+      "Expert Mode"
+    ],
+    "tags": [
+      "mechanic",
+      "progression"
+    ]
+  },
+  {
+    "id": "consumables",
+    "name": "Consumables",
+    "group": "Systems",
+    "summary": "A consumable is an item that is removed from a player's inventory upon direct use. For items that are consumed from use of another item, see Ammunition.",
+    "howItWorks": "On the Old-gen console version and Nintendo 3DS version, some consumable items, like consumable weapons, may be recoverable as dropped items afterward in certain situations. There are some consumables that only cause a cosmetic effect, such as the Sparkle Slime Balloon(Desktop, Console and Mobile versions). These have no effect on gameplay. Note: This term is distinct from Category:Consumable items, which is a Terraria Wiki category encompassing all blocks and furniture that can leave the player's inventory via placement, but which are not necessarily used and destroyed.",
+    "related": [
+      "Inventory",
+      "Placement"
+    ],
+    "tags": [
+      "mechanic",
+      "systems"
+    ]
+  },
+  {
+    "id": "critical-hit",
+    "name": "Critical hit",
+    "group": "Combat",
+    "summary": "A critical hit occurs randomly when striking enemies. Critical hits will deal double damage and 40% more knockback.",
+    "howItWorks": "For melee, ranged, and magic damage types, a critical hit has a 4% chance to appear by default. This base chance can be further increased by critical strike chance bonuses from modifiers, armor bonuses, accessories, and buffs. Some weapons have a base critical strike chance that is higher than default. Summon damage type cannot normally deal critical hits, nor does it benefit from critical strike chance bonuses.",
+    "tips": [
+      "It is generally best to attempt to equalize critical strike chance and damage bonuses from accessories, armor, buffs, and modifiers, as this will maximize the overall.",
+      "More specifically, critical strike chance bonuses are directly equivalent to damage bonuses in terms of average damage per second, so long as damage rounding is disregarded and the critical strike chance is below 100%.",
+      "However, the critical hit damage being doubled after factoring in the enemy's defense has certain implications: Against enemies with non-zero defense, damage bonuses are more effective than critical strike chance bonuses."
+    ],
+    "related": [
+      "Damage",
+      "Knockback"
+    ],
+    "tags": [
+      "mechanic",
+      "combat"
+    ]
+  },
+  {
+    "id": "cursor-modes",
+    "name": "Cursor modes",
+    "group": "Systems",
+    "summary": "Cursor modes are a type of game mechanic in Terraria. Auto Select and Smart Cursor are the two major cursor modes implemented to make using tools and placing objects more convenient.",
+    "howItWorks": "Additionally, there are several special sprites for the cursor that appear when specific hotkey is pressed, informing the player the current function of the cursor.",
+    "tags": [
+      "mechanic",
+      "systems"
+    ]
+  },
+  {
+    "id": "damage",
+    "name": "Damage",
+    "group": "Combat",
+    "summary": "Damage is the number of health points subtracted from an entity's current health. It can be inflicted by a multitude of entities, most prominently weapons, enemies, and NPCs (and all related projectiles).",
+    "howItWorks": "Furthermore, it can be caused by environmental hazards (such as thorny bushes, traps, or lava) and game mechanics (such as fall damage, drowning, or debuffs). Damage can generally only be inflicted on entities with a health statistic, i.e., players, most enemies, and NPCs. Most damage sources additionally inflict knockback on the damaged entity and briefly render it invincible. When an entity receives damage, several calculations increasing or decreasing the amount of damage (depending on several factors; see below) are performed before the actual damage is applied to the entity.",
+    "related": [
+      "Critical Hit",
+      "Fall Damage",
+      "Drowning",
+      "Health",
+      "Knockback"
+    ],
+    "tags": [
+      "mechanic",
+      "combat"
+    ]
+  },
+  {
+    "id": "damage-reduction",
+    "name": "Damage reduction",
+    "group": "Crafting",
+    "summary": "Damage reduction is a hidden player statistic that decreases damage taken from non-player sources (i.e. it has no effect on PvP damage).",
+    "howItWorks": "All boosts (except Banners, Warmth Potion and Dead Man's Sweater) affect damage taken after defense.",
+    "related": [
+      "Defense",
+      "Damage"
+    ],
+    "tags": [
+      "mechanic",
+      "crafting"
+    ]
+  },
+  {
+    "id": "dash",
+    "name": "Dash",
+    "group": "Combat",
+    "summary": "Dashing is an ability which allows the player to quickly travel a short distance when pressing Dash, or when double-tapping ◀ Left or ▶ Right while the \"Double Tap Dashing\" setting is enabled. Dashing gives the player a sudden increase in horizontal momentum, which can be used to accelerate low-acceleration Mounts such as the Blessed Apple to high speeds much faster, trigger sprinting or evade attacks during fight (especially during boss fights).",
+    "howItWorks": "Dashing is an ability which allows the player to quickly travel a short distance when pressing Dash, or when double-tapping ◀ Left or ▶ Right while the \"Double Tap Dashing\" setting is enabled. Dashing gives the player a sudden increase in horizontal momentum, which can be used to accelerate low-acceleration Mounts such as the Blessed Apple to high speeds much faster, trigger sprinting or evade attacks during fight (especially during boss fights).",
+    "tips": [
+      "Dashing is most useful against bosses who also dash at the player, such as the Eye of Cthulhu, Queen Bee, or Duke Fishron.",
+      "On the , one relatively easy way to perform dash is to double-tap the leftmost or rightmost part of the movement virtual joystick.",
+      "On the , shifting the circle pad twice in the preferred direction works as it would on any other version, but this can be tedious and/or tiring."
+    ],
+    "related": [
+      "Mounts"
+    ],
+    "tags": [
+      "mechanic",
+      "combat"
+    ]
+  },
+  {
+    "id": "day-and-night-cycle",
+    "name": "Day and night cycle",
+    "group": "World",
+    "summary": "The day and night cycle of the Terraria world refers to the rising and setting of the sun and moon, and the ways this can affect the world. Day begins at 4:30 AM, while night begins at 7:30 PM.",
+    "howItWorks": "Day and night each have their respective theme music in some surface biomes. For the \"Morning Rain\" track, morning lasts from 4:30 AM to 7:30 AM. Some surface enemies only spawn at night (see Enemies below). Some NPCs sell unique items at night, like the Arms Dealer, who sells Illegal Gun Parts at night.",
+    "related": [
+      "Music",
+      "Spawn",
+      "World"
+    ],
+    "tags": [
+      "mechanic",
+      "world",
+      "goblin-army",
+      "pirate-invasion",
+      "frost-legion"
+    ]
+  },
+  {
+    "id": "death",
+    "name": "Death",
+    "group": "Combat",
+    "summary": "Death occurs when a player's health reaches zero. A death message is displayed dependent on how the player died.",
+    "howItWorks": "For example, “<Player name> tried to swim in lava.” is one that is displayed if the player died from lava damage. When a player dies, a Tombstone is flung from the location of their death. When it finds a suitable space, it will become a 2×2 tile. It stores text, much in the way a Sign functions, with the player's death message, (Desktop, Console and Mobile versions) and the real-world date.",
+    "tips": [
+      "Tombstones can be very useful for locating items/coins dropped after death, since the Tombstone will usually fall within the vicinity of where the player died.",
+      "The marker on the minimap will display where the player died most recently, allowing the player to quickly find the location again.",
+      "In Expert Mode, the location of despawned enemies that picked up at least will be marked by a coin icon on the minimap, and hovering the cursor over / tapping the icon will show the exact amount of coins at that location."
+    ],
+    "related": [
+      "Damage",
+      "Health",
+      "Minimap"
+    ],
+    "tags": [
+      "mechanic",
+      "combat"
+    ]
+  },
+  {
+    "id": "debug-commands",
+    "name": "Debug commands",
+    "group": "World",
+    "summary": "Debug commands are commands used for testing and debugging certain Terraria features. It is initially disabled, and requires modifying Terraria's program to enable it.",
+    "howItWorks": "When debug commands are enabled, pressing F5 during world generation enters the Debug world generation.",
+    "related": [
+      "World",
+      "World Generation"
+    ],
+    "tags": [
+      "mechanic",
+      "world"
+    ]
+  },
+  {
+    "id": "defense",
+    "name": "Defense",
+    "group": "Combat",
+    "summary": "Defense is a statistic that determines the change in damage taken per hit. A positive defense stat will reduce the damage taken, while a negative defense stat will increase the damage taken.",
+    "howItWorks": "The damage dealt to an entity will always be at least 1, regardless of defense. The player's defense can be increased by wearing armor and accessories, and temporarily boosted/decreased by various buffs/debuffs. Players always have a positive defense stat; their defense cannot be reduced to below 0. Non-player entities (enemies, critters, town NPCs, etc.) also have a defense statistic, but it can only be changed by the entity's own mechanics.",
+    "related": [
+      "Damage",
+      "Drowning",
+      "Town"
+    ],
+    "tags": [
+      "mechanic",
+      "combat"
+    ]
+  },
+  {
+    "id": "difficulty",
+    "name": "Difficulty",
+    "group": "Progression",
+    "summary": "Difficulty refers to how challenging the gameplay is. Terraria has different forms of difficulty for both characters and worlds.",
+    "howItWorks": "The actual difficulty mode is a character setting selected during character creation. There are the following options: Journey, Classic, Mediumcore, and Hardcore, all modes changing the penalty upon death. Journey characters start with extra equipment and can only be played on Journey worlds. Classic characters drop only coins.",
+    "tips": [
+      "Mediumcore characters may want to keep their second-best equipment in a Chest in case of death.",
+      "Hardcore mode can be used to freely explore a world by dying and flying through the ground and sky as a Ghost.",
+      "However, Ghosts do not generate light, so exploring non-lit areas may be difficult."
+    ],
+    "related": [
+      "Character",
+      "Death",
+      "Expert Mode",
+      "Hardmode",
+      "Pre-hardmode",
+      "World"
+    ],
+    "tags": [
+      "mechanic",
+      "progression"
+    ]
+  },
+  {
+    "id": "dodge",
+    "name": "Dodge",
+    "group": "Combat",
+    "summary": "A dodge is an effect that fully negates all negative impacts applied when the player takes damage, including the damage itself, knockback, and any newly inflicted debuffs. A few items grant a chance (or guarantee) to activate dodging upon taking damage.",
+    "howItWorks": "Almost all damage sources can be dodged, from enemy attacks and environmental hazards like thorny bushes, traps, or lava, to fall damage. Damage from debuffs and other indirect sources cannot be dodged.",
+    "tips": [
+      "The dodge chances from the Brain of Confusion and Black Belt or Master Ninja Gear can be stacked, with the final dodge chance being.",
+      "The Black Belt and Master Ninja Gear themselves do not stack, however.",
+      "The ability to negate one out of four attacks (on average) is very helpful in situations where defense is not enough to nullify high damage, such as in Master Mode."
+    ],
+    "related": [
+      "Damage",
+      "Fall Damage",
+      "Knockback"
+    ],
+    "tags": [
+      "mechanic",
+      "combat"
+    ]
+  },
+  {
+    "id": "drowning",
+    "name": "Drowning",
+    "group": "Crafting",
+    "summary": "Drowning occurs when a player's breath meter fully depletes while submerged in water or honey. While drowning, the player will take continuous damage until they are able to successfully counter it with an accessory, a potion, or a pocket of air.",
+    "howItWorks": "Otherwise, the player will eventually die. The rate at which drowning occurs cannot be slowed down nor sped up unless the player has certain accessories equipped. NPCs can also drown if stuck or forced underwater, making this a very effective way of killing NPCs. Notably, house validity is not affected by liquids, meaning they can be \"automatically\" drowned by flooding their house.",
+    "tips": [
+      "The Flipper Potion, as well as the Flipper and its upgrades allow the player to swim.",
+      "This greatly aids in underwater travel and usually greatly reduces the likelihood of drowning.",
+      "A can be used alternatively, if there are other types of solid terrain nearby."
+    ],
+    "related": [
+      "Breath Meter",
+      "Damage"
+    ],
+    "tags": [
+      "mechanic",
+      "crafting"
+    ]
+  },
+  {
+    "id": "emotes",
+    "name": "Emotes",
+    "group": "Town",
+    "summary": "Emotes are small, temporary, animated sprites that appear inside chat bubbles above an entity. They can be used by players, town NPCs, and enemies.",
+    "howItWorks": "Emotes are small, temporary, animated sprites that appear inside chat bubbles above an entity. They can be used by players, town NPCs, and enemies.",
+    "related": [
+      "Chat",
+      "Town"
+    ],
+    "tags": [
+      "mechanic",
+      "town"
+    ]
+  },
+  {
+    "id": "expert-mode",
+    "name": "Expert Mode",
+    "group": "Progression",
+    "summary": "Expert Mode is a difficulty option that can be selected during world creation. It greatly increases the difficulty of the game, as well as the quantity and quality of drops and the chances to obtain rare items.",
+    "howItWorks": "Furthermore, it offers certain exclusive content. Expert Mode begins the moment the Expert Mode world is created, and cannot be altered after that by the player. In Journey Mode, Expert Mode can be toggled using the Enemy Difficulty Slider. All Expert Mode changes also apply to Master Mode, including increased drop chances, modified AIs, etc.",
+    "related": [
+      "Difficulty",
+      "Journey Mode",
+      "Master Mode",
+      "World"
+    ],
+    "tags": [
+      "mechanic",
+      "progression"
+    ]
+  },
+  {
+    "id": "explosion-proof-objects",
+    "name": "Explosion-proof objects",
+    "group": "Systems",
+    "summary": "Several explosives, like Dynamite and Bombs, break placed objects when they explode. This page lists explosion-proof objects, i.e., objects that will remain placed when an explosion occurs.",
+    "howItWorks": "Although these objects are themselves impervious to explosions, they will not shield other objects from explosions. Explosions will destroy any vulnerable objects within their radius, even if explosion-proof blocks are in the way.",
+    "tags": [
+      "mechanic",
+      "systems"
+    ]
+  },
+  {
+    "id": "extra-jump",
+    "name": "Extra jump",
+    "group": "Systems",
+    "summary": "Extra jumps allow the player to perform one or more extra mid-air jumps and are granted by five different accessories and four different mounts. Each extra jump has a certain type, dictated by the accessory or mount.",
+    "howItWorks": "Jumps of the same type will not stack with each other but will stack with other types, allowing for more than two consecutive jumps. For example, equipping a Cloud in a Bottle and a Tsunami in a Bottle will grant two additional jumps, while combining a Cloud in a Bottle with a Cloud in a Balloon will only grant one extra jump. Each type displays a unique particle effect when used, which always occur in the same order: Summoned mount's jump first, followed by Sandstorm, Blizzard, Fart, Tsunami, and Cloud. An extra jump uses the same jump speed as the base jump but with a different jump duration.",
+    "tips": [
+      "Extra jumps can be used shortly before hitting the ground to reset fall damage.",
+      "The maximum total jump reach from a sextuple jump (obtainable e.",
+      "by equipping a Bundle of Balloons, a Fart in a Balloon, and a Sharkron Balloon) is {{formatnum:{{#expr:."
+    ],
+    "related": [
+      "Mounts"
+    ],
+    "tags": [
+      "mechanic",
+      "systems",
+      "sandstorm"
+    ]
+  },
+  {
+    "id": "fall-damage",
+    "name": "Fall damage",
+    "group": "Combat",
+    "summary": "Fall damage refers to the damage a player character sustains upon falling a large distance. It is one of the basic game mechanics.",
+    "howItWorks": "Fall damage occurs only if the distance of the fall exceeds a fixed threshold, beyond which the damage amount increases linearly with the distance traveled past said threshold. If the damage amount is greater than or equal to the player's current health, the player dies upon impact. Like all kinds of other damage, it provides invincibility frames and can be reduced by the player's defense and damage reduction. Fall damage works the same way for all solid surfaces, but it does not occur when submerged in water, lava, or honey, nor is it applied in special circumstances, e.g.",
+    "tips": [
+      "It is possible to build an invincibility machine using fall damage by utilizing hoiks.",
+      "The player should be careful when falling down long shafts such as hellevators without fall damage or knockback protection, as enemies will not reset the player's fall damage."
+    ],
+    "related": [
+      "Character",
+      "Defense",
+      "Damage Reduction",
+      "Damage",
+      "Health"
+    ],
+    "tags": [
+      "mechanic",
+      "combat"
+    ]
   },
   {
     "id": "fishing",
     "name": "Fishing",
+    "group": "Fishing",
+    "summary": "Fishing is an activity accomplished by using a fishing pole at a body of liquid (water, honey, or lava) while having bait in the player's inventory. Pressing the ⚒ Use / Attack button will cast a fishing line along with the bobber, which only functions when the bobber is thrown into liquid.",
+    "howItWorks": "Pressing the button again when the bobber moves up and down will reel in the line and often an item will come up with the line. The Angler NPC provides daily fishing quests and rewards their completion with an assortment of equipment, paintings, coins, potions, and vanity items. Fishing provides an assortment of game resources: Crafting materials for potions and food, a variety of very useful accessories such as mobility improvements like the Frog Leg or Balloon Pufferfish, and even pets such as the Zephyr Fish. Some fish can even be used as tools or weapons.",
+    "related": [
+      "Inventory",
+      "Pre-hardmode",
+      "Vanity Items"
+    ],
+    "tags": [
+      "mechanic",
+      "fishing"
+    ]
+  },
+  {
+    "id": "flat-surface-items",
+    "name": "Flat-surface items",
     "group": "Systems",
-    "summary": "Cast a line into any body of water to catch fish, crates, and loot.",
-    "howItWorks": "Use a Fishing Pole with bait at any liquid. Different biomes, times, and moon phases yield different catches. The Angler gives daily quests that reward fishing gear. Crates can be opened for ores and rare items.",
-    "tips": [
-      "Bigger lakes = less fishing power penalty.",
-      "Complete Angler quests to unlock better rods and accessories."
+    "summary": "Flat-surface items are furniture items that can be stood on and dropped through, and have a flat surface that is required for the placement of certain furniture items: Bottles Candles Bowls/Fancy Dishes Piggy Bank Book Water Bolt Desert Spirit Lamp(Desktop, Console and Mobile versions)",
+    "howItWorks": "Flat-surface items are furniture items that can be stood on and dropped through, and have a flat surface that is required for the placement of certain furniture items: Bottles Candles Bowls/Fancy Dishes Piggy Bank Book Water Bolt Desert Spirit Lamp(Desktop, Console and Mobile versions)",
+    "related": [
+      "Placement"
     ],
-    "related": ["Angler"],
-    "tags": ["systems", "fishing", "angler", "crates"]
+    "tags": [
+      "mechanic",
+      "systems"
+    ]
   },
   {
-    "id": "classes",
-    "name": "Combat Classes",
-    "group": "Combat",
-    "summary": "Four damage classes — Melee, Ranged, Magic, and Summoner — define your playstyle.",
-    "howItWorks": "Each class has dedicated weapons, armor, and accessories. Melee is tanky up-close, Ranged is safe at distance, Magic trades mana for burst, and Summoner commands minions. Hybrid builds are viable, but specializing amplifies your damage bonuses.",
-    "tips": [
-      "Match your armor set bonuses to your weapon type.",
-      "Summoner is the hardest early game but scales into a powerhouse."
-    ],
-    "tags": ["combat", "classes", "melee", "ranged", "magic", "summoner"]
-  },
-  {
-    "id": "boss-summoning",
-    "name": "Boss Summoning",
-    "group": "Combat",
-    "summary": "Bosses are triggered by summon items, breaking objects, or meeting world conditions.",
-    "howItWorks": "Each boss has a summon method — using an item at a specific time or biome, breaking Shadow Orbs or Crimson Hearts, or defeating a prerequisite. Summon items are usually crafted at a Demon or Crimson Altar.",
-    "tips": [
-      "Bosses can only be fought in their required biome/time.",
-      "Most summon items are consumed on use."
-    ],
-    "tags": ["combat", "bosses", "summoning"]
-  },
-  {
-    "id": "events",
-    "name": "Events & Invasions",
-    "group": "Events",
-    "summary": "Special world events send waves of enemies in exchange for unique loot.",
-    "howItWorks": "Events include the Blood Moon, Goblin Army, Pirate Invasion, Old One's Army, Solar Eclipse, Frost Legion, Pumpkin Moon, and Frost Moon. Some happen naturally, others are triggered by items. Each offers exclusive drops and, often, new NPCs.",
-    "tips": [
-      "Build arena defenses before triggering invasions.",
-      "The Pumpkin Moon and Frost Moon scale in difficulty as you progress through waves."
-    ],
-    "tags": ["events", "invasions", "blood-moon", "pumpkin-moon"]
-  },
-  {
-    "id": "potions-and-buffs",
-    "name": "Potions & Buffs",
+    "id": "flight",
+    "name": "Flight",
     "group": "Systems",
-    "summary": "Brew potions at a Placed Bottle or Alchemy Table to gain temporary combat and utility buffs.",
-    "howItWorks": "Combine Bottled Water with herbs and other ingredients. Buffs last several minutes and stack with each other. The Alchemy Table (found in the Dungeon) has a chance to not consume ingredients.",
+    "summary": "Flight allows players to move freely in the air. Rocket Boots, Wings, and certain Mounts allow flight with varying duration and maneuverability.",
+    "howItWorks": "The Soaring Insignia grants infinite flight time with items that normally have a duration. Some flight items allow the player to \"hover\". Activating this varies by item. For example, the Drill Containment Unit hovers automatically, the Flying Carpet hovers while holding ↷ Jump, and the Hoverboard hovers while holding ↷ Jump + ▼ Down.",
     "tips": [
-      "Keep a herb farm for Daybloom, Blinkroot, Moonglow, and more.",
-      "Always drink Ironskin and Regeneration before boss fights."
+      "Although not true flight, an alternative to long range flight can be achieved using the gravity switching affects of Gravitation Potions or the Gravity Globe accessory.",
+      "When using these, gravity can be flipped using the key, causing the player to suddenly lift off the ground and fall in the opposite direction.",
+      "This can be useful to quickly find Floating Islands."
     ],
-    "tags": ["systems", "potions", "buffs", "alchemy"]
+    "related": [
+      "Mounts"
+    ],
+    "tags": [
+      "mechanic",
+      "systems"
+    ]
   },
   {
-    "id": "wiring",
-    "name": "Wiring & Mechanisms",
-    "group": "Building",
-    "summary": "Connect wires, switches, and actuators to automate traps, doors, and farms.",
-    "howItWorks": "Buy Wire, Switches, and Pressure Plates from the Mechanic. Wire transmits signals between triggers and mechanisms like doors, traps, pumps, and actuators. Complex circuits can automate almost anything.",
-    "tips": [
-      "Use actuators to create hidden doors.",
-      "Statues wired to timers spawn mobs for farms."
+    "id": "game-controls",
+    "name": "Game controls",
+    "group": "Systems",
+    "summary": "The default game controls are listed below. These can be changed from the Controls menu in settings on the title screen.",
+    "howItWorks": "While in-game, they can be accessed by opening the inventory, selecting \"Settings\", and navigating to \"Controls\".",
+    "related": [
+      "Inventory",
+      "Settings"
     ],
-    "related": ["Mechanic"],
-    "tags": ["building", "wiring", "automation", "traps"]
+    "tags": [
+      "mechanic",
+      "systems"
+    ]
   },
   {
-    "id": "moon-phases",
-    "name": "Moon Phases",
+    "id": "ghost",
+    "name": "Ghost",
+    "group": "Systems",
+    "summary": "A ghost is a character's representation upon death while playing in Hardcore mode. Ghosts can continue to explore the world, fly limitlessly, and pass through blocks.",
+    "howItWorks": "They cannot be harmed, nor can they attack, but can open doors. They are visible to other players in multiplayer and can continue to chat with them. When a player dies and becomes a ghost, all their items are dropped at the location of their death. If they log out, their character is permanently deleted.",
+    "related": [
+      "Chat",
+      "Character",
+      "Death",
+      "Multiplayer",
+      "World"
+    ],
+    "tags": [
+      "mechanic",
+      "systems"
+    ]
+  },
+  {
+    "id": "golf",
+    "name": "Golf",
+    "group": "Systems",
+    "summary": "Golf is an in-game activity where players hit Golf Balls into Golf Cups using Golf Clubs. Golf supplies can be purchased from the Golfer NPC.",
+    "howItWorks": "Golf courses are not naturally-occurring and must be built.",
+    "tips": [
+      "The player can use the same level location for an Old One's Army arena and driving range.",
+      "Putting a tee at one end and a cup at the other can give the player plenty of points using the driver.",
+      "If the player puts multiple Golf Cups followed by a large one-tile wide wall at the end, they can increase their one-shot chance significantly and therefore increase the score points they gain."
+    ],
+    "tags": [
+      "mechanic",
+      "systems"
+    ]
+  },
+  {
+    "id": "gravity",
+    "name": "Gravity",
     "group": "World",
-    "summary": "The moon cycles through eight phases that affect enemy spawns and fishing.",
-    "howItWorks": "Each night has a different moon phase, affecting NPC shops, enemy spawn rates, and fishing results. The Blood Moon is a special event night with greatly increased danger.",
-    "tags": ["world", "moon", "fishing"]
+    "summary": "Gravity applies a constant downwards acceleration to the player, affecting vertical speed and how quickly the maximum falling speed is reached. The default gravitational acceleration is 123 mph per second, with falling speed capping at 51 mph.",
+    "howItWorks": "Certain sources may add modifiers to both gravity and the maximum falling speed to increase or decrease their effects.",
+    "tags": [
+      "mechanic",
+      "world"
+    ]
   },
   {
-    "id": "critters-and-bait",
-    "name": "Critters & Bait",
-    "group": "Systems",
-    "summary": "Catch small creatures with a Bug Net to use as bait or display.",
-    "howItWorks": "Buy a Bug Net from the Merchant, then catch worms, butterflies, and other critters. Many act as fishing bait with varying power, while others are sellable or keepable as pets.",
-    "tags": ["systems", "critters", "fishing", "bait"]
-  },
-  {
-    "id": "chests-and-storage",
-    "name": "Chests & Storage",
-    "group": "Building",
-    "summary": "Store items in chests, barrels, and specialized containers across your world.",
-    "howItWorks": "Craft chests from wood and bars, or find them while exploring. The Piggy Bank, Safe, and Defender's Forge are personal storage that follows you between them. Organize with signs and item frames.",
-    "tags": ["building", "storage", "chests"]
-  },
-  {
-    "id": "npcs-rescue",
-    "name": "Rescuing NPCs",
+    "id": "hairstyles",
+    "name": "Hairstyles",
     "group": "Progression",
-    "summary": "Several NPCs must be found and freed before they'll move into your town.",
-    "howItWorks": "The Mechanic is trapped in the Dungeon, the Goblin Tinkerer is bound underground, the Stylist is cocooned in a Spider Cave, and others appear under specific conditions. Rescued NPCs require valid housing to move in.",
-    "tags": ["progression", "npcs", "rescue"]
-  },
-  {
-    "id": "housing",
-    "name": "Housing",
-    "group": "Building",
-    "summary": "Build valid rooms so NPCs can move in and set your spawn point.",
-    "howItWorks": "A valid house needs enclosed walls, a background wall, a door, a table, a chair, and a light source. The Housing menu (inventory right side) shows whether a room is suitable and lets you assign NPCs.",
-    "tips": [
-      "Beds in valid housing set your respawn point.",
-      "Keep an eye on the 'Housing' checkmark when building rooms."
+    "summary": "Hairstyles determine how the player's hair appears. The style and color of a character's hair can be selected initially at character creation, and can be changed in-game anytime via the Stylist, for a fee.",
+    "howItWorks": "A small number of hairstyles are only available through the Stylist (not at character creation); these are also locked behind certain game progression milestones.",
+    "related": [
+      "Character"
     ],
-    "tags": ["building", "housing", "npcs"]
+    "tags": [
+      "mechanic",
+      "progression"
+    ]
   },
   {
-    "id": "bestiary",
-    "name": "Bestiary",
+    "id": "hardmode",
+    "name": "Hardmode",
+    "group": "Progression",
+    "summary": "Hardmode, true to its name, is a more difficult version of the initial world. A world permanently changes into Hardmode after the Wall of Flesh is defeated for the first time, granting players new challenges and much more content to explore.",
+    "howItWorks": "Enabling Hardmode in a world is necessary for game progression, as several new bosses leading up to the game's final boss only become available to fight in this world state.",
+    "related": [
+      "World"
+    ],
+    "tags": [
+      "mechanic",
+      "progression"
+    ]
+  },
+  {
+    "id": "hardmode-conversion",
+    "name": "Hardmode conversion",
+    "group": "Progression",
+    "summary": "Defeating the Wall of Flesh for the first time triggers a conversion in the world which creates the Hardmode biomes. Two diagonal stripes will generate in a \"V\" pattern, one converting tiles to their Hallow counterpart, the other converting tiles to their evil biome (The Corruption or The Crimson, depending on the world evil) counterpart.",
+    "howItWorks": "The stripes extend from the top of the world to the bottom of The Underworld. The status message \"The ancient spirits of light and dark have been released.\" is displayed after the conversion is done. The Hallowed stripe is always generated first. See below for a list of tiles converted during this conversion.",
+    "related": [
+      "Hardmode",
+      "World"
+    ],
+    "tags": [
+      "mechanic",
+      "progression"
+    ]
+  },
+  {
+    "id": "health",
+    "name": "Health",
+    "group": "Crafting",
+    "summary": "Health is the character's life count, represented by a meter of heart icons at the top-right of the screen. Each red heart shown represents 20 health, and each gold heart represents 25 health.",
+    "howItWorks": "Taking damage causes health to drop, signified by the meter fading from right to left. Health regenerates when the character stops taking damage, and regeneration occurs at ever-increasing rates the longer the character avoids further damage, with a further rate boost if the character stands still. Regeneration can also be boosted using various equipable items, potions, and placed furniture items that grant area-of-effect buffs, such as Campfires and Heart Lanterns. New characters begin with 5 red hearts, i.e.",
+    "related": [
+      "Character",
+      "Damage",
+      "Mana",
+      "Settings"
+    ],
+    "tags": [
+      "mechanic",
+      "crafting"
+    ]
+  },
+  {
+    "id": "health-regeneration",
+    "name": "Health regeneration",
+    "group": "Combat",
+    "summary": "Health regeneration is the process of gradually gaining back health after losing it due to damage. After not taking damage for a short time, the player slowly regenerates health until they take damage again or reach their maximum health.",
+    "howItWorks": "Both the regeneration delay and the regeneration rate are highly variable and depend on a variety of factors. NPCs and critters regenerate health at fixed rates; see NPCs § Health regeneration and Critters § Health regeneration for details, respectively. Most enemies, with a few exceptions, do not regenerate health whatsoever; see Enemies § Health regeneration for details. The following is a simplified overview of the player's health regeneration mechanic.",
+    "related": [
+      "Damage",
+      "Health"
+    ],
+    "tags": [
+      "mechanic",
+      "combat"
+    ]
+  },
+  {
+    "id": "highlight",
+    "name": "Highlight",
     "group": "Systems",
-    "summary": "A log of every enemy you've defeated, with drop rates and lore.",
-    "howItWorks": "Open the Bestiary to browse defeated enemies. Fill it to earn rewards from the Zoologist and unlock detailed enemy stats. Some NPCs and events only appear after certain Bestiary progress.",
-    "related": ["Zoologist"],
-    "tags": ["systems", "bestiary", "enemies"]
+    "summary": "Several items have a special effect that highlights blocks, entities, or other objects on the screen.",
+    "howItWorks": "Several items have a special effect that highlights blocks, entities, or other objects on the screen.",
+    "tags": [
+      "mechanic",
+      "systems"
+    ]
   },
   {
-    "id": "secret-seeds",
-    "name": "Secret World Seeds",
-    "group": "World",
-    "summary": "Special world seeds create wildly different world generation rules and challenges.",
-    "howItWorks": "Enter a secret seed when creating a world to trigger alternate generation — like the drunk world, the 'get fixed boi' challenge seed, or skyblock-style constraints. Each has its own rules and surprises.",
-    "tags": ["world", "seeds", "challenge"]
+    "id": "hoik",
+    "name": "Hoik",
+    "group": "Wiring",
+    "summary": "A hoik is a sawtooth series of sloped blocks, sometimes referred to as teeth, which can rapidly move entities across distances. It is often used as a method of fast travel, but it also allows for the creation of mechanisms that may otherwise be impractical or impossible using standard game features, such as fast binary counters.",
+    "howItWorks": "When a character sprite shares space with a sloped block, the character is immediately displaced a couple of tiles in a predictable direction. By chaining these glitches together via a series of strategically-placed shaped blocks, entities can be moved rapidly in any direction over long distances. It becomes easy to achieve horizontal travel at 82 mph (60 tiles/second) or 164 mph (120 tiles/second), and vertical travel at 245 mph (180 tiles/second), which is much faster than many other forms of travel. Hoiks have been possible since Terraria version 1.2 (which first introduced sloped tiles), though their utility to players was originally considered an exploited glitch.",
+    "related": [
+      "Character"
+    ],
+    "tags": [
+      "mechanic",
+      "wiring"
+    ]
+  },
+  {
+    "id": "inventory",
+    "name": "Inventory",
+    "group": "Crafting",
+    "summary": "The inventory is a player's stock of carried items and equipment, available for use at all times. Unlike the contents of a Chest, the inventory is bound to the player rather than the world, and its contents will follow a player between multiple worlds and even between multiplayer servers.",
+    "howItWorks": "The inventory is accessed by pressing the Inventory key, the binding for which varies depending on the player's platform of choice. Items are added to the inventory as the player picks up items found in the world or takes them from a storage item, and can be sorted by using the ⚒ Use / Attack key to pick up and place items, allowing them to be sorted between slots. An item held in the cursor in this way is treated as if the player is holding it; weapons can be used to attack, consumable items can be used, and placeable items can be placed in the world while held in the cursor. However, an item held in the cursor is treated as if it has been removed from the inventory – the space it occupied can be filled by other items, and it will be dropped if the inventory is closed.",
+    "tips": [
+      "The trash slot grants an additional inventory slot.",
+      "An item can temporarily be placed there to make room in the main inventory.",
+      "Care should be taken, as placing any other item in the trash slot, dying, or exiting the game will delete the contents of the slot."
+    ],
+    "related": [
+      "Health",
+      "Mana",
+      "Multiplayer",
+      "World"
+    ],
+    "tags": [
+      "mechanic",
+      "crafting"
+    ]
+  },
+  {
+    "id": "invincibility-frame",
+    "name": "Invincibility frame",
+    "group": "Combat",
+    "summary": "An invincibility frame (also known as immune frame, immunity frame, or invulnerability frame, sometimes abbreviated to iframe or i-frame) is a brief period of time during which an entity cannot take any damage. It is usually granted immediately after taking damage.",
+    "howItWorks": "The general purpose of invincibility frames is to prevent an entity from taking too much damage from continuous or rapidly repeated damage sources. For instance, if there were no invincibility frames, a player submerged in lava would take damage from it every tick, i.e. 60 times per second. Players in particular are also granted invincibility frames under a few other conditions, not just taking damage.",
+    "related": [
+      "Damage"
+    ],
+    "tags": [
+      "mechanic",
+      "combat"
+    ]
   },
   {
     "id": "journey-mode",
     "name": "Journey Mode",
+    "group": "World",
+    "summary": "Journey Mode is a difficulty option that can be selected during character and world creation. It provides the player access to a wide array of customization options during gameplay, including duplication of items, modification of time and weather, and difficulty sliders.",
+    "howItWorks": "Journey Mode is only accessible with Journey characters in Journey worlds (Journey worlds can only be accessed using Journey characters, and Journey characters can only play in Journey worlds). Journey Mode is intended to be Terraria's \"creative\" or \"tourist\" mode, making it relatively easy to acquire items and explore the game's various elements and mechanics without having to overcome its normal progression of challenges; though Journey players do have the ability to adjust the game's difficulty on-the-fly to challenge themselves and test different difficulty levels.",
+    "tips": [
+      "An enemy's stats are determined by the difficulty upon spawn, whereas its dropped items are determined by the difficulty upon defeat.",
+      "This allows obtaining Expert- or Master-exclusive items from e.",
+      "a Journey-level boss, by increasing the difficulty after summoning and before defeating it."
+    ],
+    "related": [
+      "Character",
+      "Difficulty",
+      "World"
+    ],
+    "tags": [
+      "mechanic",
+      "world"
+    ]
+  },
+  {
+    "id": "knockback",
+    "name": "Knockback",
+    "group": "Crafting",
+    "summary": "Knockback is a basic mechanism in Terraria whereby players and enemies are repelled in the opposite direction of an attack. Most weapons and environment objects that cause damage also cause knockback, to varying degrees.",
+    "howItWorks": "Some enemies are immune to knockback, particularly bosses and other enemies that travel through blocks, like worms and Man Eaters. Some enemies also have varying degrees of knockback resistance. The player can become immune to knockback by equipping the Cobalt Shield, Paladin's Shield, or any of their upgrades, or by grappling on any surface using any hook. Wearing the full Gladiator armor(Desktop, Console and Mobile versions) set also grants the player knockback immunity.",
+    "related": [
+      "Damage",
+      "Stealth"
+    ],
+    "tags": [
+      "mechanic",
+      "crafting"
+    ]
+  },
+  {
+    "id": "lifesteal",
+    "name": "Lifesteal",
+    "group": "Combat",
+    "summary": "Lifesteal is an effect that heals the player for a portion of their damage dealt, and can be prevented by the Moon Bite debuff. There are two items that provide this effect: the Vampire Knives and the Spectre Hood.",
+    "howItWorks": "Lifesteal is an effect that heals the player for a portion of their damage dealt, and can be prevented by the Moon Bite debuff. There are two items that provide this effect: the Vampire Knives and the Spectre Hood.",
+    "related": [
+      "Damage"
+    ],
+    "tags": [
+      "mechanic",
+      "combat"
+    ]
+  },
+  {
+    "id": "lighting-mode",
+    "name": "Lighting mode",
+    "group": "Events",
+    "summary": "The lighting mode determines the way light from all sources renders in the world. The lighting mode can be changed from the settings menu.",
+    "howItWorks": "On the Desktop version, it can also be cycled by pressing ⇧ Shift+F9 while in-game. The lighting mode also dictates whether the game will use certain performance-intensive visual effects, like the smoothing of liquid flow, along with the following shader effects: The reddish lighting and vignette applied during a Blood Moon The distortion effect around Celestial Towers The heat distortion effect in the Desert and The Underworld The amplified background dust effect seen during Sandstorms The sepia filter applied in a The Constant world or while the Radio Thing is equipped The effects above will only be applied in the Color or White lighting modes, and are deactivated in the Retro and Trippy modes. On the Console version and Mobile version, these effects are controlled by a separate setting and are unaffected by the lighting mode. The chosen lighting mode will have an effect on the performance of some devices.",
+    "related": [
+      "The Constant",
+      "Settings",
+      "World"
+    ],
+    "tags": [
+      "mechanic",
+      "events",
+      "blood-moon",
+      "sandstorm"
+    ]
+  },
+  {
+    "id": "loadouts",
+    "name": "Loadouts",
     "group": "Systems",
-    "summary": "A creative-leaning mode with item duplication, difficulty sliders, and weather control.",
-    "howItWorks": "Journey characters can research items to duplicate them, adjust enemy spawn rates and difficulty, control time and weather, and toggle godmode. Unlocked by default in Journey worlds.",
-    "tags": ["systems", "journey", "difficulty"]
+    "summary": "Loadouts are a feature that allows the player to conveniently and quickly switch between three sets of armor and accessories, as well as the corresponding dyes and vanity/social slots. They are available to players immediately upon character creation and do not need to be unlocked.",
+    "howItWorks": "Loadouts are a feature that allows the player to conveniently and quickly switch between three sets of armor and accessories, as well as the corresponding dyes and vanity/social slots. They are available to players immediately upon character creation and do not need to be unlocked.",
+    "tips": [
+      "Common loadouts may include: Building and/or mining, e.",
+      "the Hand Of Creation (or its components) and Mining armor Fishing, e.",
+      "the Lavaproof Tackle Bag (or its components), a Fishing Bobber, and Angler armor In Expert Mode, the above may benefit from incorporating the passively attacking accessories (Bone Helm, Volatile Gelatin, and Spore Sac) and/or Royal Gel as mining and angler armor provide minimal combat benefits, and these activities do not take up many accessory slots (especially once the combined accessories mentioned above have been created)."
+    ],
+    "related": [
+      "Character"
+    ],
+    "tags": [
+      "mechanic",
+      "systems"
+    ]
+  },
+  {
+    "id": "lock-on",
+    "name": "Lock on",
+    "group": "Systems",
+    "summary": "Lock on or Target Lock is a mechanic which allows players to automatically target enemies, bosses, and critters.",
+    "howItWorks": "Lock on or Target Lock is a mechanic which allows players to automatically target enemies, bosses, and critters.",
+    "tips": [
+      "Lock on is a useful compensation for the small screen size on the.",
+      "It can be especially helpful when using weapons that require accurate aim, like Yoyos, Ranged weapons, or Magic weapons, making (dodging while firing) an effortless task.",
+      "In the Expert Mode Brain of Cthulhu fight, auto-aim will always go for the true brain in the second phase."
+    ],
+    "tags": [
+      "mechanic",
+      "systems"
+    ]
+  },
+  {
+    "id": "logo",
+    "name": "Logo",
+    "group": "Systems",
+    "summary": "There are various official logos for Terraria.",
+    "howItWorks": "There are various official logos for Terraria.",
+    "tags": [
+      "mechanic",
+      "systems"
+    ]
+  },
+  {
+    "id": "luck",
+    "name": "Luck",
+    "group": "Town",
+    "summary": "Luck is a hidden statistic that influences many of Terraria's randomly-chosen items and events, such as the chances of item drops, rare enemy and critter spawns, certain town NPCs' first appearances, or the Traveling Merchant's inventory items. Players can estimate their luck value by speaking to the Wizard.",
+    "howItWorks": "Luck is a hidden statistic that influences many of Terraria's randomly-chosen items and events, such as the chances of item drops, rare enemy and critter spawns, certain town NPCs' first appearances, or the Traveling Merchant's inventory items. Players can estimate their luck value by speaking to the Wizard.",
+    "tips": [
+      "The spawn rate of several Graveyard enemies is boosted by negative luck: Moss Zombies, which require negative luck to spawn at all, and are necessary to complete the Bestiary.",
+      "Hostile Statues, which are rare to encounter with positive luck.",
+      "The Groom and The Bride, which are the only sources of Bloody Tears outside of a Blood Moon."
+    ],
+    "related": [
+      "Inventory",
+      "Value",
+      "Town"
+    ],
+    "tags": [
+      "mechanic",
+      "town"
+    ]
+  },
+  {
+    "id": "mana",
+    "name": "Mana",
+    "group": "Combat",
+    "summary": "Mana is a resource consumed by the player upon using magic weapons. Magic weapons have a specific mana cost that depletes the player's mana upon use.",
+    "howItWorks": "When a player's mana is depleted completely, a magic or weapon cannot be used again until that weapon's mana cost has regenerated. Similarly to health, the player's current mana supply and capacity are represented by a meter: a column of blue stars displayed on the top-right edge of the screen to the right of the life counter, with each star representing 20 mana. Mana regenerates automatically as long as the player is not using it. It fills more quickly if the player stands still, with a further rate boost based on the current total mana: The more mana a player has, the faster it regenerates.",
+    "tips": [
+      "Setting up Star Statues on timers can help giving magic-using players much better rates of magical fire in boss-fighting or enemy-farming situations where there is time to prepare where the player is going to fight.",
+      "Using the Crystal Ball is also helpful in such situations.",
+      "If a player wants to rely on mana-consuming weapons for normal exploration, they should memorize how to best recover mana, even while distracted."
+    ],
+    "related": [
+      "Character",
+      "Health",
+      "Settings"
+    ],
+    "tags": [
+      "mechanic",
+      "combat"
+    ]
+  },
+  {
+    "id": "master-mode",
+    "name": "Master Mode",
+    "group": "Progression",
+    "summary": "Master Mode is a difficulty option that can be selected during world creation. It further increases the difficulty of the game beyond Expert Mode, and offers a small number of Master Mode-exclusive items that can be dropped by bosses.",
+    "howItWorks": "Like Expert Mode, Master Mode begins the moment the Master Mode world has been created, and cannot be altered after that by the player. In Journey Mode, Master Mode can be toggled using the Enemy Difficulty Slider. All Expert Mode changes also apply to Master Mode, including increased drop chances, modified AIs, etc. All Expert-exclusive content is available in Master Mode.",
+    "related": [
+      "Difficulty",
+      "Expert Mode",
+      "Journey Mode",
+      "World"
+    ],
+    "tags": [
+      "mechanic",
+      "progression"
+    ]
+  },
+  {
+    "id": "minimap",
+    "name": "Minimap",
+    "group": "World",
+    "summary": "The minimap is a scale-size live overview of the world around the character. By default, it is displayed in a square frame in the upper-right corner of the screen.",
+    "howItWorks": "As the world is explored, areas appear on the minimap with the greatest brightness with which the character has ever seen them. Even if the tiles return to darkness, they will remain visible on the minimap. However, areas explored without a light source will not be mapped. The rate at which the minimap logs new data is dependent on the current video quality – the higher it is, the faster it will be logged.",
+    "tips": [
+      "The minimap in overlay mode can be zoomed in to a 1:1 scale, which can help visibility at night or in caves, or zoomed out to see the location of bosses off-screen (and even far enough to see the entire world).",
+      "If the player does not have any light sources, they can use the zoomed-in overlay-mode map to see where they are going.",
+      "Note that enemies will not show up on the minimap."
+    ],
+    "related": [
+      "Biome Spread",
+      "Character",
+      "Multiplayer",
+      "Settings",
+      "World",
+      "Zoom"
+    ],
+    "tags": [
+      "mechanic",
+      "world"
+    ]
+  },
+  {
+    "id": "moon-phase",
+    "name": "Moon phase",
+    "group": "Fishing",
+    "summary": "The moon in Terraria moves through a cycle of eight different phases, with the next phase in the cycle appearing each night. The current phase is indicated by the amount of the moon that is visible during the night.",
+    "howItWorks": "The phase of the moon primarily affects the shop inventory of certain NPCs; other effects influenced by the moon include the spawn rates of certain enemies and critters, and the player's Fishing Power. It takes eight in-game nights for the moon to move through all of its phases. The cycle begins with the full moon upon world creation, where the entire circular moon is visible, and four nights later, after three waning phases, reaches the new moon, where no moon is visible. Another four nights later, after three waxing phases, the cycle ends with the return of the full moon.",
+    "tips": [
+      "If the player does not have access to a Sextant, the current moon quarter can be determined by seeing which painting the Painter has for sale, or, in Hardmode, which set of clothes the Clothier has for sale."
+    ],
+    "related": [
+      "Fishing",
+      "Inventory",
+      "Spawn",
+      "World"
+    ],
+    "tags": [
+      "mechanic",
+      "fishing",
+      "blood-moon",
+      "pumpkin-moon",
+      "frost-moon"
+    ]
+  },
+  {
+    "id": "mounts",
+    "name": "Mounts",
+    "group": "Combat",
+    "summary": "Mounts are creatures or objects that act as vehicles that a player can use for transportation or dealing damage. When a mount-summoning item is used, it applies an unlimited buff to the player, spawns the mount, and places the player on or in it.",
+    "howItWorks": "Mount movement can be controlled using the player's usual movement keys. Like pets and minions, mounts can be used limitlessly, and their summoning items are not consumed. Only one mount can be in effect at a time. Mounts will be unsummoned automatically when the player dies.",
+    "tips": [
+      "Mount-compatible doorways can be implemented using mechanisms or hoiks to allow a player into or out of areas while still riding their mounts.",
+      "Using a Tall Gate also works.",
+      "The Cosmic Car Key, Witch's Broom, Shrimpy Truffle, Drill Containment Unit, and The Black Spot all grant infinite flight to the player."
+    ],
+    "related": [
+      "Damage",
+      "Movement Speed",
+      "Projectiles",
+      "Rarity"
+    ],
+    "tags": [
+      "mechanic",
+      "combat"
+    ]
+  },
+  {
+    "id": "movement-speed",
+    "name": "Movement speed",
+    "group": "Combat",
+    "summary": "Movement speed is one of the player's stats and affects how quickly they can travel around. Many features can affect movement speed, such as Movement Accessories, wings, Mounts, Minecarts and Liquids, along with certain Buffs, Debuffs, Armor and other hazards such as Ice Blocks and Cobwebs.",
+    "howItWorks": "Movement speed can be broken down into horizontal movement, which is the most affected component by most sources, and vertical movement, which is mostly affected by Wings and Movement Accessories.",
+    "related": [
+      "Mounts"
+    ],
+    "tags": [
+      "mechanic",
+      "combat"
+    ]
+  },
+  {
+    "id": "multiplayer",
+    "name": "Multiplayer",
+    "group": "Systems",
+    "summary": "Multiplayer is a game mode in which Terraria can be played with or against other remote players online. Multiplayer worlds are cooperative by default, with player versus player (PvP) available for activation once multiplayer is entered.",
+    "howItWorks": "Multiplayer is a game mode in which Terraria can be played with or against other remote players online. Multiplayer worlds are cooperative by default, with player versus player (PvP) available for activation once multiplayer is entered.",
+    "tags": [
+      "mechanic",
+      "systems"
+    ]
+  },
+  {
+    "id": "music",
+    "name": "Music",
+    "group": "Systems",
+    "summary": "Terraria has over one hundred music tracks. Each one will play and loop endlessly while the player is in a specific biome or while certain events are taking place.",
+    "howItWorks": "Music is individual to each player, and as such its volume can be lowered or disabled entirely within the settings menu. The Music Box accessory allows recording the in-game music to play it back at any time. On the Desktop version, each music track can be replaced with a custom file through the use of Resource Packs. The majority of music in Terraria was composed by Scott Lloyd Shelly of Resonance Array.",
+    "related": [
+      "Settings",
+      "Remix"
+    ],
+    "tags": [
+      "mechanic",
+      "systems",
+      "torch-god"
+    ]
+  },
+  {
+    "id": "no-traps",
+    "name": "No Traps",
+    "group": "Progression",
+    "summary": "No Traps is a special world seed. Its name is a sarcastic reference to how it generates significantly more traps in the world than usual.",
+    "howItWorks": "No Traps is a special world seed. Its name is a sarcastic reference to how it generates significantly more traps in the world than usual.",
+    "tips": [
+      "Because so many traps generate in this world, players can create one to harvest large amounts of mechanisms, Wire, and statues.",
+      "Around 5% of all slimes are Dart Trap Slimes and this includes those summoned in Slime Rains and King Slime.",
+      "Making use of terrain of varied elevation (like multiple platform rows or hills) can protect the player from these slimes."
+    ],
+    "related": [
+      "World",
+      "World Seed"
+    ],
+    "tags": [
+      "mechanic",
+      "progression"
+    ]
+  },
+  {
+    "id": "not-the-bees",
+    "name": "Not the Bees",
+    "group": "Progression",
+    "summary": "Not the Bees is a special world seed. It generates a world dominated by bee-themed biomes and bee-related items and structures.",
+    "howItWorks": "Not the Bees is a special world seed. It generates a world dominated by bee-themed biomes and bee-related items and structures.",
+    "tips": [
+      "There are few Stone Blocks available early on, so purchasing Wooden Arrows and a Furnace from the Merchant is advised.",
+      "Snow Flinx can still be found deep below the outer edges of the world where Snow and Ice Blocks generate (since the number of Snow-related tiles there is sufficient to form an Ice biome).",
+      "Deerclops can also be summoned in this area."
+    ],
+    "related": [
+      "World",
+      "World Seed"
+    ],
+    "tags": [
+      "mechanic",
+      "progression"
+    ]
+  },
+  {
+    "id": "npc-drops",
+    "name": "NPC drops",
+    "group": "Systems",
+    "summary": "Most enemies drop items as their loot when they are killed. The drops can include coins, equipments, materials, power-ups like Hearts, etc.",
+    "howItWorks": "Most enemies drop items as their loot when they are killed. The drops can include coins, equipments, materials, power-ups like Hearts, etc.",
+    "tags": [
+      "mechanic",
+      "systems"
+    ]
+  },
+  {
+    "id": "npc-flag",
+    "name": "NPC flag",
+    "group": "Town",
+    "summary": "An NPC Flag designates the home of the NPC shown on the flag. It is only visible while the housing interface is active.",
+    "howItWorks": "These flags can be placed out of the housing menu into any suitable home. Using ⚷ Open / Activate button on the flag in the home will remove the flag, allowing the player to reassign housing without an empty home. If the home is temporarily made unsuitable, the flag will not necessarily disappear. However, if the home is destroyed, the flag will find a nearby suitable home or disappear.",
+    "related": [
+      "Town"
+    ],
+    "tags": [
+      "mechanic",
+      "town"
+    ]
+  },
+  {
+    "id": "npc-names",
+    "name": "NPC names",
+    "group": "Systems",
+    "summary": "Most NPCs are given names randomly chosen from respective lists. This page lists all possible names for each NPC.",
+    "howItWorks": "This list is provided primarily to help Mobile version players with older devices identify NPCs that are waiting to move in, as old Mobile status messages provide only names without specifying the NPC type. An existing NPC's name is fixed and will not change according to current language settings or Resource Packs(Desktop version). The only way to change an existing NPC's name is to kill them, which will let them respawn with another name. Use the browser's \"find\" feature (usually Ctrl + F) to search for a name and see which NPC type it belongs to.",
+    "related": [
+      "Settings",
+      "Status Messages"
+    ],
+    "tags": [
+      "mechanic",
+      "systems"
+    ]
+  },
+  {
+    "id": "npc-spawning",
+    "name": "NPC spawning",
+    "group": "Town",
+    "summary": "In Terraria, enemies, critters, and other NPCs will spawn off-screen and enter the screen area based on their AI. The rate at which NPCs are spawned, the maximum number of NPCs, and the type of NPCs spawned are all dependent on the time of day, biome, the tile type of the ground, and other factors.",
+    "howItWorks": "Note that for the purpose of NPC spawning, the term \"friendly town NPCs\" includes all friendly NPCs that can move into houses, Traveling Merchant, Old Man, and town pets(Desktop, Console and Mobile versions), but does not include the Skeleton Merchant(Desktop, Console and Mobile versions).",
+    "related": [
+      "Ai",
+      "Spawn",
+      "Town"
+    ],
+    "tags": [
+      "mechanic",
+      "town"
+    ]
+  },
+  {
+    "id": "parallax",
+    "name": "Parallax",
+    "group": "Combat",
+    "summary": "Parallax is an option which controls how much the underground backgrounds scroll relative to foreground objects such as walls, blocks, and NPCs. Settings from 0 – 100 (inclusive) are available; A setting of 0, the default setting, will make the background \"stationary\", causing it to follow player's movement, just as foreground objects do.",
+    "howItWorks": "A setting of 100 will make the background scroll with the player's movement at a relatively high speed.",
+    "related": [
+      "Settings"
+    ],
+    "tags": [
+      "mechanic",
+      "combat"
+    ]
+  },
+  {
+    "id": "pickaxe-power",
+    "name": "Pickaxe power",
+    "group": "Combat",
+    "summary": "Pickaxe power is the amount of strength a pickaxe or drill has. It determines how much the player will damage a block before it breaks.",
+    "howItWorks": "Some blocks break instantly, other blocks cannot be mined with low pickaxe power. Pickaxe power has no effect on the mining speed attribute, in terms of use time per swing, but lower pickaxe power will generally require multiple hits per block, lowering the rate of blocks cleared over time, and creating the impression that a given pickaxe is slower overall.",
+    "related": [
+      "Damage",
+      "Use Time"
+    ],
+    "tags": [
+      "mechanic",
+      "combat"
+    ]
+  },
+  {
+    "id": "placement",
+    "name": "Placement",
+    "group": "Systems",
+    "summary": "Placed items exist physically in a world, requiring a tool in order to free and pick up. This is in contrast to inventory items or dropped items.",
+    "howItWorks": "Placed items exist physically in a world, requiring a tool in order to free and pick up. This is in contrast to inventory items or dropped items.",
+    "tips": [
+      "If Autopause is off and the inventory is open, the player can pick an item from the inventory to place, without the need to move the item to the hotbar."
+    ],
+    "related": [
+      "Inventory",
+      "World"
+    ],
+    "tags": [
+      "mechanic",
+      "systems"
+    ]
+  },
+  {
+    "id": "pre-hardmode",
+    "name": "Pre-Hardmode",
+    "group": "Progression",
+    "summary": "Pre-Hardmode is the initial state of a world. It is essentially an \"easy\" version of the world, featuring enemies and items appropriate for new characters.",
+    "howItWorks": "Pre-Hardmode begins at world creation and ends with the defeat of the Wall of Flesh. Defeating the Wall of Flesh will irreversibly turn the world to Hardmode which adds more content and makes the game more difficult. This is part of systematic game advancement. The term pre-Hardmode refers both to a pre-Hardmode world itself and to content accessible in pre-Hardmode worlds.",
+    "related": [
+      "Hardmode",
+      "World"
+    ],
+    "tags": [
+      "mechanic",
+      "progression"
+    ]
+  },
+  {
+    "id": "projectiles",
+    "name": "Projectiles",
+    "group": "Combat",
+    "summary": "Projectiles are entities that serve various purposes in Terraria. Many projectiles deal damage and are created by either the player (e.g.",
+    "howItWorks": "when using most weapons) or enemies with ranged attacks. Minions, sentries, pets, and light pets are also projectiles. Some projectiles are not directly discernible as such, and are frequently used for visual effects, e.g. the \"Lightning Ritual\" of the Lunatic Cultist (ID 490) or the \"Wire Kite\" from The Grand Design (ID 651).",
+    "related": [
+      "Defense",
+      "Damage",
+      "Knockback"
+    ],
+    "tags": [
+      "mechanic",
+      "combat"
+    ]
+  },
+  {
+    "id": "pylons",
+    "name": "Pylons",
+    "group": "Town",
+    "summary": "Pylons are placeable furniture items that appear as a large crystal hovering and rotating above a biome-themed stand. With two or more pylons placed in the world, the player can teleport from one pylon to another one.",
+    "howItWorks": "The system they form is referred to as the Pylon Network. When the player is near a pylon, they can teleport to another pylon by doing any of the following: Pressing ⚷ Open / Activate on the pylon, which opens the full-screen map, and selecting another pylon on the map. Pressing Toggle Full Map to open the full-screen map, and selecting another pylon on the map. Selecting another pylon on the overlay-mode or portrait-mode minimap.",
+    "tips": [
+      "Pylons can be used during the Lunar Events to traverse the world to combat the various pillars, allowing the player to choose the order they want to fight each pillar more easily.",
+      "The Pylon Network can also be supplemented by several other forms of teleportation or transportation: Each player can use a Recall Potion or Magic Mirror or its upgrades to teleport to their own spawn point.",
+      "The Shellphone and Magic Conch give access to both Oceans."
+    ],
+    "related": [
+      "Minimap",
+      "Settings",
+      "World",
+      "Town"
+    ],
+    "tags": [
+      "mechanic",
+      "town"
+    ]
+  },
+  {
+    "id": "rarity",
+    "name": "Rarity",
+    "group": "Progression",
+    "summary": "Rarity is a property that applies to all items, loosely indicating their value and the difficulty through which they are obtained. An item's rarity is indicated in-game by the color of its name text, as displayed, for example, when hovering the cursor over the item in an inventory slot.",
+    "howItWorks": "An item's base rarity can be raised or lowered by up to two tiers depending on its modifier.",
+    "related": [
+      "Difficulty",
+      "Inventory",
+      "Value"
+    ],
+    "tags": [
+      "mechanic",
+      "progression"
+    ]
+  },
+  {
+    "id": "remix",
+    "name": "Remix",
+    "group": "Progression",
+    "summary": "Remix is a special world seed. It flips usual progression upside-down, with players starting in the Underworld and working their way up.",
+    "howItWorks": "Remix is a special world seed. It flips usual progression upside-down, with players starting in the Underworld and working their way up.",
+    "tips": [
+      "Quickly take advantage of Pylons and the overlapping biomes to bring spares in advance of setting up a new town.",
+      "Doing so near natural Minecart Track is recommended.",
+      "The NPC Happiness system being disabled means no need to keep track of preferred biomes and neighbors."
+    ],
+    "related": [
+      "World",
+      "World Seed"
+    ],
+    "tags": [
+      "mechanic",
+      "progression"
+    ]
+  },
+  {
+    "id": "resource-pack",
+    "name": "Resource Pack",
+    "group": "Systems",
+    "summary": "Resource Packs are add-on files which allow players to customize the game's sprites, musics, sound effects and translations.",
+    "howItWorks": "Resource Packs are add-on files which allow players to customize the game's sprites, musics, sound effects and translations.",
+    "tags": [
+      "mechanic",
+      "systems"
+    ]
+  },
+  {
+    "id": "rgb",
+    "name": "RGB",
+    "group": "Systems",
+    "summary": "Terraria features built-in RGB lighting effects for supported Razer, Logitech, Corsair and SteelSeries peripherals. The vendor's respective lighting software must be installed for these effects to function (e.g.",
+    "howItWorks": "Razer Synapse/Razer Chroma, Logitech G Hub, Corsair iCUE or SteelSeries Engine).",
+    "tags": [
+      "mechanic",
+      "systems"
+    ]
+  },
+  {
+    "id": "secret-world-seeds",
+    "name": "Secret world seeds",
+    "group": "World",
+    "summary": "Secret world seeds are world creation modifiers that alter the created world in strange or unique ways. Unlike regular world seeds, which only affect the usual world structure, secret seeds can produce worlds with characteristics that would not be attainable through normal world generation (i.e., they can affect the game's mechanics while playing in that world).",
+    "howItWorks": "For instance, they may change NPC shop inventories or permanently activate events. Compared to special world seeds, a similar feature, secret seeds generally have a more limited set of effects. Secret world seeds are initially unavailable. They must first be \"discovered\" by entering their respective identifier in the seed input field in the world creation menu.",
+    "related": [
+      "Special World Seeds",
+      "World",
+      "World Seed",
+      "World Generation"
+    ],
+    "tags": [
+      "mechanic",
+      "world"
+    ]
+  },
+  {
+    "id": "server",
+    "name": "Server",
+    "group": "Systems",
+    "summary": "A Terraria server provides a platform for players to connect over the internet or other network for multiplayer games. Windows installations of Terraria include its server software.",
+    "howItWorks": "For running on a Linux distribution, you must download the server files. See the Downloads section. A server can also be used for standalone single-player gameplay. This offers the ability to adjust the in-game time at will.",
+    "related": [
+      "Multiplayer"
+    ],
+    "tags": [
+      "mechanic",
+      "systems"
+    ]
+  },
+  {
+    "id": "settings",
+    "name": "Settings",
+    "group": "Systems",
+    "summary": "Settings are a set of gameplay options available from the game's main menu, the pause menu (), or the inventory screen ( ).",
+    "howItWorks": "Settings are a set of gameplay options available from the game's main menu, the pause menu (), or the inventory screen ( ).",
+    "related": [
+      "Inventory"
+    ],
+    "tags": [
+      "mechanic",
+      "systems"
+    ]
+  },
+  {
+    "id": "social-slots",
+    "name": "Social slots",
+    "group": "Combat",
+    "summary": "Social slots allow the player to change the cosmetic looks of their character by equipping certain accessories or armor pieces in these slots. They allow the player to retain the stats of any armor piece or accessories worn in their respective slots, giving them the authority to design their character based on their own aesthetic preferences.",
+    "howItWorks": "Note that items lose all practical functionality whatsoever while placed in these slots; this includes stats such as defense, damage buffs, and armor set bonuses. Even excluding vanity purposes, social slots can also be used to quickly equip and unequip certain accessories or armor pieces. Some examples of this would be swapping between the Spectre Mask and Spectre Hood for rapid healing, briefly equipping the Ankh Shield to disable an active debuff, or switching to an Ancient Chisel(Desktop, Console and Mobile versions) when the player is about to begin mining.",
+    "related": [
+      "Character",
+      "Defense",
+      "Damage"
+    ],
+    "tags": [
+      "mechanic",
+      "combat"
+    ]
+  },
+  {
+    "id": "spawn",
+    "name": "Spawn",
+    "group": "Crafting",
+    "summary": "The world spawn point is where players appear in a newly created world or when joining a multiplayer server. It is defined during world generation and is usually within a few tiles of the horizontal center of the world, in the surface layer.",
+    "howItWorks": "It is almost always located in the Forest biome as more hazardous biomes cannot appear at the world's center. A player's spawn point is initially the world spawn point, but can be changed by crafting a Bed, placing it in a house and pressing the ⚷ Open / Activate button on it. The spawn point is where players respawn after dying, where a Magic/Ice Mirror (or its upgrades) or Recall Potion will teleport them, and where they appear when entering the world. Once the house the Bed is in is broken or ⚷ Open / Activate is pressed on the Bed a second time, the player's spawn point reverts back to the world's initial spawn point.",
+    "tips": [
+      "It might be useful to build a shelter over the world spawn point so that the player is provided some amount of safety if they happen to respawn at the world spawn point, like when their manually set spawn point is inadvertently reverted back to the initial world spawn point.",
+      "Similarly, it should be avoided to dig directly underneath the world spawn point, as players respawning there will inevitably fall down.",
+      "It is possible, albeit extremely rare, for the world spawn point where the player first spawns to be located on a Floating Island."
+    ],
+    "related": [
+      "Multiplayer",
+      "Minimap",
+      "Server",
+      "World",
+      "World Generation"
+    ],
+    "tags": [
+      "mechanic",
+      "crafting"
+    ]
+  },
+  {
+    "id": "special-world-seeds",
+    "name": "Special world seeds",
+    "group": "World",
+    "summary": "Special world seeds (previously named secret world seeds) are world creation modifiers that alter the created world in strange or unique ways. Unlike regular world seeds, which only affect the usual world structure, special seeds can produce worlds with characteristics that would not be attainable through normal world generation (i.e., they can affect the game's mechanics while playing in that world).",
+    "howItWorks": "For instance, they may change enemy statistics and behavior, item drops, graphics, theme music, and more. Special world seeds can be activated in the Seed Menu, which is accessible by clicking the seed icon next to World Seed during world creation. Any number of special seeds can be activated simultaneously, forming a combination special seed. Some of these combinations have additional unique effects.",
+    "related": [
+      "Music",
+      "World",
+      "World Seed",
+      "World Generation"
+    ],
+    "tags": [
+      "mechanic",
+      "world"
+    ]
+  },
+  {
+    "id": "status-messages",
+    "name": "Status messages",
+    "group": "Systems",
+    "summary": "Status messages display in the chat when certain conditions apply.",
+    "howItWorks": "Status messages display in the chat when certain conditions apply.",
+    "tips": [
+      "Players can replicate the game's status messages using Announcement Boxes and the tag <code>c</code>.",
+      "For example, the message <code>[c/FFF014:]</code> displays the text in the same way the game does."
+    ],
+    "related": [
+      "Chat"
+    ],
+    "tags": [
+      "mechanic",
+      "systems"
+    ]
+  },
+  {
+    "id": "stealth",
+    "name": "Stealth",
+    "group": "Combat",
+    "summary": "Stealth is an ability which, when fully entered, turns the player almost invisible and prevents certain enemies from targeting the player. It additionally grants the player some offensive stats, like damage and critical strike chance bonuses.",
+    "howItWorks": "Usually, a short period of time is required for the player to fully enter stealth. The player cannot enter stealth when riding a mount. There are 3 items that grant this ability.",
+    "related": [
+      "Damage"
+    ],
+    "tags": [
+      "mechanic",
+      "combat"
+    ]
+  },
+  {
+    "id": "storage-items",
+    "name": "Storage items",
+    "group": "Systems",
+    "summary": "Storage items are furniture items that can contain items separate from the player's inventory. They are accessed using ⚷ Open / Activate and usually contain 40 item stacks in rows of 10×4 / 8×5.",
+    "howItWorks": "Storage items are furniture items that can contain items separate from the player's inventory. They are accessed using ⚷ Open / Activate and usually contain 40 item stacks in rows of 10×4 / 8×5.",
+    "tips": [
+      "Moving coins the player gathers into Portable Storage periodically is useful, especially when exploring new or hazardous areas.",
+      "Coins stored there will not be lost in case of death, even if the Portable Storage device containing them is in the player's inventory at the time.",
+      "Each type of storage item has unique use cases."
+    ],
+    "related": [
+      "Inventory"
+    ],
+    "tags": [
+      "mechanic",
+      "systems"
+    ]
+  },
+  {
+    "id": "swimming",
+    "name": "Swimming",
+    "group": "Combat",
+    "summary": "Swimming refers to the movement alteration a character is affected by when submerged in a liquid (water, honey, lava). By default, characters cannot swim; they sink to the bottom and can only jump when they reach it.",
+    "howItWorks": "Movement is slowed (especially in honey), and jumping acts as if the character were in the upper layers of the map, close to Space. While submerged, the character will also eventually run out of air. Some items grant the ability to swim, and equipment that grant flight (such as Rocket Boots and Wings) also work underwater.",
+    "related": [
+      "Character",
+      "Flight"
+    ],
+    "tags": [
+      "mechanic",
+      "combat"
+    ]
+  },
+  {
+    "id": "teleportation",
+    "name": "Teleportation",
+    "group": "Crafting",
+    "summary": "Teleportation allows the player to get to a certain location on the map without moving. Teleporting is useful to save traveling time, and may be used to quickly get to a home or safety bunker.",
+    "howItWorks": "For example, if the player has defeated the last of the Celestial Pillars, and the Moon Lord is about to spawn, they can quickly teleport back to their arena. The general trend is that players need to teleport to a more-or-less prepared or fixed place, especially their spawn point (Magic Mirror/Cell Phone/Shellphone, Recall Potion/Potion of Return). Other \"world\" destinations include the two Oceans and perhaps the center-point of the Underworld (via the Magic and Demon Conch). Later, Pylons and Teleporters provide two separate ways for players to make a network of chosen destinations.",
+    "related": [
+      "Spawn",
+      "Pylons"
+    ],
+    "tags": [
+      "mechanic",
+      "crafting"
+    ]
+  },
+  {
+    "id": "the-constant",
+    "name": "The Constant",
+    "group": "Progression",
+    "summary": "The Constant is a special world seed. It is a crossover with Klei Entertainment's Don't Starve Together.",
+    "howItWorks": "The Constant is a special world seed. It is a crossover with Klei Entertainment's Don't Starve Together.",
+    "tips": [
+      "Early options for food include regular Mushrooms, shaking trees, converting Vertebrae or Rotten Chunks into Monster Lasagna, and getting the Merchant to move in to buy a Bug Net (or to buy Marshmallows if he is in a Snow biome).",
+      "The Mining Helmet, Jellyfish Necklace and Magiluminescence can help keep the darkness away before light pets are found.",
+      "By using explosives, the player can harvest Cacti without taking damage."
+    ],
+    "related": [
+      "World",
+      "World Seed"
+    ],
+    "tags": [
+      "mechanic",
+      "progression"
+    ]
+  },
+  {
+    "id": "tips",
+    "name": "Tips",
+    "group": "Systems",
+    "summary": "Tips are phrases shown briefly during loading screens, chosen at random from the list below.",
+    "howItWorks": "Tips are phrases shown briefly during loading screens, chosen at random from the list below.",
+    "tags": [
+      "mechanic",
+      "systems"
+    ]
+  },
+  {
+    "id": "title-messages",
+    "name": "Title messages",
+    "group": "Systems",
+    "summary": "A title message is a mock slogan displayed as Terraria's window title at the top of the game window. These messages often reference popular culture or other video games.",
+    "howItWorks": "A title message is chosen at random from the list below each time the game is started, and remains unchanged until either the game is exited completely and restarted, or a language button in the language selection menu is clicked, at which point a new message is randomly chosen. A title message can only be displayed if Terraria's current settings allow a title bar to be present on Terraria's game window. When the game is set to full-screen, or \"Borderless Window\" mode is enabled (Settings → Video → Resolution), no title will be displayed normally. The title message will always be visible as part of the process collection in the Windows \"Task Switcher\" Alt+↹ Tab.",
+    "related": [
+      "Settings"
+    ],
+    "tags": [
+      "mechanic",
+      "systems"
+    ]
+  },
+  {
+    "id": "toggles",
+    "name": "Toggles",
+    "group": "Systems",
+    "summary": "Toggles are buttons in the player's inventory that are used to toggle certain effects and abilities. Some of these toggles are available at anytime, while others require certain items placed in the inventory, or in the Void Vault while the player has an open Void Bag.",
+    "howItWorks": "Some toggles have unique icons when turned off. Toggles without unique \"off\"-state icons will be dimmed out when turned off. On the Desktop version, toggles appear as small icons to the left of the player's main inventory. Toggles from PDA are located below the minimap, or to the left of the armor slots, depending on UI scale and resolution.",
+    "related": [
+      "Inventory",
+      "Minimap"
+    ],
+    "tags": [
+      "mechanic",
+      "systems"
+    ]
+  },
+  {
+    "id": "tool-speed",
+    "name": "Tool speed",
+    "group": "Systems",
+    "summary": "Tool speed is an invisible statistic of the three basic types of tools: The tool speed (or mining speed) of a pickaxe or drill determines how fast the player can mine blocks and furniture with it. The tool speed (or chopping speed) of an axe or chainsaw determines how fast the player can chop down trees and cacti with it.",
+    "howItWorks": "The tool speed (or hammering speed) of a hammer determines how fast the player can break background walls, change the shape of blocks, and break Altars and Shadow Orbs/Crimson Hearts with it. The lower the tool speed value is, the faster the tool is (see below for an explanation).",
+    "related": [
+      "Value"
+    ],
+    "tags": [
+      "mechanic",
+      "systems"
+    ]
+  },
+  {
+    "id": "tooltips",
+    "name": "Tooltips",
+    "group": "Fishing",
+    "summary": "Tooltips are bits of \"hover text\" displayed when hovering over items or selecting them in the inventory. The complete text shown for an item usually contains the item's statistics.",
+    "howItWorks": "An added bit of text also appears on many items, which is what is referred to on this wiki as the item's \"tooltip\" (they are referred to this way in Terraria's game code as well). They usually describe the item further, often in fun or humorous ways. The statistics portion of the hover text may contain any of the following: Type Damage Critical strike chance Use time Knockback Mana usage Pickaxe power, axe power, hammer power, Fishing Power, bait power Health healed Defense Set bonus (when a full armor set is worn) Modifier effects Bonus effects Modifier effects, if applicable, always appear at the bottom of the tooltip, colored green (for good effects) or red (for negative effects).",
+    "related": [
+      "Defense",
+      "Fishing",
+      "Damage",
+      "Health",
+      "Knockback",
+      "Inventory"
+    ],
+    "tags": [
+      "mechanic",
+      "fishing"
+    ]
+  },
+  {
+    "id": "town",
+    "name": "Town",
+    "group": "Town",
+    "summary": "A town is a player-created mini-biome which is created when three or more NPCs are in close proximity (including the Old Man, Traveling Merchant, and town pets, but excluding the Skeleton Merchant). Towns have the greatest effect on reducing the spawn of enemies, though the enemy spawn reduction effect is weaker in the Underworld, and will not have effect when some events are occurring.",
+    "howItWorks": "See effect of friendly town NPCs on spawn rates for details. The Shadow Candle, when placed and activated or when held, prevents the creation of a town mini-biome, even if enough NPCs are present.",
+    "related": [
+      "Spawn"
+    ],
+    "tags": [
+      "mechanic",
+      "town"
+    ]
+  },
+  {
+    "id": "tutorial",
+    "name": "Tutorial",
+    "group": "Systems",
+    "summary": "The Tutorial is a special world scripted to teach the player the basics of the game. It can be accessed by pressing the \"Tutorial\" option on the title screen.",
+    "howItWorks": "The world and its presentation differ between game platforms.",
+    "related": [
+      "World"
+    ],
+    "tags": [
+      "mechanic",
+      "systems"
+    ]
+  },
+  {
+    "id": "unobtainable-features",
+    "name": "Unobtainable features",
+    "group": "Systems",
+    "summary": "This page lists various entries that for one reason or another are not accessible during normal Terraria gameplay. Inaccessible entries are categorized as Unobtainable, Unimplemented, or Removed.",
+    "howItWorks": "Unobtainable refers to fully functional (or partially functional) features which for some reason are unavailable during normal gameplay. Features in this category may or may not delete themselves upon being placed into a player's inventory. They are only accessible by using third-party software such as inventory editors, retrieving them from downloaded worlds such as Steam Workshop worlds, or using glitches. Features may also be labelled as unobtainable due to being only partially obtainable - for example, Bone Blocks can be interacted with, and even created during normal gameplay, but cannot be obtained as an item without using inventory editors.",
+    "related": [
+      "Inventory"
+    ],
+    "tags": [
+      "mechanic",
+      "systems"
+    ]
+  },
+  {
+    "id": "use-time",
+    "name": "Use time",
+    "group": "Combat",
+    "summary": "Use time is a statistic that applies to weapons, tools and other usable items. It determines the time that must pass, after use, before the same item or another item can be used again.",
+    "howItWorks": "In basic terms, this is the \"rate of fire\", as measured in game ticks. A lower use time means a faster weapon. The shortswords, for example, usually have a use time between 10 and 13, meaning that they can be used in quick succession, as compared to the exceptionally slow Volcano, which has a use time of 40 – a much slower weapon which cannot be used as often. Use time is particularly useful in comparing the speed of tools and weapons.",
+    "related": [
+      "Tooltips"
+    ],
+    "tags": [
+      "mechanic",
+      "combat"
+    ]
+  },
+  {
+    "id": "value",
+    "name": "Value",
+    "group": "Systems",
+    "summary": "Value is what is described as the monetary worth of an item. If sold by an NPC, it will also be the price the NPC sells that item for.",
+    "howItWorks": "When selling, items are always sold for 1/5 (20%) of the purchase price, rounded down. Existing modifiers can also change an item's value. The Goblin Tinkerer charges one third of any item's current value to reforge, which is approximately 1.67× its sell price.",
+    "tags": [
+      "mechanic",
+      "systems"
+    ]
+  },
+  {
+    "id": "vanity-items",
+    "name": "Vanity items",
+    "group": "Systems",
+    "summary": "Vanity items are wearable items that can be equipped in social slots next to the armor and accessories slots in a character's inventory. Wearing them will change a character's appearance, but will not provide any functionality.",
+    "howItWorks": "Vanity items placed in the armor slots will also cover all armor appearances. Many of these vanity items are references to popular culture and other video games.",
+    "related": [
+      "Inventory",
+      "Social Slots"
+    ],
+    "tags": [
+      "mechanic",
+      "systems"
+    ]
+  },
+  {
+    "id": "velocity",
+    "name": "Velocity",
+    "group": "Combat",
+    "summary": "Velocity is a hidden statistic that defines the travel speed of a projectile. It is not to be confused with use time, which is the delay between subsequent uses of an item (e.g.",
+    "howItWorks": "\"Fast\", \"Average\", \"Slow\"). The higher the weapon's velocity, the faster the projectile travels, and the less the player will need to lead shots ahead of a moving target. This is an advantage that may prove very useful when fighting fast-moving enemies or when attacking from a long distance. The velocity of a projectile is usually expressed as the number of pixels that it moves forward on its trajectory every tick.",
+    "tips": [
+      "Weapons that use arrows generally have lower velocities than bullet-firing weapons.",
+      "Certain ranged modifiers can affect a weapon's velocity.",
+      "Velocity modifiers on the Flamethrower and Elf Melter will increase their range."
+    ],
+    "related": [
+      "Value",
+      "Use Time"
+    ],
+    "tags": [
+      "mechanic",
+      "combat"
+    ]
+  },
+  {
+    "id": "wind",
+    "name": "Wind",
+    "group": "Wiring",
+    "summary": "Wind is a mechanism in Terraria which influences the movement of various objects, as well as the occurance of Windy Days(Desktop, Console and Mobile versions) and Sandstorms. Wind speed ranges between 0 and 60 mph.",
+    "howItWorks": "The wind can blow from either the west or east. Informational accessories such as the Weather Radio show the direction the wind is blowing from, not towards (so for example, \"25 mph W\" means that the wind is blowing 25 mph from the west). Wind primarily affects things that have no effect on gameplay, such as cloud movement speeds, blizzard and sandstorm background effects, and the animations of the surface of water and trees. However, it occasionally plays a part in how the game plays, such as its effects on Detonating Bubbles and its effects on players afflicted with Mighty Wind.",
+    "tags": [
+      "mechanic",
+      "wiring",
+      "sandstorm",
+      "windy"
+    ]
+  },
+  {
+    "id": "workshop-hub",
+    "name": "Workshop Hub",
+    "group": "Systems",
+    "summary": "The Workshop Hub is a menu option in Terraria which allows players to toggle/import worlds or Resource Packs installed from the Steam Workshop or from a local file. The Workshop Hub can be accessed via the main menu by pressing the \"Workshop\" button, but only while playing on a Steam copy of the game.",
+    "howItWorks": "While playing on a GOG.com copy of the game, the button will be replaced with \"Resource Packs\", which opens the \"Use Resource Packs\" menu directly.",
+    "tags": [
+      "mechanic",
+      "systems"
+    ]
+  },
+  {
+    "id": "world",
+    "name": "World",
+    "group": "Systems",
+    "summary": "The term world refers to Terraria's virtual world system which all of the gameplay takes place in. The world holds the entirety of the game content, such as items, enemies, objects, and so on.",
+    "howItWorks": "Terraria worlds are two-dimensional and navigated in a platform game-like manner. World appearance is subject to some settings. The term map is partly synonymous with \"world\" but also refers to the minimap, the in-game map system.",
+    "related": [
+      "Minimap",
+      "Settings"
+    ],
+    "tags": [
+      "mechanic",
+      "systems"
+    ]
+  },
+  {
+    "id": "world-generation",
+    "name": "World generation",
+    "group": "World",
+    "summary": "The generation of a new random world follows the process outlined on this page. While it is ongoing, various texts appear over the loading bar, showing what is being generated in the world.",
+    "howItWorks": "In Not the Bees(Desktop, Console and Mobile versions) worlds, all texts are replaced with \"Generating bees\".",
+    "related": [
+      "World"
+    ],
+    "tags": [
+      "mechanic",
+      "world"
+    ]
+  },
+  {
+    "id": "world-seed",
+    "name": "World Seed",
+    "group": "Progression",
+    "summary": "The World Seed is a string of numbers that determines the way a Terraria world is randomly generated. It can be entered when creating a new world and can be viewed and copied anytime thereafter in the world selection menu with the \"Copy Seed\" button.",
+    "howItWorks": "Two worlds with the same seed are almost identical.",
+    "related": [
+      "World"
+    ],
+    "tags": [
+      "mechanic",
+      "progression"
+    ]
+  },
+  {
+    "id": "world-size",
+    "name": "World size",
+    "group": "Systems",
+    "summary": "World size refers to the size of a Terraria world. Upon creation, the player can select either \"small\", \"medium\", or \"large\" for the size of the world to generate.",
+    "howItWorks": "Map sizes are as follows: (width x height; one tile = two feet)",
+    "related": [
+      "World"
+    ],
+    "tags": [
+      "mechanic",
+      "systems"
+    ]
+  },
+  {
+    "id": "zenith-seed",
+    "name": "Zenith (seed)",
+    "group": "Progression",
+    "summary": "Zenith (also known as Get fixed boi or Everything) is a special world seed that combines many of the features of the other special world seeds.",
+    "howItWorks": "Zenith (also known as Get fixed boi or Everything) is a special world seed that combines many of the features of the other special world seeds.",
+    "tips": [
+      "This seed is intended as a far harder version than For the Worthy, and it is suggested this world is only attempted by players who have beaten the game before.",
+      "The player should take full advantage of the first day as the starting NPCs take a long time to come back.",
+      "Shaking trees provides fruit for hunger and lots of wood from dropped bombs, and the player can potentially get lots of money from coin portals or Mimics."
+    ],
+    "related": [
+      "Special World Seeds",
+      "World",
+      "World Seed"
+    ],
+    "tags": [
+      "mechanic",
+      "progression"
+    ]
+  },
+  {
+    "id": "zoom",
+    "name": "Zoom",
+    "group": "Systems",
+    "summary": "Zooming can refer to both the interface feature or the in-game mechanic granted by certain items.",
+    "howItWorks": "Zooming can refer to both the interface feature or the in-game mechanic granted by certain items.",
+    "tags": [
+      "mechanic",
+      "systems"
+    ]
   }
 ]

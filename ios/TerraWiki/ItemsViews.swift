@@ -10,9 +10,9 @@ struct ItemsView: View {
             ScrollView {
                 LazyVStack(spacing: 0) {
                     NavigationLink {
-                        OfficialCatalogView(kind: .items)
+                        ItemListScreen(title: "All items", items: store.items.sorted { $0.name < $1.name })
                     } label: {
-                        WikiRow(title: "All items", symbol: "square.grid.2x2.fill")
+                        WikiRow(title: "All items", subtitle: "\(store.items.count) items", symbol: "square.grid.2x2.fill")
                     }
                     HairlineDivider()
 
