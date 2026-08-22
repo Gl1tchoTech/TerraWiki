@@ -23,6 +23,11 @@ targets:
       - path: TerraWiki/Resources/npcs.json
       - path: TerraWiki/Resources/bosses.json
       - path: TerraWiki/Resources/mechanics.json
+    preBuildScripts:
+      - name: Copy wiki database into app bundle
+        script: |
+          mkdir -p "${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}"
+          cp "${SRCROOT}/TerraWiki/Resources/"*.json "${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/"
     info:
       path: TerraWiki/Info.plist
       properties:
@@ -59,6 +64,11 @@ targets:
       - path: TerraWiki/Resources/npcs.json
       - path: TerraWiki/Resources/bosses.json
       - path: TerraWiki/Resources/mechanics.json
+    preBuildScripts:
+      - name: Copy wiki database into test bundle
+        script: |
+          mkdir -p "${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}"
+          cp "${SRCROOT}/TerraWiki/Resources/"*.json "${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/"
     settings:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: com.terraria.wiki.tests
