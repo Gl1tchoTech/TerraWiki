@@ -110,9 +110,13 @@ final class DataStore {
 
     private static func load<T: Decodable>(_ name: String, from bundle: Bundle, default defaultValue: T) -> T {
         let resourceName = (name as NSString).deletingPathExtension
+        let bundles = [bundle] + Bundle.allBundles + Bundle.allFrameworks
+        let url = bundles.lazy.compactMap { candidate in
+            candidate.url(forResource: resourceName, withExtension: "json")
+                ?? candidate.url(forResource: resourceName, withExtension: "json", subdirectory: "Resources")
+        }.first
         guard
-            let url = bundle.url(forResource: resourceName, withExtension: "json")
-                ?? bundle.url(forResource: resourceName, withExtension: "json", subdirectory: "Resources"),
+            let url,
             let data = try? Data(contentsOf: url),
             let decoded = try? JSONDecoder().decode(T.self, from: data)
         else {
