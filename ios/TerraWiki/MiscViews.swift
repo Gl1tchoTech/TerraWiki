@@ -109,7 +109,7 @@ struct GuidesView: View {
         .init(id: "pylons", title: "Town Happiness & Pylons", symbol: "mappin.and.ellipse", paragraphs: [
             "NPCs are happier in biomes they love and near neighbors they like, which lowers shop prices.",
             "Buy a Pylon from a happy NPC and place one in each town to teleport across the world instantly.",
-            "Keep towns small \u2014 groups of two or three NPCs work best."
+            "Keep towns small — groups of two or three NPCs work best."
         ])
     ]
 
@@ -244,7 +244,7 @@ struct AboutView: View {
                 .padding(.vertical, 24)
 
                 SectionHeader(text: "About")
-                infoParagraph("A community field guide to Terraria 1.4.5.7 \u2014 items, recipes, NPCs, bosses, mechanics, and achievements.")
+                infoParagraph("A community field guide to Terraria 1.4.5.7 — items, recipes, NPCs, bosses, mechanics, and achievements.")
 
                 SectionHeader(text: "Disclaimer")
                 infoParagraph("TerraWiki is not affiliated with Re-Logic. Terraria is a trademark of Re-Logic. All game data is used for informational purposes.")
