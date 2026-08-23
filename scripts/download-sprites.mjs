@@ -13,6 +13,16 @@
  */
 
 import { readFileSync, writeFileSync, mkdirSync, existsSync } from "node:fs";
+import sharp from "sharp";
+
+/** The CDN often serves WebP regardless of the requested extension; iOS handles
+ *  it on 14+, but convert to true PNG so every bundled sprite decodes everywhere. */
+async function toRealPng(buf) {
+  const isPng = buf[0] === 0x89 && buf[1] === 0x50;
+  const isGif = buf[0] === 0x47 && buf[1] === 0x49;
+  if (isPng || isGif) return buf;
+  try { return await sharp(buf).png().toBuffer(); } catch { return buf; }
+}
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -31,7 +41,7 @@ function addImages(path) {
     const arr = Array.isArray(data) ? data : [data];
     for (const entry of arr) {
       const img = entry.image;
-      if (img && img.endsWith(".png")) imageFiles.add(img);
+      if (img && /\.(png|gif)$/i.test(img)) imageFiles.add(img);
     }
   } catch { /* skip */ }
 }
@@ -120,7 +130,7 @@ async function downloadOne(file) {
       return; // leave unhandled; retried on next run
     }
   }
-  writeFileSync(join(spriteDir, file), buf);
+  writeFileSync(join(spriteDir, file), await toRealPng(buf));
 }
 
 let cursor = 0;

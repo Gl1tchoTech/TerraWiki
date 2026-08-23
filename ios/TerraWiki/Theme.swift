@@ -88,6 +88,40 @@ struct PixelIcon: View {
     }
 }
 
+/// Resolves wiki artwork shipped inside the app bundle (fully offline).
+/// Filenames keep their exact wiki names (e.g. "Iron Pickaxe.png"), while URLs use
+/// underscores — so lookups normalize between the two and load via explicit paths
+/// (UIImage(named:) fails on names containing apostrophes or other punctuation).
+enum SpriteLibrary {
+    private static let extensions = ["png", "gif"]
+    private static var cache: [String: UIImage?] = [:]
+    private static let lock = NSLock()
+
+    /// Accepts either "Iron Pickaxe.png", "Iron_Pickache" style names, with or without extension.
+    static func image(for fileName: String?) -> UIImage? {
+        guard var name = fileName?.trimmingCharacters(in: .whitespacesAndNewlines), !name.isEmpty else { return nil }
+        // Strip any extension and normalize underscores/spaces.
+        name = (name as NSString).deletingPathExtension
+            .replacingOccurrences(of: "_", with: " ")
+        lock.lock()
+        defer { lock.unlock() }
+        if let cached = cache[name] { return cached }
+        var found: UIImage? = nil
+        for candidate in [name, name.replacingOccurrences(of: " ", with: "_")] {
+            for ext in extensions {
+                if let url = Bundle.main.url(forResource: candidate, withExtension: ext),
+                   let img = UIImage(contentsOfFile: url.path) {
+                    found = img
+                    break
+                }
+            }
+            if found != nil { break }
+        }
+        cache[name] = found
+        return found
+    }
+}
+
 struct WikiArtwork: View {
     let url: URL?
     let fallbackSymbol: String
@@ -111,7 +145,7 @@ struct WikiArtwork: View {
                         // Prefer the sprite bundled in the app (fully offline),
                         // falling back to a cached network fetch.
                         let baseName = url.deletingPathExtension().lastPathComponent
-                        if let bundled = UIImage(named: baseName) {
+                        if let bundled = SpriteLibrary.image(for: baseName) {
                             loadedImage = bundled
                         } else {
                             loadedImage = await loadImage(url: url)
