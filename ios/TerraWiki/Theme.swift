@@ -108,7 +108,14 @@ struct WikiArtwork: View {
                 Color.clear
                     .frame(width: size, height: size)
                     .task {
-                        loadedImage = await loadImage(url: url)
+                        // Prefer the sprite bundled in the app (fully offline),
+                        // falling back to a cached network fetch.
+                        let baseName = url.deletingPathExtension().lastPathComponent
+                        if let bundled = UIImage(named: baseName) {
+                            loadedImage = bundled
+                        } else {
+                            loadedImage = await loadImage(url: url)
+                        }
                         didLoad = true
                     }
             } else {
@@ -182,6 +189,17 @@ func wikiFileURL(for boss: Boss) -> URL? {
     let fileName = (boss.image ?? (boss.name.replacingOccurrences(of: " ", with: "_") + ".png"))
         .replacingOccurrences(of: " ", with: "_")
     return wikiFileURL(fileName: fileName)
+}
+
+func wikiFileURL(for result: DataStore.SearchResult) -> URL? {
+    let store = DataStore.shared
+    switch result.category {
+    case .items: return store.item(id: result.id).map(wikiFileURL(for:)) ?? nil
+    case .npcs: return store.npc(id: result.id).map(wikiFileURL(for:)) ?? nil
+    case .mobs: return store.mob(id: result.id).map(wikiFileURL(for:)) ?? nil
+    case .bosses: return store.boss(id: result.id).map(wikiFileURL(for:)) ?? nil
+    case .mechanics: return store.mechanic(id: result.id).map(wikiFileURL(for:)) ?? nil
+    }
 }
 
 func wikiFileURL(for mechanic: Mechanic) -> URL? {
@@ -334,6 +352,7 @@ struct WikiScreen<Content: View>: View {
     let title: String
     var favoriteID: String? = nil
     @EnvironmentObject private var favorites: Favorites
+    @State private var showingSearch = false
     @ViewBuilder var content: Content
 
     var body: some View {
@@ -362,6 +381,18 @@ struct WikiScreen<Content: View>: View {
                     }
                 }
             }
+            ToolbarItem(placement: .topBarTrailing) {
+                Button {
+                    showingSearch = true
+                } label: {
+                    Image(systemName: "magnifyingglass")
+                        .font(.system(size: 17, weight: .medium))
+                        .foregroundStyle(Color.wikiGreen)
+                }
+            }
+        }
+        .sheet(isPresented: $showingSearch) {
+            SearchView()
         }
         .navigationBarTitleDisplayMode(.inline)
         .toolbarBackground(Color.white, for: .navigationBar)

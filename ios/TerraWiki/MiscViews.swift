@@ -202,7 +202,7 @@ struct FavoritesView: View {
                             SectionHeader(text: "Bosses")
                             ForEach(bossFavs) { boss in
                                 NavigationLink { BossDetailView(boss: boss) } label: {
-                                    WikiRow(title: boss.name, subtitle: bossSubtitle(boss), symbol: bossSymbol(boss), symbolColor: bossColor(boss))
+                                    WikiRow(title: boss.name, subtitle: bossSubtitle(boss), symbol: bossSymbol(boss), symbolColor: bossColor(boss), thumbnailURL: wikiFileURL(for: boss))
                                 }
                                 HairlineDivider()
                             }
@@ -211,7 +211,7 @@ struct FavoritesView: View {
                             SectionHeader(text: "Mechanics")
                             ForEach(mechFavs) { mechanic in
                                 NavigationLink { MechanicDetailView(mechanic: mechanic) } label: {
-                                    WikiRow(title: mechanic.name, subtitle: mechanic.summary, symbol: mechanicSymbol(mechanic), symbolColor: mechanicColor(mechanic.group))
+                                    WikiRow(title: mechanic.name, subtitle: mechanic.summary, symbol: mechanicSymbol(mechanic), symbolColor: mechanicColor(mechanic.group), thumbnailURL: wikiFileURL(for: mechanic))
                                 }
                                 HairlineDivider()
                             }
@@ -303,7 +303,8 @@ struct SearchView: View {
                                         title: result.name,
                                         subtitle: "\(result.category.label) · \(result.group)",
                                         symbol: symbol(for: result),
-                                        symbolColor: color(for: result)
+                                        symbolColor: color(for: result),
+                                        thumbnailURL: wikiFileURL(for: result)
                                     )
                                 }
                                 HairlineDivider()

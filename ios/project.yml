@@ -19,6 +19,7 @@ targets:
           - Resources
     resources:
       - path: TerraWiki/Resources/Assets.xcassets
+      - path: TerraWiki/Resources/Sprites
       - path: TerraWiki/Resources/items.json
       - path: TerraWiki/Resources/npcs.json
       - path: TerraWiki/Resources/mobs.json
@@ -61,6 +62,7 @@ targets:
       - target: TerraWiki
     resources:
       - path: TerraWiki/Resources/Assets.xcassets
+      - path: TerraWiki/Resources/Sprites
       - path: TerraWiki/Resources/items.json
       - path: TerraWiki/Resources/npcs.json
       - path: TerraWiki/Resources/mobs.json

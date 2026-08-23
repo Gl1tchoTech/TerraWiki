@@ -29,7 +29,8 @@ struct MechanicListScreen: View {
                                     title: mechanic.name,
                                     subtitle: mechanic.group,
                                     symbol: mechanicSymbol(mechanic),
-                                    symbolColor: mechanicColor(mechanic.group)
+                                    symbolColor: mechanicColor(mechanic.group),
+                                    thumbnailURL: wikiFileURL(for: mechanic)
                                 )
                             }
                             HairlineDivider()
@@ -93,14 +94,14 @@ struct MechanicDetailView: View {
                             NavigationLink {
                                 ItemDetailView(item: item)
                             } label: {
-                                WikiRow(title: item.name, subtitle: item.kind, symbol: itemSymbol(item), symbolColor: itemColor(item))
+                                WikiRow(title: item.name, subtitle: item.kind, symbol: itemSymbol(item), symbolColor: itemColor(item), thumbnailURL: wikiFileURL(for: item))
                             }
                             HairlineDivider()
                         } else if let npc = DataStore.shared.npc(named: name) {
                             NavigationLink {
                                 NpcDetailView(npc: npc)
                             } label: {
-                                WikiRow(title: npc.name, subtitle: npc.role, symbol: npcSymbol(npc), symbolColor: .wikiGreen)
+                                WikiRow(title: npc.name, subtitle: npc.role, symbol: npcSymbol(npc), symbolColor: .wikiGreen, thumbnailURL: wikiFileURL(for: npc))
                             }
                             HairlineDivider()
                         } else {
