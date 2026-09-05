@@ -139,27 +139,59 @@ enum SpriteLibrary {
     private static var cache: [String: UIImage?] = [:]
     private static let lock = NSLock()
 
-    /// Accepts either "Iron Pickaxe.png", "Iron_Pickache" style names, with or without extension.
+    /// Resolves wiki sprites bundled inside the app.
+    /// The sprite bundle stores the wiki's exact filenames where they exist
+    /// (e.g. `Iron Pickaxe.png`, `Queen_Slime.png`, `Eye of Cthulhu (Phase 1).gif`),
+    /// so the fastest path is the literal database value. We only try a few safe,
+    /// reversible variants if that exact form is missing.
     static func image(for fileName: String?) -> UIImage? {
-        guard var name = fileName?.trimmingCharacters(in: .whitespacesAndNewlines), !name.isEmpty else { return nil }
-        // Strip any extension and normalize underscores/spaces.
-        name = (name as NSString).deletingPathExtension
-            .replacingOccurrences(of: "_", with: " ")
+        guard var raw = fileName?.trimmingCharacters(in: .whitespacesAndNewlines), !raw.isEmpty else { return nil }
+        let stripped = (raw as NSString).deletingPathExtension
         lock.lock()
         defer { lock.unlock() }
-        if let cached = cache[name] { return cached }
+        if let cached = cache[raw] { return cached }
+
         var found: UIImage? = nil
-        for candidate in [name, name.replacingOccurrences(of: " ", with: "_")] {
+        func tryFile(_ name: String) -> UIImage? {
             for ext in extensions {
-                if let url = Bundle.main.url(forResource: candidate, withExtension: ext),
+                if let url = Bundle.main.url(forResource: name, withExtension: ext),
                    let img = UIImage(contentsOfFile: url.path) {
-                    found = img
-                    break
+                    return img
                 }
             }
-            if found != nil { break }
+            return nil
         }
-        cache[name] = found
+
+        // 1) Exact value from the database (already includes extension in most rows).
+        if let img = tryFile(stripped) { found = img }
+
+        // 2) Also try the exact name without stripping the extension yet, in case the DB
+        //    row is `Foo.png` but the lookup passed us `Foo.png` as-is.
+        if found == nil {
+            if let img = tryFile(raw) { found = img }
+        }
+
+        // 3) Underscores <-> spaces. The bundle stores one convention per file, so we only
+        //    need the reversible swap for the entries whose wiki filename differs from the
+        //    bundled filename.
+        if found == nil {
+            if let img = tryFile(stripped.replacingOccurrences(of: "_", with: " ")) { found = img }
+        }
+        if found == nil {
+            if let img = tryFile(stripped.replacingOccurrences(of: " ", with: "_")) { found = img }
+        }
+
+        // 4) Wiki-only parenthetical disambiguation, e.g. `Eye of Cthulhu (Phase 1).gif`.
+        //    If the parenthesized form is missing, try the base name.
+        if found == nil {
+            let base = stripped
+            if let open = base.lastIndex(of: "("), let close = base.lastIndex(of: ")") {
+                let withoutParens = String(base[..<open]).trimmingCharacters(in: .whitespacesAndNewlines)
+                if let img = tryFile(withoutParens) { found = img }
+            }
+        }
+
+        cache[raw] = found
         return found
     }
 }
@@ -172,6 +204,7 @@ struct WikiArtwork: View {
 
     @State private var loadedImage: UIImage? = nil
     @State private var didLoad = false
+    @State private var triedBundle = false
 
     var body: some View {
         Group {
@@ -180,16 +213,15 @@ struct WikiArtwork: View {
                     .resizable()
                     .scaledToFit()
                     .frame(width: size, height: size)
-            } else if let url, !didLoad {
+            } else if !didLoad {
                 Color.clear
                     .frame(width: size, height: size)
                     .task {
-                        // Prefer the sprite bundled in the app (fully offline),
-                        // falling back to a cached network fetch.
-                        let baseName = url.deletingPathExtension().lastPathComponent
-                        if let bundled = SpriteLibrary.image(for: baseName) {
+                        // Primary source: the sprite bundled in the app.
+                        if let bundled = SpriteLibrary.image(for: url?.lastPathComponent) {
                             loadedImage = bundled
                         } else {
+                            triedBundle = true
                             loadedImage = await loadImage(url: url)
                         }
                         didLoad = true
