@@ -204,8 +204,6 @@ struct WikiArtwork: View {
 
     @State private var loadedImage: UIImage? = nil
     @State private var didLoad = false
-    @State private var triedBundle = false
-
     var body: some View {
         Group {
             if let img = loadedImage {
@@ -218,10 +216,10 @@ struct WikiArtwork: View {
                     .frame(width: size, height: size)
                     .task {
                         // Primary source: the sprite bundled in the app.
-                        if let bundled = SpriteLibrary.image(for: url?.lastPathComponent ?? "") {
+                        let lookupName = url.map { $0.lastPathComponent } ?? ""
+                        if let bundled = SpriteLibrary.image(for: lookupName) {
                             loadedImage = bundled
                         } else {
-                            triedBundle = true
                             loadedImage = await loadImage(url: url)
                         }
                         didLoad = true
