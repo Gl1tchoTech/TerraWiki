@@ -219,7 +219,7 @@ struct WikiArtwork: View {
                         let lookupName = url.map { $0.lastPathComponent } ?? ""
                         if let bundled = SpriteLibrary.image(for: lookupName) {
                             loadedImage = bundled
-                        } else {
+                        } else if let url {
                             loadedImage = await loadImage(url: url)
                         }
                         didLoad = true
