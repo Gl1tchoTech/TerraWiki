@@ -145,7 +145,7 @@ enum SpriteLibrary {
     /// so the fastest path is the literal database value. We only try a few safe,
     /// reversible variants if that exact form is missing.
     static func image(for fileName: String?) -> UIImage? {
-        guard var raw = fileName?.trimmingCharacters(in: .whitespacesAndNewlines), !raw.isEmpty else { return nil }
+        guard let raw = fileName?.trimmingCharacters(in: .whitespacesAndNewlines), !raw.isEmpty else { return nil }
         let stripped = (raw as NSString).deletingPathExtension
         lock.lock()
         defer { lock.unlock() }
@@ -185,7 +185,7 @@ enum SpriteLibrary {
         //    If the parenthesized form is missing, try the base name.
         if found == nil {
             let base = stripped
-            if let open = base.lastIndex(of: "("), let close = base.lastIndex(of: ")") {
+            if let open = base.lastIndex(of: "(") {
                 let withoutParens = String(base[..<open]).trimmingCharacters(in: .whitespacesAndNewlines)
                 if let img = tryFile(withoutParens) { found = img }
             }
@@ -218,7 +218,7 @@ struct WikiArtwork: View {
                     .frame(width: size, height: size)
                     .task {
                         // Primary source: the sprite bundled in the app.
-                        if let bundled = SpriteLibrary.image(for: url?.lastPathComponent) {
+                        if let bundled = SpriteLibrary.image(for: url?.lastPathComponent ?? "") {
                             loadedImage = bundled
                         } else {
                             triedBundle = true
