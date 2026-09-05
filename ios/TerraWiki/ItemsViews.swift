@@ -220,26 +220,14 @@ struct ItemDetailView: View {
     private func recipeBlock(_ recipe: Recipe, label: String = "Recipe") -> some View {
         VStack(spacing: 0) {
             // Station (tappable to view the station's own detail page)
-            if let stationItem = store.item(named: recipe.station) {
-                NavigationLink { ItemDetailView(item: stationItem) } label: {
-                    DetailRow(label: "Crafted at", value: recipe.station, valueColor: .wikiGreen)
-                }
-            } else {
-                DetailRow(label: "Crafted at", value: recipe.station)
-            }
+            StationRow(station: recipe.station)
 
             if let qty = recipe.resultQty, qty > 1 {
                 DetailRow(label: "Produces", value: "×\(qty)")
             }
 
             ForEach(recipe.ingredients, id: \.self) { ing in
-                if let ingItem = store.item(named: ing.name) {
-                    NavigationLink { ItemDetailView(item: ingItem) } label: {
-                        DetailRow(label: ing.name, value: "×\(ing.qty)", valueColor: .wikiGreen)
-                    }
-                } else {
-                    DetailRow(label: ing.name, value: "×\(ing.qty)")
-                }
+                IngredientRow(ing: ing)
             }
         }
     }
@@ -295,13 +283,7 @@ struct RecipeView: View {
                 SectionHeader(text: itemName)
 
                 // Station (tappable)
-                if let stationItem = store.item(named: recipe.station) {
-                    NavigationLink { ItemDetailView(item: stationItem) } label: {
-                        DetailRow(label: "Crafted at", value: recipe.station, valueColor: .wikiGreen)
-                    }
-                } else {
-                    DetailRow(label: "Crafted at", value: recipe.station)
-                }
+                StationRow(station: recipe.station)
 
                 if let qty = recipe.resultQty, qty > 1 {
                     DetailRow(label: "Result", value: "×\(qty)")
@@ -309,13 +291,7 @@ struct RecipeView: View {
 
                 SectionHeader(text: "Ingredients")
                 ForEach(recipe.ingredients, id: \.self) { ing in
-                    if let ingItem = store.item(named: ing.name) {
-                        NavigationLink { ItemDetailView(item: ingItem) } label: {
-                            DetailRow(label: ing.name, value: "×\(ing.qty)", valueColor: .wikiGreen)
-                        }
-                    } else {
-                        DetailRow(label: ing.name, value: "×\(ing.qty)")
-                    }
+                    IngredientRow(ing: ing)
                 }
             }
         }

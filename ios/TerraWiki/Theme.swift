@@ -19,6 +19,48 @@ extension Color {
     static let wikiDirtDark = Color(red: 0.36, green: 0.24, blue: 0.13)
 }
 
+// MARK: - Async artwork for recipes
+
+/// Renders a single recipe ingredient or station as a small tappable artwork chip.
+/// Bundles the sprite from the app first, falls back to the wiki CDN, then to a system
+/// placeholder — so ingredient/station chips load even after scrolling for a while.
+struct RecipeArtwork: View {
+    let name: String
+    let qty: Int
+    let size: CGFloat
+
+    var body: some View {
+        let store = DataStore.shared
+        NavigationLink {
+            if let item = store.item(named: name) {
+                ItemDetailView(item: item)
+            } else {
+                WikiScreen(title: name) {
+                    WikiEmptyState(title: "No details available.", systemImage: "photo")
+                }
+            }
+        } label: {
+            HStack(spacing: 8) {
+                WikiArtwork(url: wikiFileURL(for: name), fallbackSymbol: "photo", fallbackColor: .wikiGreen, size: size)
+                VStack(alignment: .leading, spacing: 1) {
+                    Text(name)
+                        .font(.system(size: 14, weight: .semibold))
+                        .foregroundStyle(Color.primary)
+                        .lineLimit(1)
+                    Text("×\(qty)")
+                        .font(.system(size: 12))
+                        .foregroundStyle(Color.secondary)
+                }
+                Spacer(minLength: 0)
+            }
+            .padding(.horizontal, 10).padding(.vertical, 8)
+            .background(Color.wikiSelected)
+            .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
+        }
+        .buttonStyle(.plain)
+    }
+}
+
 // MARK: - Fonts
 
 extension Font {
@@ -353,6 +395,25 @@ struct SectionHeader: View {
 
 // MARK: - Detail row
 
+/// Small row for a recipe ingredient that shows the item image next to the name/qty.
+struct IngredientRow: View {
+    let ing: Ingredient
+
+    var body: some View {
+        RecipeArtwork(name: ing.name, qty: ing.qty, size: 30)
+    }
+}
+
+/// Station row for a recipe that shows the station image next to the name.
+struct StationRow: View {
+    let station: String
+
+    var body: some View {
+        RecipeArtwork(name: station, qty: 1, size: 30)
+    }
+}
+
+/// Generic detail row used on non-recipe screens.
 struct DetailRow: View {
     let label: String
     let value: String
